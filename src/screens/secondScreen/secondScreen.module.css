@@ -1,0 +1,472 @@
+/* ========================================
+   SecondScreen - Dream + Story Section
+   Beauty Education Landing Page
+   RTL Hebrew Layout
+   ======================================== */
+
+   @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;800;900&family=Rubik:wght@400;500;600;700;800;900&display=swap');
+
+   .section {
+     --bg-dark: #2B0F18;
+     --bg-light: #F4E8E5;
+     --color-heading: #F4E8E5;
+     --color-subheading: #7B3A50;
+     --color-text: #e0cdd2;
+     --color-text-secondary: #8B6B73;
+     --color-accent: #D4607A;
+     --color-accent-glow: rgba(212, 96, 122, 0.35);
+     --font-display: 'Rubik', sans-serif;
+     --font-body: 'Heebo', sans-serif;
+   }
+   
+   /* ---- Section Base ---- */
+   .section {
+     position: relative;
+     background: var(--bg-dark);
+     overflow: hidden;
+     padding: 80px 20px 100px;
+   }
+   
+   /* ---- Background Orbs ---- */
+   .bgOrb1 {
+     position: absolute;
+     width: 450px;
+     height: 450px;
+     border-radius: 50%;
+     background: radial-gradient(circle, rgba(212, 96, 122, 0.1) 0%, transparent 70%);
+     top: 10%;
+     left: -120px;
+     filter: blur(80px);
+     animation: orbDrift1 14s ease-in-out infinite;
+     pointer-events: none;
+   }
+   
+   .bgOrb2 {
+     position: absolute;
+     width: 380px;
+     height: 380px;
+     border-radius: 50%;
+     background: radial-gradient(circle, rgba(123, 58, 80, 0.12) 0%, transparent 70%);
+     bottom: 5%;
+     right: -80px;
+     filter: blur(70px);
+     animation: orbDrift2 18s ease-in-out infinite;
+     pointer-events: none;
+   }
+   
+   @keyframes orbDrift1 {
+     0%, 100% { transform: translate(0, 0); }
+     50% { transform: translate(25px, -20px); }
+   }
+   
+   @keyframes orbDrift2 {
+     0%, 100% { transform: translate(0, 0); }
+     50% { transform: translate(-20px, 15px); }
+   }
+   
+   /* ---- Container ---- */
+   .container {
+     position: relative;
+     z-index: 2;
+     max-width: 1100px;
+     width: 100%;
+     margin: 0 auto;
+     display: flex;
+     flex-direction: column;
+     gap: 80px;
+   }
+   
+   /* ============================
+      PART 1: Dream Section
+      ============================ */
+   .dreamSection {
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     text-align: center;
+     gap: 32px;
+   }
+   
+   /* ---- Section Titles ---- */
+   .sectionTitle {
+     font-family: var(--font-display);
+     font-size: clamp(1.6rem, 4.5vw, 2.4rem);
+     font-weight: 800;
+     color: var(--color-heading);
+     line-height: 1.5;
+     margin: 0;
+   }
+   
+   /* ---- "סימן ש.." text ---- */
+   .signText {
+     font-family: var(--font-body);
+     font-size: 1.15rem;
+     font-weight: 400;
+     color: var(--color-text-secondary);
+     margin: 0;
+     letter-spacing: 0.02em;
+   }
+   
+   /* ---- Can Grid - 3 items in a row ---- */
+   .canGrid {
+     display: grid;
+     grid-template-columns: repeat(3, 1fr);
+     gap: 20px;
+     width: 100%;
+     max-width: 1060px;
+     direction: rtl;
+   }
+   
+   .canItem {
+     display: flex;
+     justify-content: center;
+   }
+   
+   /* Override Can component styles to match beauty theme */
+   .canItem > div {
+     width: 100% !important;
+     max-width: 340px;
+   }
+   
+   /* ---- "וחשוב לי שתדעי שזה אפשרי!" ---- */
+   .possibleText {
+     font-family: var(--font-display);
+     font-size: clamp(1.2rem, 3.5vw, 1.6rem);
+     font-weight: 700;
+     color: var(--color-heading);
+     margin: 12px 0 0;
+     line-height: 1.6;
+   }
+   
+   .specialUnderline {
+     position: relative;
+     display: inline-block;
+     padding-bottom: 4px;
+   }
+   
+   .specialUnderline::after {
+     content: '';
+     position: absolute;
+     bottom: 0;
+     right: 0;
+     width: 100%;
+     height: 3px;
+     background: linear-gradient(90deg, transparent 0%, var(--color-accent) 20%, var(--color-accent) 80%, transparent 100%);
+     border-radius: 2px;
+     animation: underlineGlow 2.5s ease-in-out infinite;
+   }
+   
+   @keyframes underlineGlow {
+     0%, 100% { opacity: 0.7; transform: scaleX(1); }
+     50% { opacity: 1; transform: scaleX(1.05); }
+   }
+   
+   /* ============================
+      PART 2: Story Section
+      ============================ */
+   .storySection {
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     text-align: center;
+     gap: 28px;
+   }
+   
+   /* ---- Story Content ---- */
+   .storyContent {
+     max-width: 720px;
+     display: flex;
+     flex-direction: column;
+     gap: 20px;
+   }
+   
+   .storyText {
+     font-family: var(--font-body);
+     font-size: 1.1rem;
+     font-weight: 300;
+     color: var(--color-text);
+     line-height: 1.85;
+     margin: 0;
+     text-align: center;
+   }
+   
+   /* Parenthesized text in subtitle/underline font style */
+   .storySubfont {
+     font-family: var(--font-body);
+     font-weight: 400;
+     color: var(--color-accent);
+     position: relative;
+     display: inline;
+     padding-bottom: 1px;
+     border-bottom: 1.5px solid rgba(212, 96, 122, 0.4);
+   }
+   
+   .storyHighlight {
+     font-family: var(--font-display);
+     font-size: 1.2rem;
+     font-weight: 700;
+     color: var(--color-heading);
+     margin: 8px 0 0;
+   }
+   
+   .zeroExperience {
+     margin: 0;
+     font-size: 1rem;
+   }
+   
+   /* ============================
+      Carousel
+      ============================ */
+   .carouselSection {
+     width: 100%;
+     max-width: 700px;
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     gap: 20px;
+   }
+   
+   .carouselWrapper {
+     width: 100%;
+     position: relative;
+     display: flex;
+     align-items: center;
+     gap: 12px;
+   }
+   
+   .carouselTrack {
+     flex: 1;
+     overflow: hidden;
+     border-radius: 16px;
+   }
+   
+   .carouselSlider {
+     display: flex;
+     transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+     direction: rtl; /* slider movement is LTR even in RTL layout */
+   }
+   
+   .carouselSlide {
+     min-width: 100%;
+     padding: 0 4px;
+   }
+   
+   .slideImageWrapper {
+     width: 100%;
+     aspect-ratio: 4 / 3;
+     border-radius: 14px;
+     overflow: hidden;
+     border: 1px solid rgba(212, 96, 122, 0.15);
+     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+   }
+   
+   .slideImageWrapper img {
+     width: 100%;
+     height: 100%;
+     object-fit: cover;
+   }
+   
+   /* Placeholder for images */
+   .slidePlaceholder {
+     width: 100%;
+     height: 100%;
+     background: linear-gradient(
+       135deg,
+       rgba(212, 96, 122, 0.08) 0%,
+       rgba(123, 58, 80, 0.12) 50%,
+       rgba(43, 15, 24, 0.4) 100%
+     );
+     display: flex;
+     align-items: center;
+     justify-content: center;
+   }
+   
+   .slidePlaceholder span {
+     font-family: var(--font-body);
+     font-size: 0.9rem;
+     color: var(--color-text-secondary);
+     opacity: 0.5;
+   }
+   
+   /* ---- Carousel Arrows ---- */
+   .carouselArrow {
+     width: 44px;
+     height: 44px;
+     border-radius: 50%;
+     border: 1px solid rgba(212, 96, 122, 0.25);
+     background: rgba(43, 15, 24, 0.6);
+     backdrop-filter: blur(10px);
+     -webkit-backdrop-filter: blur(10px);
+     color: var(--color-heading);
+     font-size: 1.6rem;
+     cursor: pointer;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     transition: all 0.3s ease;
+     flex-shrink: 0;
+     line-height: 1;
+     padding: 0;
+   }
+   
+   .carouselArrow:hover {
+     background: rgba(212, 96, 122, 0.2);
+     border-color: rgba(212, 96, 122, 0.5);
+     transform: scale(1.08);
+   }
+   
+   /* ---- Dots ---- */
+   .dotsWrapper {
+     display: flex;
+     gap: 10px;
+     justify-content: center;
+   }
+   
+   .dot {
+     width: 10px;
+     height: 10px;
+     border-radius: 50%;
+     border: none;
+     background: rgba(212, 96, 122, 0.2);
+     cursor: pointer;
+     transition: all 0.3s ease;
+     padding: 0;
+   }
+   
+   .dot:hover {
+     background: rgba(212, 96, 122, 0.4);
+   }
+   
+   .dotActive {
+     background: var(--color-accent);
+     box-shadow: 0 0 10px var(--color-accent-glow);
+     transform: scale(1.2);
+   }
+   
+   /* ============================
+      CTA Button
+      ============================ */
+   .ctaButton {
+     margin-top: 12px;
+     padding: 20px 48px;
+     font-family: var(--font-display);
+     font-size: 1.2rem;
+     font-weight: 700;
+     color: #fff;
+     background: linear-gradient(135deg, var(--color-accent) 0%, #b84a60 100%);
+     border: none;
+     border-radius: 14px;
+     cursor: pointer;
+     position: relative;
+     overflow: hidden;
+     transition: all 0.35s ease;
+     box-shadow:
+       0 6px 24px var(--color-accent-glow),
+       0 2px 8px rgba(0, 0, 0, 0.2);
+     letter-spacing: 0.01em;
+   }
+   
+   .ctaButton::before {
+     content: '';
+     position: absolute;
+     inset: 0;
+     background: linear-gradient(135deg, transparent 0%, rgba(255, 255, 255, 0.12) 50%, transparent 100%);
+     transform: translateX(100%);
+     transition: transform 0.6s ease;
+   }
+   
+   .ctaButton:hover {
+     transform: translateY(-3px);
+     box-shadow:
+       0 10px 36px rgba(212, 96, 122, 0.45),
+       0 4px 12px rgba(0, 0, 0, 0.3);
+   }
+   
+   .ctaButton:hover::before {
+     transform: translateX(-100%);
+   }
+   
+   .ctaButton:active {
+     transform: translateY(-1px);
+   }
+   
+   /* ========================================
+      Responsive
+      ======================================== */
+   
+   @media (max-width: 900px) {
+     .canGrid {
+       grid-template-columns: 1fr;
+       gap: 16px;
+       max-width: 420px;
+       margin: 0 auto;
+     }
+   
+     .canItem > div {
+       max-width: 100% !important;
+     }
+   }
+   
+   @media (max-width: 640px) {
+     .section {
+       padding: 60px 16px 80px;
+     }
+   
+     .container {
+       gap: 60px;
+     }
+   
+     .dreamSection,
+     .storySection {
+       gap: 24px;
+     }
+   
+     .sectionTitle {
+       font-size: clamp(1.4rem, 5.5vw, 1.8rem);
+     }
+   
+     .signText {
+       font-size: 1.05rem;
+     }
+   
+     .possibleText {
+       font-size: clamp(1.1rem, 4vw, 1.4rem);
+     }
+   
+     .storyText {
+       font-size: 1rem;
+       line-height: 1.8;
+     }
+   
+     .storyHighlight {
+       font-size: 1.1rem;
+     }
+   
+     .carouselArrow {
+       width: 38px;
+       height: 38px;
+       font-size: 1.4rem;
+     }
+   
+     .ctaButton {
+       padding: 18px 36px;
+       font-size: 1.1rem;
+       width: 100%;
+       max-width: 380px;
+     }
+   }
+   
+   @media (max-width: 380px) {
+     .sectionTitle {
+       font-size: 1.3rem;
+     }
+   
+     .storyText {
+       font-size: 0.95rem;
+     }
+   
+     .ctaButton {
+       padding: 16px 28px;
+       font-size: 1rem;
+     }
+   }
