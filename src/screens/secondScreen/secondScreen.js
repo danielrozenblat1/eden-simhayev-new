@@ -48,17 +48,16 @@ const SecondScreen = ({ onCtaClick }) => {
     );
   };
 
-  const handleCtaClick = () => {
-    if (onCtaClick) {
-      onCtaClick();
-    } else {
-      // Scroll to lead form in firstScreen
-      const form = document.querySelector("form");
-      if (form) {
-        form.scrollIntoView({ behavior: "smooth", block: "center" });
-      }
-    }
-  };
+  // Auto-play carousel with infinite loop
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) =>
+        prev >= studentWorks.length - 1 ? 0 : prev + 1
+      );
+    }, 4000); // Change slide every 4 seconds
+
+    return () => clearInterval(interval);
+  }, [studentWorks.length]);
 
   return (
     <section className={styles.section} dir="rtl">
@@ -143,14 +142,9 @@ const SecondScreen = ({ onCtaClick }) => {
           {/* Student Works Carousel */}
           <div className={styles.carouselSection}>
             <div className={styles.carouselWrapper} ref={carouselRef}>
-              <button
-                className={`${styles.carouselArrow} ${styles.arrowRight}`}
-                onClick={prevSlide}
-                aria-label="תמונה קודמת"
-              >
-                ‹
-              </button>
-
+              {/* Left fade overlay */}
+              <div className={styles.carouselFadeLeft} />
+              
               <div className={styles.carouselTrack}>
                 <div
                   className={styles.carouselSlider}
@@ -171,13 +165,8 @@ const SecondScreen = ({ onCtaClick }) => {
                 </div>
               </div>
 
-              <button
-                className={`${styles.carouselArrow} ${styles.arrowLeft}`}
-                onClick={nextSlide}
-                aria-label="תמונה הבאה"
-              >
-                ›
-              </button>
+              {/* Right fade overlay */}
+              <div className={styles.carouselFadeRight} />
             </div>
 
             {/* Dots indicator */}
@@ -194,11 +183,6 @@ const SecondScreen = ({ onCtaClick }) => {
               ))}
             </div>
           </div>
-
-          {/* CTA Button */}
-          <button className={styles.ctaButton} onClick={handleCtaClick}>
-            לשיחת ייעוץ ללא עלות לחצי כאן
-          </button>
         </div>
       </div>
     </section>

@@ -4,6 +4,7 @@ import FirstScreen from './screens/firstScreen/firstScreen';
 import SecondScreen from './screens/secondScreen/secondScreen';
 import ThirdScreen from './screens/thirdScreen/thirdScreen';
 import FourthScreen from './screens/fourthScreen/fourthScreen';
+import TestimonialsScreen from './screens/testimonialsScreen/testimonialsScreen';
 import FifthScreen from './screens/fifthScreen/fifthScreen';
 import SixthScreen from './screens/sixthScreen/sixthScreen';
 import SeventhScreen from './screens/seventhScreen/seventhScreen';
@@ -17,6 +18,7 @@ function Wrapper() {
       <SecondScreen /> 
       <ThirdScreen />
       <FourthScreen />
+      <TestimonialsScreen />
       <FifthScreen />
       <SixthScreen />
       <SeventhScreen />         

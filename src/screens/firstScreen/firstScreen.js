@@ -1,24 +1,8 @@
 import React, { useState } from "react";
 import styles from "./firstScreen.module.css";
+import ContactForm from "../../components/form/form";
 
 const FirstScreen = () => {
-  const [formData, setFormData] = useState({ name: "", phone: "" });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
-
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (!formData.name || !formData.phone) return;
-    setIsSubmitting(true);
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setSubmitted(true);
-    }, 1500);
-  };
 
   return (
     <section className={styles.hero} dir="rtl">
@@ -29,7 +13,7 @@ const FirstScreen = () => {
       <div className={styles.noiseOverlay} />
 
       <div className={styles.container}>
-        {/* Intro line */}
+        {/* Intro bar */}
         <div className={styles.introWrapper}>
           <p className={styles.intro}>
             עבור מי שרוצה לצאת עם מקצוע ביד, לא רק תעודה במגירה
@@ -52,57 +36,22 @@ const FirstScreen = () => {
           (גם אם אין לך ניסיון בכלל וגם אם אין לך רקע בתחום)
         </p>
 
-        {/* Image placeholder area */}
+        {/* Video / Image area */}
         <div className={styles.imageSection}>
           <div className={styles.imagePlaceholder}>
             <span className={styles.imagePlaceholderText}>תמונה של עדן / קרוסלה</span>
           </div>
         </div>
 
-        {/* Lead form */}
+    
+  
+        {/* Form Component */}
         <div className={styles.formSection}>
-          {!submitted ? (
-            <form className={styles.form} onSubmit={handleSubmit}>
-              <div className={styles.inputGroup}>
-                <input
-                  type="text"
-                  name="name"
-                  placeholder="שם מלא"
-                  value={formData.name}
-                  onChange={handleChange}
-                  className={styles.input}
-                  required
-                />
-                <input
-                  type="tel"
-                  name="phone"
-                  placeholder="מספר טלפון"
-                  value={formData.phone}
-                  onChange={handleChange}
-                  className={styles.input}
-                  required
-                />
-              </div>
-              <button
-                type="submit"
-                className={styles.submitBtn}
-                disabled={isSubmitting}
-              >
-                {isSubmitting ? (
-                  <span className={styles.spinner} />
-                ) : (
-                  "אני רוצה להתחיל"
-                )}
-              </button>
-            </form>
-          ) : (
-            <div className={styles.successMsg}>
-              <span className={styles.successIcon}>✓</span>
-              <p>הפרטים נשלחו בהצלחה! ניצור איתך קשר בקרוב</p>
-            </div>
-          )}
+          <ContactForm />
         </div>
       </div>
+
+    
     </section>
   );
 };

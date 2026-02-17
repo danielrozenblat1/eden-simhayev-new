@@ -38,7 +38,7 @@ const IconTextComponent = ({ text, icon }) => {
           ref={playerRef1} 
           size="100%" 
           onComplete={handleComplete}
-          colorize="#D4607A"
+          colorize="#C4727E"
         />
       </div>
       <p className={styles.text}>{text}</p>

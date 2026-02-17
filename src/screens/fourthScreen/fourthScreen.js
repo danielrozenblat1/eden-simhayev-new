@@ -1,9 +1,66 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import styles from "./fourthScreeen.module.css";
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const EDEN_PHONE = "972543414939";
 
 const FourthScreen = () => {
+  const containerRef = useRef(null);
+  const quoteRef = useRef(null);
+  const strongTextRefs = useRef([]);
+
+  useEffect(() => {
+    if (quoteRef.current) {
+      gsap.fromTo(
+        quoteRef.current,
+        { opacity: 0, scale: 0.8, rotationY: 15 },
+        {
+          opacity: 1,
+          scale: 1,
+          rotationY: 0,
+          duration: 1.5,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: quoteRef.current,
+            start: "top 80%",
+            end: "bottom 20%",
+            toggleActions: "play none none reverse"
+          }
+        }
+      );
+    }
+
+    strongTextRefs.current.forEach((ref, index) => {
+      if (ref) {
+        gsap.fromTo(
+          ref,
+          { opacity: 0, x: -50, scale: 0.9 },
+          {
+            opacity: 1,
+            x: 0,
+            scale: 1,
+            duration: 1.2,
+            ease: "power2.out",
+            delay: index * 0.2,
+            scrollTrigger: {
+              trigger: ref,
+              start: "top 85%",
+              end: "bottom 15%",
+              toggleActions: "play none none reverse"
+            }
+          }
+        );
+      }
+    });
+
+    return () => {
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    };
+  }, []);
+
   const handleWhatsApp = () => {    
     const message = encodeURIComponent(
       "היי עדן הגעתי מהדף שלך, אשמח להתחיל את המסע!"
@@ -12,33 +69,35 @@ const FourthScreen = () => {
   };
 
   return (
-    <section className={styles.section} dir="rtl">
-      <div className={styles.bgShape1} />
-      <div className={styles.bgShape2} />
-
+    <section ref={containerRef} className={styles.section} dir="rtl" id="מי אנחנו">
       <div className={styles.container}>
-        {/* Image placeholder */}
-        <div className={styles.imageCol}>
-          <div className={styles.imagePlaceholder}>
-            <span>תמונה של עדן שמחייכת</span>
-          </div>
-        </div>
+        {/* Content section - left side */}
+        <div className={styles.content}>
+          <h2 className={styles.mainTitle}>נעים מאוד, עדן שמחייב</h2>
 
-        {/* Story content */}
-        <div className={styles.storyCol}>
-          <div className={styles.storyContent}>
+          <div className={styles.quoteContainer} ref={quoteRef}>
+            <p className={styles.quote}>
+              "אני כאן כדי להפוך את מה שכולם אומרים לך 'את כל כך טובה בזה' – למקצוע שמכניס לך 5 ספרות בחודש"
+            </p>
+          </div>
+
+          <div className={styles.textBlock}>
             <p className={styles.paragraph}>
               תמיד אהבתי יופי. מגיל צעיר הייתי קונה מלא איפור, מתאפרת
               לשעות, עושה לעצמי ריסים - פשוט חייתי את זה.
             </p>
 
+            <div className={styles.divider}></div>
+
             <p className={styles.paragraph}>
               יום אחד נשארו לי ריסים שקניתי לעצמי, ועשיתי לאחותי. חברה שלה
               ראתה ושאלה:{" "}
-              <span className={styles.quote}>
+              <span className={styles.quoteInline}>
                 "מי עשה לך את הריסים האלה? אני רוצה בדיוק ככה."
               </span>
             </p>
+
+            <div className={styles.divider}></div>
 
             <p className={styles.paragraph}>
               ברגע הזה, בלי שבכלל תכננתי - הבנתי שאני רוצה ללמוד את זה
@@ -46,7 +105,11 @@ const FourthScreen = () => {
               המקצוע. בלי קליניקה, בלי ניסיון, בלי כלום - רק אהבה ורצון.
             </p>
 
-            <p className={styles.paragraphBold}>ואז הגיעה ההתרסקות.</p>
+            <div className={styles.divider}></div>
+
+            <p className={styles.paragraphBold} ref={(el) => strongTextRefs.current[0] = el}>
+              ואז הגיעה ההתרסקות.
+            </p>
 
             <p className={styles.paragraph}>
               <span className={styles.accent}>(שילמתי אלפי שקלים)</span> על
@@ -55,6 +118,8 @@ const FourthScreen = () => {
               שהקורס נגמר. יצאתי עם תעודה - ובלי שום ביטחון לגעת בלקוחה
               אמיתית.
             </p>
+
+            <div className={styles.divider}></div>
 
             <p className={styles.paragraph}>
               כמעט ויתרתי.{" "}
@@ -65,11 +130,15 @@ const FourthScreen = () => {
               מטעויות - עד שהגעתי למקום שרציתי.
             </p>
 
-            <p className={styles.paragraphBold}>
+            <div className={styles.divider}></div>
+
+            <p className={styles.paragraphBold} ref={(el) => strongTextRefs.current[1] = el}>
               הבטחתי לעצמי שאני אהיה המדריכה שהלוואי והייתה לי בהתחלה -
               מישהי שמלמדת באמת, מסבירה עד הסוף, ולא נעלמת ברגע שנותנים
               תעודה.
             </p>
+
+            <div className={styles.divider}></div>
 
             <p className={styles.paragraph}>
               היום אני עוזרת לנשים לעבור את אותו המסע - בלי הטעויות שאני
@@ -81,15 +150,25 @@ const FourthScreen = () => {
               .
             </p>
 
-            <p className={styles.closingLine}>
+            <div className={styles.divider}></div>
+
+            <p className={styles.closingLine} ref={(el) => strongTextRefs.current[2] = el}>
               כי בעיניי? תעודה בלי ביטחון בידיים - לא שווה את הנייר שהיא
               מודפסת עליו.
             </p>
           </div>
 
           <button className={styles.ctaButton} onClick={handleWhatsApp}>
-            בואי נתחיל את המסע שלך!
+            <span className={styles.buttonIcon}>💬</span>
+            בואי נדבר, אני כאן בשבילך
           </button>
+        </div>
+
+        {/* Image section - right side */}
+        <div className={styles.imageWrapper}>
+          <div className={styles.imagePlaceholder}>
+            <span>תמונה של עדן שמחייב</span>
+          </div>
         </div>
       </div>
     </section>

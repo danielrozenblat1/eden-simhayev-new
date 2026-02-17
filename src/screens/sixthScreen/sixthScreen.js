@@ -49,7 +49,7 @@ const CalcScreen = () => {
                 onChange={(e) => setTreatments(Number(e.target.value))}
                 className={styles.slider}
                 style={{
-                  background: `linear-gradient(to left, #D4607A ${pct}%, rgba(212,96,122,0.15) ${pct}%)`,
+                  background: `linear-gradient(to left, #C4727E ${pct}%, rgba(196, 114, 126, 0.2) ${pct}%)`,
                 }}
               />
               <div className={styles.sliderTicks}>

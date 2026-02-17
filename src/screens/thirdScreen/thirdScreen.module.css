@@ -1,27 +1,26 @@
 /* ========================================
    ThirdScreen - Courses + Benefits
    Beauty Education Landing Page
-   RTL Hebrew Layout
+   Premium Clean Design - Full Visibility
    ======================================== */
 
    @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;800;900&family=Rubik:wght@400;500;600;700;800;900&display=swap');
 
    .section {
-     --bg-darker: #1F0A11;
-     --bg-dark: #2B0F18;
-     --bg-light: #F4E8E5;
-     --bg-card: rgba(74, 31, 45, 0.35);
-     --bg-card-hover: rgba(74, 31, 45, 0.5);
-     --color-heading: #F4E8E5;
-     --color-subheading: #d4b5be;
-     --color-text: #e0cdd2;
-     --color-text-secondary: #8B6B73;
-     --color-accent: #D4607A;
-     --color-accent-glow: rgba(212, 96, 122, 0.35);
-     --color-day-bg: #F4E8E5;
-     --color-day-text: #4A1F2D;
-     --color-day-item-bg: rgba(244, 232, 229, 0.85);
-     --color-day-item-text: #3A2A2F;
+     --bg-main: #FFF5F2;
+     --bg-blush: #F5D5D5;
+     --bg-card: #fff;
+     --color-heading: #1F1215;
+     --color-text: #3A1F1A;
+     --color-text-secondary: #8C6B6B;
+     --color-accent: #C4727E;
+     --color-accent-deep: #A85A6A;
+     --color-accent-glow: rgba(196, 114, 126, 0.25);
+     --color-border: rgba(196, 114, 126, 0.12);
+     --color-border-hover: rgba(196, 114, 126, 0.28);
+     --radius-lg: 22px;
+     --radius-md: 16px;
+     --radius-sm: 12px;
      --font-display: 'Rubik', sans-serif;
      --font-body: 'Heebo', sans-serif;
    }
@@ -29,35 +28,46 @@
    /* ---- Section ---- */
    .section {
      position: relative;
-     background: var(--bg-darker);
+     background: var(--bg-main);
      overflow: hidden;
-     padding: 90px 20px 110px;
+     padding: 100px 20px 120px;
+   }
+   
+   .section::before {
+     content: '';
+     position: absolute;
+     top: 0;
+     left: 0;
+     right: 0;
+     height: 180px;
+     background: linear-gradient(180deg, rgba(31, 18, 21, 0.02) 0%, transparent 100%);
+     pointer-events: none;
    }
    
    /* ---- Background Orbs ---- */
    .bgOrb1 {
      position: absolute;
-     width: 500px;
-     height: 500px;
+     width: 550px;
+     height: 550px;
      border-radius: 50%;
-     background: radial-gradient(circle, rgba(212, 96, 122, 0.07) 0%, transparent 70%);
-     top: -100px;
-     right: -150px;
-     filter: blur(90px);
-     animation: orbFloat1 16s ease-in-out infinite;
+     background: radial-gradient(circle, rgba(196, 114, 126, 0.05) 0%, transparent 70%);
+     top: -120px;
+     right: -180px;
+     filter: blur(100px);
+     animation: orbFloat1 18s ease-in-out infinite;
      pointer-events: none;
    }
    
    .bgOrb2 {
      position: absolute;
-     width: 400px;
-     height: 400px;
+     width: 450px;
+     height: 450px;
      border-radius: 50%;
-     background: radial-gradient(circle, rgba(123, 58, 80, 0.08) 0%, transparent 70%);
+     background: radial-gradient(circle, rgba(236, 196, 196, 0.07) 0%, transparent 70%);
      bottom: -80px;
-     left: -100px;
-     filter: blur(80px);
-     animation: orbFloat2 20s ease-in-out infinite;
+     left: -120px;
+     filter: blur(90px);
+     animation: orbFloat2 22s ease-in-out infinite;
      pointer-events: none;
    }
    
@@ -84,131 +94,141 @@
    }
    
    /* ============================
-      Header Block
+      Header
       ============================ */
    .headerBlock {
      text-align: center;
      display: flex;
      flex-direction: column;
+     align-items: center;
      gap: 16px;
    }
    
    .sectionTitle {
      font-family: var(--font-display);
-     font-size: clamp(1.7rem, 4.5vw, 2.5rem);
+     font-size: clamp(1.6rem, 4.5vw, 2.4rem);
      font-weight: 800;
      color: var(--color-heading);
-     line-height: 1.4;
+     line-height: 1.5;
      margin: 0;
    }
    
-   .sectionDesc {
-     font-family: var(--font-body);
-     font-size: 1.1rem;
-     font-weight: 300;
-     color: var(--color-text);
-     line-height: 1.8;
-     margin: 0;
-   }
-   
-   .sectionDescSub {
-     font-family: var(--font-body);
-     font-size: 1rem;
-     font-weight: 400;
-     color: var(--color-text-secondary);
-     margin: 0;
+   .decorativeLine {
+     width: 70px;
+     height: 3px;
+     background: linear-gradient(90deg, transparent, var(--color-accent), transparent);
+     border-radius: 2px;
    }
    
    /* ============================
-      Accordion List
+      Accordion
       ============================ */
    .accordionList {
      display: flex;
      flex-direction: column;
-     gap: 16px;
+     gap: 12px;
    }
    
-   /* ---- Accordion Item ---- */
    .accordionItem {
-     border-radius: 18px;
-     overflow: hidden;
-     border: 1px solid rgba(212, 96, 122, 0.12);
-     transition: border-color 0.3s ease;
+     border-radius: var(--radius-lg);
+     border: 1px solid var(--color-border);
+     background: var(--bg-card);
+     transition: all 0.3s ease;
+     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.03);
    }
    
    .accordionItem:hover {
-     border-color: rgba(212, 96, 122, 0.25);
+     border-color: var(--color-border-hover);
    }
    
    .accordionOpen {
-     border-color: rgba(212, 96, 122, 0.3);
+     border-color: var(--color-border-hover);
+     box-shadow: 0 4px 24px rgba(196, 114, 126, 0.08);
    }
    
-   /* ---- Accordion Header ---- */
+   /* ---- Header ---- */
    .accordionHeader {
      width: 100%;
      display: flex;
      align-items: center;
      justify-content: space-between;
-     padding: 24px 28px;
-     background: var(--bg-card);
-     backdrop-filter: blur(20px);
-     -webkit-backdrop-filter: blur(20px);
+     padding: 22px 24px;
+     background: transparent;
      border: none;
      cursor: pointer;
      direction: rtl;
      text-align: right;
-     transition: background 0.3s ease;
-     gap: 16px;
+     gap: 14px;
+     transition: background 0.2s ease;
    }
    
    .accordionHeader:hover {
-     background: var(--bg-card-hover);
+     background: rgba(196, 114, 126, 0.03);
    }
    
    .accordionHeaderContent {
      display: flex;
      flex-direction: column;
-     gap: 6px;
+     gap: 8px;
      flex: 1;
    }
    
    .courseName {
      font-family: var(--font-display);
-     font-size: 1.25rem;
+     font-size: 1.15rem;
      font-weight: 700;
      color: var(--color-heading);
      margin: 0;
+     line-height: 1.4;
    }
    
-   .courseMeta {
+   .courseMetaRow {
+     display: flex;
+     align-items: center;
+     gap: 8px;
+     flex-wrap: wrap;
+   }
+   
+   .courseMetaTag {
      font-family: var(--font-body);
-     font-size: 0.9rem;
-     font-weight: 300;
+     font-size: 0.85rem;
+     font-weight: 400;
      color: var(--color-text-secondary);
-     margin: 0;
    }
    
-   /* ---- Plus/Minus Icon ---- */
+   .courseMetaDot {
+     color: var(--color-accent);
+     opacity: 0.4;
+     font-size: 0.7rem;
+   }
+   
+   .courseMetaPrice {
+     font-family: var(--font-display);
+     font-size: 0.9rem;
+     font-weight: 600;
+     color: var(--color-accent);
+   }
+   
+   /* ---- +/- Icon ---- */
    .accordionIcon {
      width: 38px;
      height: 38px;
-     border-radius: 50%;
-     background: rgba(244, 232, 229, 0.1);
-     border: 1px solid rgba(244, 232, 229, 0.15);
+     min-width: 38px;
+     border-radius: 10px;
+     background: rgba(196, 114, 126, 0.06);
+     border: 1px solid var(--color-border);
      display: flex;
      align-items: center;
      justify-content: center;
      position: relative;
-     flex-shrink: 0;
      transition: all 0.3s ease;
    }
    
    .accordionIcon span {
      position: absolute;
-     background: var(--color-heading);
+     background: var(--color-accent);
      border-radius: 1px;
-     transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+     transition: all 0.3s ease;
    }
    
    .accordionIcon span:first-child {
@@ -221,17 +241,21 @@
      height: 14px;
    }
    
+   .accordionIconOpen {
+     background: var(--color-accent);
+     border-color: var(--color-accent);
+   }
+   
+   .accordionIconOpen span {
+     background: #fff;
+   }
+   
    .accordionIconOpen span:last-child {
      transform: rotate(90deg);
      opacity: 0;
    }
    
-   .accordionIconOpen {
-     background: rgba(212, 96, 122, 0.2);
-     border-color: rgba(212, 96, 122, 0.3);
-   }
-   
-   /* ---- Accordion Body ---- */
+   /* ---- Body ---- */
    .accordionBody {
      max-height: 0;
      overflow: hidden;
@@ -239,132 +263,211 @@
    }
    
    .accordionInner {
-     padding: 0 24px 28px;
-     background: linear-gradient(180deg, var(--bg-card) 0%, rgba(74, 31, 45, 0.2) 100%);
+     padding: 8px 24px 32px;
      display: flex;
      flex-direction: column;
-     gap: 28px;
+     gap: 20px;
    }
    
-   /* ---- Meta Pills ---- */
-   .metaPills {
-     display: flex;
-     gap: 12px;
-     justify-content: center;
-     padding-top: 8px;
-   }
-   
-   .pill {
-     display: inline-flex;
-     align-items: center;
-     gap: 6px;
-     padding: 8px 18px;
-     background: rgba(244, 232, 229, 0.08);
-     border: 1px solid rgba(244, 232, 229, 0.1);
-     border-radius: 50px;
+   /* ---- Deposit / Alt price ---- */
+   .depositText {
      font-family: var(--font-body);
-     font-size: 0.85rem;
+     font-size: 0.88rem;
      font-weight: 400;
-     color: var(--color-subheading);
+     color: var(--color-text-secondary);
+     margin: 0;
+     text-align: center;
+     padding: 10px 16px;
+     background: rgba(196, 114, 126, 0.04);
+     border-radius: var(--radius-sm);
    }
    
-   .pill svg {
-     opacity: 0.7;
+   .altPriceText {
+     font-family: var(--font-body);
+     font-size: 0.92rem;
+     font-weight: 500;
+     color: var(--color-text);
+     margin: 0;
+     text-align: center;
    }
    
    /* ============================
-      Day Block (Syllabus)
+      Day Block
       ============================ */
    .dayBlock {
-     background: #B8969D;
-     border-radius: 20px;
-     padding: 32px 24px;
+     background: linear-gradient(165deg, #FAE8E8 0%, #F3D0D0 100%);
+     border-radius: var(--radius-lg);
+     padding: 28px 20px;
      display: flex;
      flex-direction: column;
      gap: 16px;
-     box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12);
+     border: 1px solid rgba(196, 114, 126, 0.1);
    }
    
    .dayHeader {
      display: flex;
      align-items: center;
-     justify-content: flex-start;
      gap: 14px;
-     padding-bottom: 8px;
-   }
-   
-   .dayTitle {
-     font-family: var(--font-display);
-     font-size: 1.15rem;
-     font-weight: 700;
-     color: var(--color-day-text);
+     padding-bottom: 14px;
+     border-bottom: 1px solid rgba(196, 114, 126, 0.1);
    }
    
    .dayNumber {
      font-family: var(--font-display);
      font-size: 2.4rem;
      font-weight: 900;
-     color: var(--color-day-text);
+     color: var(--color-accent);
+     opacity: 0.18;
      line-height: 1;
+     min-width: 48px;
+     text-align: center;
+   }
+   
+   .dayTitle {
+     font-family: var(--font-display);
+     font-size: 1.05rem;
+     font-weight: 700;
+     color: var(--color-heading);
    }
    
    .dayItems {
      display: flex;
      flex-direction: column;
-     gap: 10px;
+     gap: 6px;
    }
    
    .dayItem {
      display: flex;
      align-items: center;
-     flex-direction: row-reverse;
-     padding: 14px 20px;
-     background: rgba(255, 255, 255, 0.55);
-     border-radius: 14px;
+     padding: 12px 16px;
+     background: rgba(255, 255, 255, 0.85);
+     border-radius: var(--radius-sm);
      direction: rtl;
-     gap: 14px;
-     transition: all 0.25s ease;
-     border: 1px solid rgba(255, 255, 255, 0.3);
-     backdrop-filter: blur(4px);
-     -webkit-backdrop-filter: blur(4px);
+     gap: 12px;
+     transition: all 0.2s ease;
+     border: 1px solid transparent;
    }
    
    .dayItem:hover {
-     background: rgba(255, 255, 255, 0.7);
+     background: #fff;
+     border-color: rgba(196, 114, 126, 0.12);
      transform: translateX(-3px);
+   }
+   
+   .dayItemIcon {
+     font-size: 1rem;
+     flex-shrink: 0;
+     width: 28px;
+     text-align: center;
    }
    
    .dayItemText {
      font-family: var(--font-body);
-     font-size: 0.95rem;
+     font-size: 0.92rem;
      font-weight: 400;
-     color: #3A2A2F;
+     color: var(--color-text);
      text-align: right;
      flex: 1;
-     line-height: 1.6;
+     line-height: 1.55;
    }
    
-   .dayItemIcon {
-     font-size: 1.15rem;
-     flex-shrink: 0;
-     opacity: 0.65;
-     color: #7B3A50;
+   /* ---- Kit ---- */
+   .kitBlock {
+     background: var(--bg-card);
+     border-radius: var(--radius-md);
+     padding: 24px 20px;
+     border: 1px solid var(--color-border);
    }
    
-   /* ---- Course CTA Button ---- */
+   .kitTitle {
+     font-family: var(--font-display);
+     font-size: 1rem;
+     font-weight: 700;
+     color: var(--color-heading);
+     margin: 0 0 16px 0;
+     text-align: center;
+   }
+   
+   .kitList {
+     list-style: none;
+     padding: 0;
+     margin: 0;
+     display: grid;
+     grid-template-columns: 1fr 1fr;
+     gap: 6px 24px;
+   }
+   
+   .kitItem {
+     font-family: var(--font-body);
+     font-size: 0.88rem;
+     font-weight: 400;
+     color: var(--color-text);
+     line-height: 1.7;
+     padding-right: 16px;
+     position: relative;
+   }
+   
+   .kitItem::before {
+     content: '';
+     position: absolute;
+     right: 0;
+     top: 10px;
+     width: 5px;
+     height: 5px;
+     border-radius: 50%;
+     background: var(--color-accent);
+     opacity: 0.4;
+   }
+   
+   /* ---- Info Cards (course type / certificate) ---- */
+   .infoCard {
+     background: rgba(250, 232, 232, 0.5);
+     border-radius: var(--radius-md);
+     padding: 20px;
+     border: 1px solid var(--color-border);
+     text-align: center;
+   }
+   
+   .infoCardHighlight {
+     background: linear-gradient(135deg, rgba(196, 114, 126, 0.06) 0%, rgba(236, 196, 196, 0.12) 100%);
+     border-radius: var(--radius-md);
+     padding: 20px;
+     border: 1px solid rgba(196, 114, 126, 0.15);
+     text-align: center;
+   }
+   
+   .infoCardTitle {
+     font-family: var(--font-display);
+     font-size: 0.95rem;
+     font-weight: 700;
+     color: var(--color-heading);
+     margin: 0 0 8px 0;
+   }
+   
+   .infoCardText {
+     font-family: var(--font-body);
+     font-size: 0.9rem;
+     font-weight: 400;
+     color: var(--color-text);
+     line-height: 1.7;
+     margin: 0;
+   }
+   
+   /* ---- Course CTA ---- */
    .courseCtaBtn {
      align-self: center;
-     padding: 16px 40px;
+     padding: 16px 44px;
      font-family: var(--font-display);
      font-size: 1.05rem;
      font-weight: 700;
      color: #fff;
-     background: linear-gradient(135deg, var(--color-accent) 0%, #b84a60 100%);
+     background: var(--color-accent);
      border: none;
-     border-radius: 12px;
+     border-radius: var(--radius-sm);
      cursor: pointer;
-     transition: all 0.35s ease;
-     box-shadow: 0 4px 20px var(--color-accent-glow);
+     transition: all 0.3s ease;
+     box-shadow: 0 4px 16px var(--color-accent-glow);
+     margin-top: 8px;
      position: relative;
      overflow: hidden;
    }
@@ -380,7 +483,8 @@
    
    .courseCtaBtn:hover {
      transform: translateY(-2px);
-     box-shadow: 0 6px 28px rgba(212, 96, 122, 0.5);
+     background: var(--color-accent-deep);
+     box-shadow: 0 6px 28px rgba(196, 114, 126, 0.35);
    }
    
    .courseCtaBtn:hover::before {
@@ -388,7 +492,7 @@
    }
    
    /* ============================
-      Benefits Section
+      Benefits
       ============================ */
    .benefitsSection {
      display: flex;
@@ -399,7 +503,7 @@
    
    .benefitsTitle {
      font-family: var(--font-display);
-     font-size: clamp(1.3rem, 3.5vw, 1.7rem);
+     font-size: clamp(1.3rem, 3.5vw, 1.65rem);
      font-weight: 700;
      color: var(--color-heading);
      margin: 0;
@@ -409,20 +513,15 @@
    .benefitsGrid {
      display: grid;
      grid-template-columns: repeat(2, 1fr);
-     gap: 18px;
+     gap: 14px;
      width: 100%;
    }
    
    .benefitCard {
-     background: linear-gradient(165deg,
-       rgba(43, 15, 24, 0.9) 0%,
-       rgba(31, 10, 17, 0.95) 100%
-     );
-     backdrop-filter: blur(20px);
-     -webkit-backdrop-filter: blur(20px);
-     border: 1px solid rgba(212, 96, 122, 0.12);
-     border-radius: 16px;
-     padding: 28px 24px;
+     background: var(--bg-card);
+     border: 1px solid var(--color-border);
+     border-radius: var(--radius-md);
+     padding: 28px 22px;
      display: flex;
      flex-direction: column;
      gap: 12px;
@@ -431,35 +530,42 @@
      overflow: hidden;
    }
    
-   .benefitCard::before {
+   .benefitCard::after {
      content: '';
      position: absolute;
-     inset: 0;
-     background: linear-gradient(125deg,
-       rgba(212, 96, 122, 0.08) 0%,
-       rgba(123, 58, 80, 0.05) 50%,
-       rgba(43, 15, 24, 0.03) 100%
-     );
-     pointer-events: none;
-     border-radius: 16px;
+     bottom: 0;
+     left: 0;
+     right: 0;
+     height: 3px;
+     background: var(--color-accent);
+     transform: scaleX(0);
+     transition: transform 0.3s ease;
    }
    
    .benefitCard:hover {
      transform: translateY(-3px);
-     border-color: rgba(212, 96, 122, 0.3);
-     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+     border-color: var(--color-border-hover);
+     box-shadow: 0 8px 28px rgba(196, 114, 126, 0.08);
+   }
+   
+   .benefitCard:hover::after {
+     transform: scaleX(1);
    }
    
    .benefitIconWrapper {
+     width: 44px;
+     height: 44px;
+     border-radius: 12px;
+     background: rgba(196, 114, 126, 0.08);
+     display: flex;
+     align-items: center;
+     justify-content: center;
      color: var(--color-accent);
-     opacity: 0.85;
-     width: 36px;
-     height: 36px;
    }
    
    .benefitCardTitle {
      font-family: var(--font-display);
-     font-size: 1.05rem;
+     font-size: 1rem;
      font-weight: 700;
      color: var(--color-heading);
      margin: 0;
@@ -467,9 +573,9 @@
    
    .benefitCardDesc {
      font-family: var(--font-body);
-     font-size: 0.92rem;
-     font-weight: 300;
-     color: var(--color-text);
+     font-size: 0.88rem;
+     font-weight: 400;
+     color: var(--color-text-secondary);
      line-height: 1.7;
      margin: 0;
    }
@@ -481,58 +587,68 @@
      display: flex;
      flex-direction: column;
      align-items: center;
-     gap: 20px;
+     gap: 22px;
      text-align: center;
+     padding: 44px 28px;
+     background: linear-gradient(165deg, rgba(255, 245, 243, 0.9) 0%, rgba(250, 232, 232, 0.95) 100%);
+     border-radius: var(--radius-lg);
+     position: relative;
+     overflow: hidden;
+     border: 1px solid rgba(196, 114, 126, 0.2);
+     box-shadow: 0 4px 16px rgba(196, 114, 126, 0.1);
+   }
+   
+   .bottomCta::before {
+     content: '';
+     position: absolute;
+     inset: 0;
+     background: radial-gradient(circle at 50% 50%, rgba(196, 114, 126, 0.06) 0%, transparent 70%);
+     pointer-events: none;
    }
    
    .bottomCtaText {
      font-family: var(--font-display);
-     font-size: clamp(1.1rem, 3vw, 1.4rem);
+     font-size: clamp(1.05rem, 3vw, 1.35rem);
      font-weight: 600;
-     color: var(--color-subheading);
+     color: var(--color-heading);
      margin: 0;
+     position: relative;
+     z-index: 1;
    }
    
    .ctaButton {
-     padding: 20px 48px;
+     padding: 18px 48px;
      font-family: var(--font-display);
-     font-size: 1.2rem;
+     font-size: 1.1rem;
      font-weight: 700;
      color: #fff;
-     background: linear-gradient(135deg, var(--color-accent) 0%, #b84a60 100%);
+     background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-deep) 100%);
      border: none;
-     border-radius: 14px;
+     border-radius: var(--radius-sm);
      cursor: pointer;
      position: relative;
      overflow: hidden;
-     transition: all 0.35s ease;
-     box-shadow:
-       0 6px 24px var(--color-accent-glow),
-       0 2px 8px rgba(0, 0, 0, 0.2);
+     z-index: 1;
+     transition: all 0.3s ease;
+     box-shadow: 0 6px 24px var(--color-accent-glow);
    }
    
    .ctaButton::before {
      content: '';
      position: absolute;
      inset: 0;
-     background: linear-gradient(135deg, transparent 0%, rgba(255, 255, 255, 0.12) 50%, transparent 100%);
+     background: linear-gradient(135deg, transparent 0%, rgba(255, 255, 255, 0.15) 50%, transparent 100%);
      transform: translateX(100%);
-     transition: transform 0.6s ease;
+     transition: transform 0.5s ease;
    }
    
    .ctaButton:hover {
-     transform: translateY(-3px);
-     box-shadow:
-       0 10px 36px rgba(212, 96, 122, 0.45),
-       0 4px 12px rgba(0, 0, 0, 0.3);
+     transform: translateY(-2px);
+     box-shadow: 0 10px 36px rgba(196, 114, 126, 0.4);
    }
    
    .ctaButton:hover::before {
      transform: translateX(-100%);
-   }
-   
-   .ctaButton:active {
-     transform: translateY(-1px);
    }
    
    /* ========================================
@@ -541,91 +657,87 @@
    
    @media (max-width: 640px) {
      .section {
-       padding: 70px 16px 90px;
+       padding: 70px 14px 90px;
      }
    
      .container {
-       gap: 48px;
-     }
-   
-     .sectionTitle {
-       font-size: clamp(1.4rem, 5.5vw, 1.9rem);
-     }
-   
-     .sectionDesc {
-       font-size: 1rem;
+       gap: 44px;
      }
    
      .accordionHeader {
-       padding: 20px 22px;
+       padding: 18px 16px;
      }
    
      .courseName {
-       font-size: 1.1rem;
+       font-size: 1.05rem;
      }
    
      .accordionInner {
-       padding: 0 18px 24px;
-     }
-   
-     .metaPills {
-       flex-wrap: wrap;
-       justify-content: center;
+       padding: 4px 16px 24px;
      }
    
      .dayBlock {
-       padding: 24px 16px;
-       border-radius: 16px;
+       padding: 22px 14px;
      }
    
      .dayItem {
-       padding: 12px 16px;
+       padding: 10px 12px;
      }
    
      .dayItemText {
-       font-size: 0.88rem;
+       font-size: 0.86rem;
      }
    
      .dayNumber {
        font-size: 2rem;
+       min-width: 40px;
      }
    
      .courseCtaBtn {
-       padding: 14px 32px;
-       font-size: 1rem;
        width: 100%;
-       max-width: 320px;
+       max-width: 300px;
+       padding: 14px 28px;
+       font-size: 1rem;
+     }
+   
+     .kitList {
+       grid-template-columns: 1fr;
      }
    
      .benefitsGrid {
        grid-template-columns: 1fr;
-       gap: 14px;
+       gap: 10px;
      }
    
      .benefitCard {
-       padding: 24px 20px;
+       padding: 22px 18px;
+     }
+   
+     .bottomCta {
+       padding: 32px 18px;
      }
    
      .ctaButton {
-       padding: 18px 36px;
-       font-size: 1.1rem;
+       padding: 16px 32px;
+       font-size: 1rem;
        width: 100%;
-       max-width: 380px;
+       max-width: 340px;
      }
    }
    
    @media (max-width: 380px) {
      .sectionTitle {
-       font-size: 1.3rem;
+       font-size: 1.25rem;
      }
    
      .courseName {
-       font-size: 1rem;
+       font-size: 0.98rem;
      }
    
      .accordionIcon {
        width: 34px;
        height: 34px;
+       min-width: 34px;
      }
    
      .dayItemText {
@@ -633,7 +745,7 @@
      }
    
      .ctaButton {
-       padding: 16px 28px;
-       font-size: 1rem;
+       padding: 14px 24px;
+       font-size: 0.95rem;
      }
    }

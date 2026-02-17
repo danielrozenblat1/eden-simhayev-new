@@ -7,20 +7,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;800;900&family=Rubik:wght@400;500;600;700;800;900&display=swap');
 
 .section {
-  --bg-dark: #2B0F18;
-  --bg-light: #F4E8E5;
-  --color-heading: #F4E8E5;
-  --color-text: #e0cdd2;
-  --color-text-secondary: #8B6B73;
-  --color-accent: #D4607A;
-  --color-accent-glow: rgba(212, 96, 122, 0.35);
+  --bg-light: #FFF5F3;
+  --bg-pink-light: #F5D5D5;
+  --bg-pink-mid: #E8B4BC;
+  --color-heading: #2B0F18;
+  --color-text: #3A1F1A;
+  --color-text-secondary: #7B5B52;
+  --color-accent: #C4727E;
+  --color-accent-glow: rgba(196, 114, 126, 0.3);
   --font-display: 'Rubik', sans-serif;
   --font-body: 'Heebo', sans-serif;
 }
 
 .section {
   position: relative;
-  background: var(--bg-dark);
+  background: var(--bg-light);
   overflow: hidden;
   padding: 90px 20px 110px;
 }
@@ -28,27 +29,27 @@
 /* Background Orbs */
 .bgOrb1 {
   position: absolute;
-  width: 450px;
-  height: 450px;
+  width: 500px;
+  height: 500px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(212, 96, 122, 0.1) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(196, 114, 126, 0.08) 0%, transparent 70%);
   top: 10%;
-  left: -120px;
-  filter: blur(80px);
-  animation: orbDrift1 14s ease-in-out infinite;
+  left: -150px;
+  filter: blur(90px);
+  animation: orbDrift1 16s ease-in-out infinite;
   pointer-events: none;
 }
 
 .bgOrb2 {
   position: absolute;
-  width: 380px;
-  height: 380px;
+  width: 450px;
+  height: 450px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(123, 58, 80, 0.12) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(232, 180, 188, 0.1) 0%, transparent 70%);
   bottom: 5%;
-  right: -80px;
-  filter: blur(70px);
-  animation: orbDrift2 18s ease-in-out infinite;
+  right: -120px;
+  filter: blur(80px);
+  animation: orbDrift2 20s ease-in-out infinite;
   pointer-events: none;
 }
 
@@ -102,7 +103,9 @@
   color: var(--color-text);
   max-width: 720px;
   margin: 0 auto;
-  line-height: 2;
+  line-height: 1.9;
+  font-family: var(--font-body);
+  font-weight: 400;
 }
 
 .sectionDescription p {
@@ -147,7 +150,7 @@
   font-weight: 700;
   color: var(--color-accent);
   display: inline-block;
-  background: var(--bg-dark);
+  background: var(--bg-light);
   padding: 0 24px;
   position: relative;
   z-index: 1;
@@ -167,15 +170,16 @@
    Option Card
    ============================ */
 .optionCard {
-  background: rgba(244, 232, 229, 0.04);
+  background: rgba(255, 255, 255, 0.7);
   border-radius: 24px;
   padding: 40px 32px;
-  border: 1px solid rgba(212, 96, 122, 0.2);
+  border: 1px solid rgba(196, 114, 126, 0.2);
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 4px 16px rgba(196, 114, 126, 0.1);
 }
 
 .optionCard::before {
@@ -192,57 +196,58 @@
 
 .optionCard:hover {
   transform: translateY(-4px);
-  box-shadow: 0 12px 40px rgba(212, 96, 122, 0.25);
-  border-color: rgba(212, 96, 122, 0.4);
+  box-shadow: 0 12px 40px rgba(196, 114, 126, 0.2);
+  border-color: rgba(196, 114, 126, 0.35);
+  background: rgba(255, 255, 255, 0.85);
 }
 
 .optionCard:hover::before {
   opacity: 1;
 }
 
-/* Stay Card - Red/Pink accent */
+/* Stay Card - Pink/Red accent */
 .optionCard.stay {
-  background: rgba(232, 165, 165, 0.08);
-  border-color: rgba(232, 165, 165, 0.25);
+  background: rgba(255, 245, 243, 0.8);
+  border-color: rgba(196, 114, 126, 0.25);
 }
 
 .optionCard.stay::before {
-  background: #E8A5A5;
+  background: rgba(196, 114, 126, 0.4);
   opacity: 1;
 }
 
 .optionCard.stay .cardIcon {
-  background: linear-gradient(135deg, #E8A5A5, #D48A8A);
+  background: linear-gradient(135deg, rgba(196, 114, 126, 0.6), rgba(168, 90, 106, 0.7));
   color: white;
 }
 
 .optionCard.stay .cardTitle {
-  color: var(--color-text);
+  color: var(--color-heading);
 }
 
 .optionCard.stay .cardText strong {
-  color: #E8A5A5;
+  color: rgba(196, 114, 126, 0.9);
 }
 
-/* Start Card - Green accent */
+/* Start Card - Pink accent (using colors from 7th screen) */
 .optionCard.start {
-  background: rgba(143, 188, 143, 0.08);
-  border-color: rgba(143, 188, 143, 0.25);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  background: rgba(250, 232, 232, 0.9);
+  border-color: rgba(196, 114, 126, 0.3);
+  box-shadow: 0 8px 32px rgba(196, 114, 126, 0.15);
 }
 
 .optionCard.start::before {
   opacity: 1;
-  background: linear-gradient(90deg, #8FBC8F, #A8D5A8);
+  background: linear-gradient(90deg, var(--color-accent), rgba(168, 90, 106, 0.8));
 }
 
 .optionCard.start .cardIcon {
-  background: linear-gradient(135deg, #8FBC8F, #7CAE7C);
+  background: linear-gradient(135deg, var(--color-accent), #A85A6A);
   color: white;
 }
 
 .optionCard.start .cardText strong {
-  color: #8FBC8F;
+  color: var(--color-accent);
 }
 
 /* Card Header */
@@ -279,6 +284,8 @@
   color: var(--color-text);
   line-height: 1.9;
   margin: 0;
+  font-family: var(--font-body);
+  font-weight: 400;
 }
 
 .cardText strong {
@@ -300,6 +307,8 @@
   color: var(--color-text);
   margin-bottom: 24px;
   line-height: 1.9;
+  font-family: var(--font-body);
+  font-weight: 400;
 }
 
 .closingText strong {
@@ -322,23 +331,24 @@
   display: inline-flex;
   align-items: center;
   gap: 12px;
-  background: linear-gradient(135deg, var(--color-accent) 0%, #b84a60 100%);
+  background: linear-gradient(135deg, var(--color-accent) 0%, #A85A6A 100%);
   color: white;
   font-family: var(--font-display);
   font-size: 1.125rem;
   font-weight: 700;
   padding: 20px 48px;
   border: none;
-  border-radius: 100px;
+  border-radius: 14px;
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 6px 24px var(--color-accent-glow);
   text-decoration: none;
+  margin-bottom: -40px;
 }
 
 .ctaButton:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 36px rgba(212, 96, 122, 0.45);
+  box-shadow: 0 10px 36px rgba(196, 114, 126, 0.4);
 }
 
 .ctaButton:active {
