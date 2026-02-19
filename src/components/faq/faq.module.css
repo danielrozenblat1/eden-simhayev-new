@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;800;900&family=Rubik:wght@400;500;600;700;800;900&display=swap');
+@import '../fonts/fonts.css';
 
 /* =============================================
    FAQ SCREEN - Treatments FAQ
@@ -110,7 +110,7 @@
 }
 
 .sectionTitle {
-  font-family: 'Rubik', sans-serif;
+  font-family: 'Discovery', sans-serif;
   font-size: clamp(32px, 5vw, 52px);
   font-weight: 800;
   color: var(--color-heading);
@@ -146,7 +146,7 @@
 }
 
 .categoryTitle {
-  font-family: 'Rubik', sans-serif;
+  font-family: 'Discovery', sans-serif;
   font-size: clamp(22px, 3vw, 28px);
   font-weight: 700;
   color: var(--color-heading);
@@ -199,7 +199,7 @@
 
 .questionText {
   flex: 1;
-  font-family: 'Rubik', sans-serif;
+  font-family: 'Discovery', sans-serif;
   font-size: clamp(19px, 2.2vw, 23px);
   font-weight: 600;
   color: var(--color-heading);
@@ -315,7 +315,7 @@
   background: linear-gradient(135deg, var(--color-accent) 0%, #A85A6A 100%);
   border: none;
   cursor: pointer;
-  font-family: 'Rubik', sans-serif;
+  font-family: 'Discovery', sans-serif;
   font-size: 17px;
   font-weight: 700;
   color: #ffffff;

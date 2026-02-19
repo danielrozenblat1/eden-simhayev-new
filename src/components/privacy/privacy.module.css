@@ -47,7 +47,7 @@
 }
 
 .modalContent h2 {
-  font-family: 'Rubik', sans-serif;
+  font-family: 'Discovery', sans-serif;
   font-size: 1.8rem;
   color: #2B0F18;
   margin-bottom: 20px;
@@ -55,6 +55,7 @@
 
 .content {
   font-family: 'Heebo', sans-serif;
+  font-weight: 300;
   line-height: 1.8;
 }
 
@@ -71,6 +72,7 @@
   border-radius: 12px;
   cursor: pointer;
   font-family: 'Heebo', sans-serif;
+  font-weight: 300;
   font-size: 1rem;
   font-weight: 600;
   transition: all 0.3s ease;

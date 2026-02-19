@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from "./firstScreen.module.css";
 import ContactForm from "../../components/form/form";
 
 const FirstScreen = () => {
-
   return (
     <section className={styles.hero} dir="rtl">
+      {/* Dark top band with scalloped bottom */}
+      <div className={styles.topBand} />
+
       {/* Decorative background elements */}
       <div className={styles.bgOrb1} />
       <div className={styles.bgOrb2} />
@@ -13,7 +15,8 @@ const FirstScreen = () => {
       <div className={styles.noiseOverlay} />
 
       <div className={styles.container}>
-        {/* Intro bar */}
+
+        {/* Intro pill badge */}
         <div className={styles.introWrapper}>
           <p className={styles.intro}>
             עבור מי שרוצה לצאת עם מקצוע ביד, לא רק תעודה במגירה
@@ -36,6 +39,8 @@ const FirstScreen = () => {
           (גם אם אין לך ניסיון בכלל וגם אם אין לך רקע בתחום)
         </p>
 
+    
+
         {/* Video / Image area */}
         <div className={styles.imageSection}>
           <div className={styles.imagePlaceholder}>
@@ -43,15 +48,18 @@ const FirstScreen = () => {
           </div>
         </div>
 
-    
-  
         {/* Form Component */}
         <div className={styles.formSection}>
           <ContactForm />
         </div>
-      </div>
 
-    
+        {/* Guarantee line */}
+        <div className={styles.guarantee}>
+          <span className={styles.guaranteeIcon}>🔒</span>
+          <span>ללא התחייבות - מילאי פרטים ונחזור אלייך תוך 24 שעות</span>
+        </div>
+
+      </div>
     </section>
   );
 };

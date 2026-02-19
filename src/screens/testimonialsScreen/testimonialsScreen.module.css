@@ -4,7 +4,7 @@
    RTL Hebrew Layout
    ======================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;800;900&family=Rubik:wght@400;500;600;700;800;900&display=swap');
+@import '../../components/fonts/fonts.css';
 
 .section {
   --bg-dark: #2B0F18;
@@ -17,7 +17,7 @@
   --color-text-secondary: #7B5B52;
   --color-accent: #C4727E;
   --color-accent-glow: rgba(196, 114, 126, 0.3);
-  --font-display: 'Rubik', sans-serif;
+  --font-display: 'Discovery', sans-serif;
   --font-body: 'Heebo', sans-serif;
 }
 
@@ -26,7 +26,7 @@
   position: relative;
   background: var(--bg-light);
   overflow: hidden;
-  padding: 90px 20px 110px;
+  padding: 60px 20px 70px;
 }
 
 /* ---- Background Orbs ---- */
@@ -124,7 +124,7 @@
   display: flex;
   width: max-content;
   gap: 20px;
-  animation: worksInfiniteScroll 50s linear infinite;
+  animation: worksInfiniteScroll 100s linear infinite;
   animation-delay: 0s;
   will-change: transform;
   animation-play-state: running;
@@ -157,19 +157,12 @@
   border: 1px solid rgba(196, 114, 126, 0.2);
 }
 
-.worksImagePlaceholder {
+.worksImage {
   width: 100%;
   height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.worksImagePlaceholder span {
-  font-family: var(--font-body);
-  font-size: 0.9rem;
-  color: var(--color-text-secondary);
-  opacity: 0.6;
+  object-fit: cover;
+  border-radius: 12px;
+  display: block;
 }
 
 @keyframes worksInfiniteScroll {
@@ -210,6 +203,7 @@
   align-items: center;
   gap: 30px;
 }
+
 
 .studentsTitle {
   font-family: var(--font-display);
@@ -400,13 +394,13 @@
     font-size: 0.95rem;
   }
 
-  .ctaButton {
-    padding: 18px 36px;
-    font-size: 1.1rem;
-    width: 100%;
-    max-width: 380px;
-  }
-}
+     .ctaButton {
+       padding: 18px 36px;
+       font-size: 1.1rem;
+       width: 100%;
+       max-width: 380px;
+     }
+   }
 
 @media (max-width: 380px) {
   .mainTitle {

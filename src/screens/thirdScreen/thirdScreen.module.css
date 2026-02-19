@@ -4,7 +4,7 @@
    Premium Clean Design - Full Visibility
    ======================================== */
 
-   @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;800;900&family=Rubik:wght@400;500;600;700;800;900&display=swap');
+   @import '../../components/fonts/fonts.css';
 
    .section {
      --bg-main: #FFF5F2;
@@ -21,7 +21,7 @@
      --radius-lg: 22px;
      --radius-md: 16px;
      --radius-sm: 12px;
-     --font-display: 'Rubik', sans-serif;
+     --font-display: 'Discovery', sans-serif;
      --font-body: 'Heebo', sans-serif;
    }
    

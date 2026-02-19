@@ -2,7 +2,7 @@
    FOOTER - Eden Shamchiv
    ============================================= */
 
-@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700&family=Rubik:wght@400;500;600;700;800;900&display=swap');
+@import '../fonts/fonts.css';
 
 .footer {
   --bg-dark: #2B0F18;
@@ -36,7 +36,7 @@
 }
 
 .logoText {
-  font-family: 'Rubik', sans-serif;
+  font-family: 'Discovery', sans-serif;
   font-size: 32px;
   font-weight: 700;
   color: var(--color-heading);
@@ -54,6 +54,7 @@
 
 .navLink {
   font-family: 'Heebo', sans-serif;
+  font-weight: 300;
   font-size: 18px;
   font-weight: 400;
   color: var(--color-text);
@@ -84,6 +85,7 @@
   text-decoration: none;
   color: var(--color-text-secondary);
   font-family: 'Heebo', sans-serif;
+  font-weight: 300;
   font-size: 15px;
   font-weight: 300;
   letter-spacing: 0.02em;
@@ -111,6 +113,7 @@
 /* ---- Copyright ---- */
 .copyright {
   font-family: 'Heebo', sans-serif;
+  font-weight: 300;
   font-size: 13px;
   font-weight: 300;
   color: var(--color-text-secondary);
@@ -187,7 +190,7 @@
 }
 
 .privacyContent h2 {
-  font-family: 'Rubik', sans-serif;
+  font-family: 'Discovery', sans-serif;
   font-size: 1.8rem;
   color: var(--color-heading);
   margin-bottom: 20px;
@@ -195,6 +198,7 @@
 
 .privacyContent p {
   font-family: 'Heebo', sans-serif;
+  font-weight: 300;
   line-height: 1.8;
 }
 

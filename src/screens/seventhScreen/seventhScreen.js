@@ -18,83 +18,85 @@ const SeventhScreen = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Header - fade up
+      // Header - fade up (gsap.to because initial state is set in CSS)
       if (headerRef.current) {
-        gsap.from(headerRef.current, {
-          y: 40,
-          opacity: 0,
-          ease: 'none',
+        gsap.to(headerRef.current, {
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          ease: 'power2.out',
           scrollTrigger: {
             trigger: headerRef.current,
-            start: 'top 95%',
-            end: 'top 70%',
-            scrub: 0.5,
+            start: 'top 85%',
+            once: true,
           }
         });
       }
 
-      // Column titles - fade up
+      // Column titles - fade up (gsap.to because initial state is set in CSS)
       [yesTitleRef, noTitleRef].forEach((ref) => {
         if (ref.current) {
-          gsap.from(ref.current, {
-            y: 25,
-            opacity: 0,
-            ease: 'none',
+          gsap.to(ref.current, {
+            y: 0,
+            opacity: 1,
+            duration: 0.7,
+            ease: 'power2.out',
             scrollTrigger: {
               trigger: ref.current,
-              start: 'top 92%',
-              end: 'top 70%',
-              scrub: 0.5,
+              start: 'top 85%',
+              once: true,
             }
           });
         }
       });
 
       // Yes items - 3D flip from right (gsap.to because initial state is set in CSS)
-      yesItemsRefs.current.forEach((row) => {
+      yesItemsRefs.current.forEach((row, index) => {
         if (!row) return;
         gsap.to(row, {
           rotateY: 0,
           x: 0,
           opacity: 1,
-          ease: 'none',
+          duration: 0.8,
+          ease: 'power2.out',
+          delay: index * 0.1,
           scrollTrigger: {
             trigger: row,
-            start: 'top 90%',
-            end: 'top 55%',
-            scrub: 0.8,
+            start: 'top 85%',
+            once: true,
           }
         });
       });
 
       // No items - 3D flip from left (gsap.to because initial state is set in CSS)
-      noItemsRefs.current.forEach((row) => {
+      noItemsRefs.current.forEach((row, index) => {
         if (!row) return;
         gsap.to(row, {
           rotateY: 0,
           x: 0,
           opacity: 1,
-          ease: 'none',
+          duration: 0.8,
+          ease: 'power2.out',
+          delay: index * 0.1,
           scrollTrigger: {
             trigger: row,
-            start: 'top 90%',
-            end: 'top 55%',
-            scrub: 0.8,
+            start: 'top 85%',
+            once: true,
           }
         });
       });
 
-      // CTA button - fade up
+      // CTA button - fade up (gsap.to because initial state is set in CSS)
       if (ctaRef.current) {
-        gsap.from(ctaRef.current, {
-          y: 30,
-          opacity: 0,
-          ease: 'none',
+        gsap.to(ctaRef.current, {
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          ease: 'power2.out',
           scrollTrigger: {
             trigger: ctaRef.current,
-            start: 'top 95%',
-            end: 'top 75%',
-            scrub: 0.5,
+            start: 'top 85%',
+            once: true,
           }
         });
       }

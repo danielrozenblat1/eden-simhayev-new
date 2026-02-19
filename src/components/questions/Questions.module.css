@@ -40,7 +40,7 @@
 }
 
 .questionText {
-  font-family: 'Rubik', sans-serif;
+  font-family: 'Discovery', sans-serif;
   font-size: 1.1rem;
   font-weight: 600;
   text-align: right;
@@ -73,6 +73,7 @@
 
 .answerText {
   font-family: 'Heebo', sans-serif;
+  font-weight: 300;
   font-size: 1.05rem;
   padding: 20px 24px;
   color: #e0cdd2;

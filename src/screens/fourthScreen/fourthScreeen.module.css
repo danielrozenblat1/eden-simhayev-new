@@ -5,7 +5,7 @@
    RTL Hebrew Layout
    ======================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;800;900&family=Rubik:wght@400;500;600;700;800;900&display=swap');
+@import '../../components/fonts/fonts.css';
 
 * {
   box-sizing: border-box;
@@ -144,7 +144,7 @@
 }
 
 .mainTitle {
-  font-family: 'Rubik', sans-serif;
+  font-family: 'Discovery', sans-serif;
   font-size: 2.5rem;
   font-weight: 700;
   color: transparent;
@@ -250,7 +250,7 @@
 }
 
 .paragraphBold {
-  font-family: 'Rubik', sans-serif;
+  font-family: 'Discovery', sans-serif;
   font-size: 1.2rem;
   font-weight: 700;
   color: #FFF5F3;
@@ -274,7 +274,7 @@
 }
 
 .closingLine {
-  font-family: 'Rubik', sans-serif;
+  font-family: 'Discovery', sans-serif;
   font-size: 1.15rem;
   font-weight: 700;
   color: #FFF5F3;

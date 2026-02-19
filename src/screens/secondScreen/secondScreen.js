@@ -1,6 +1,7 @@
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
 import styles from "./secondScreen.module.css";
 import IconTextComponent from "../../components/can/can";
+import { worksImages } from "../../components/works/worksImages";
 
 // Lordicon icon JSONs - importing from the icons folder
 import heartIcon from "../../icons/heart.json"; // אוהבת יופי
@@ -8,18 +9,6 @@ import sunriseIcon from "../../icons/sunrise.json"; // קמה כל בוקר
 import crownIcon from "../../icons/crown.json"; // חולמת על עסק
 
 const SecondScreen = ({ onCtaClick }) => {
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const carouselRef = useRef(null);
-
-  // Placeholder student work images - replace with actual paths
-  const studentWorks = [
-    { id: 1, src: "/images/student-work-1.jpg", alt: "עבודת תלמידה 1" },
-    { id: 2, src: "/images/student-work-2.jpg", alt: "עבודת תלמידה 2" },
-    { id: 3, src: "/images/student-work-3.jpg", alt: "עבודת תלמידה 3" },
-    { id: 4, src: "/images/student-work-4.jpg", alt: "עבודת תלמידה 4" },
-    { id: 5, src: "/images/student-work-5.jpg", alt: "עבודת תלמידה 5" },
-    { id: 6, src: "/images/student-work-6.jpg", alt: "עבודת תלמידה 6" },
-  ];
 
   const canItems = [
     {
@@ -35,29 +24,6 @@ const SecondScreen = ({ onCtaClick }) => {
       icon: heartIcon,
     },
   ];
-
-  const nextSlide = () => {
-    setCurrentSlide((prev) =>
-      prev >= studentWorks.length - 1 ? 0 : prev + 1
-    );
-  };
-
-  const prevSlide = () => {
-    setCurrentSlide((prev) =>
-      prev <= 0 ? studentWorks.length - 1 : prev - 1
-    );
-  };
-
-  // Auto-play carousel with infinite loop
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentSlide((prev) =>
-        prev >= studentWorks.length - 1 ? 0 : prev + 1
-      );
-    }, 4000); // Change slide every 4 seconds
-
-    return () => clearInterval(interval);
-  }, [studentWorks.length]);
 
   return (
     <section className={styles.section} dir="rtl">
@@ -139,48 +105,35 @@ const SecondScreen = ({ onCtaClick }) => {
             </span>
           </p>
 
-          {/* Student Works Carousel */}
+          {/* Student Works Carousel - Infinite Scroll */}
           <div className={styles.carouselSection}>
-            <div className={styles.carouselWrapper} ref={carouselRef}>
-              {/* Left fade overlay */}
-              <div className={styles.carouselFadeLeft} />
-              
-              <div className={styles.carouselTrack}>
-                <div
-                  className={styles.carouselSlider}
-                  style={{
-                    transform: `translateX(${currentSlide * 100}%)`,
-                  }}
-                >
-                  {studentWorks.map((work) => (
-                    <div key={work.id} className={styles.carouselSlide}>
-                      <div className={styles.slideImageWrapper}>
-                        {/* Replace with actual images */}
-                        <div className={styles.slidePlaceholder}>
-                          <span>{work.alt}</span>
-                        </div>
-                      </div>
+            <div className={styles.worksContainer}>
+              <div className={styles.worksScrollTrack}>
+                {/* Set 1 */}
+                <div className={styles.worksScrollContainer}>
+                  {worksImages.map((img, index) => (
+                    <div key={`set1-${index}`} className={styles.worksImageWrapper}>
+                      <img
+                        src={img}
+                        alt={`עבודה ${index + 1}`}
+                        className={styles.worksImage}
+                      />
+                    </div>
+                  ))}
+                </div>
+                {/* Set 2 - duplicate for seamless loop */}
+                <div className={styles.worksScrollContainer}>
+                  {worksImages.map((img, index) => (
+                    <div key={`set2-${index}`} className={styles.worksImageWrapper}>
+                      <img
+                        src={img}
+                        alt={`עבודה ${index + 1}`}
+                        className={styles.worksImage}
+                      />
                     </div>
                   ))}
                 </div>
               </div>
-
-              {/* Right fade overlay */}
-              <div className={styles.carouselFadeRight} />
-            </div>
-
-            {/* Dots indicator */}
-            <div className={styles.dotsWrapper}>
-              {studentWorks.map((_, idx) => (
-                <button
-                  key={idx}
-                  className={`${styles.dot} ${
-                    idx === currentSlide ? styles.dotActive : ""
-                  }`}
-                  onClick={() => setCurrentSlide(idx)}
-                  aria-label={`תמונה ${idx + 1}`}
-                />
-              ))}
             </div>
           </div>
         </div>

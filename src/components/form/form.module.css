@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700&family=Rubik:wght@400;500;600;700;800;900&display=swap');
+@import '../fonts/fonts.css';
 
 .formContainer {
   background: rgba(255, 255, 255, 0.95);
@@ -20,7 +20,7 @@
 }
 
 .title {
-  font-family: 'Rubik', sans-serif;
+  font-family: 'Discovery', sans-serif;
   font-size: 24px;
   font-weight: 800;
   color: #2B0F18;
@@ -33,6 +33,7 @@
 
 .subtitle {
   font-family: 'Heebo', sans-serif;
+  font-weight: 300;
   font-size: 16px;
   font-weight: 400;
   color: #7B3A50;
@@ -70,6 +71,7 @@
 input,
 textarea {
   font-family: 'Heebo', sans-serif;
+  font-weight: 300;
   font-size: 15px;
   font-weight: 400;
   padding: 14px 16px;
@@ -90,6 +92,7 @@ textarea::placeholder {
   opacity: 0.7;
   font-family: 'Heebo', sans-serif;
   font-weight: 300;
+  font-weight: 300;
 }
 
 .phoneInput::placeholder {
@@ -109,7 +112,7 @@ textarea:focus {
 .submitButton {
   background: linear-gradient(135deg, #D4607A 0%, #b84a60 100%);
   color: #fff;
-  font-family: 'Rubik', sans-serif;
+  font-family: 'Discovery', sans-serif;
   font-size: 17px;
   font-weight: 700;
   padding: 16px;
@@ -373,6 +376,7 @@ textarea:focus {
 .termsText {
   direction: rtl;
   font-family: 'Heebo', sans-serif;
+  font-weight: 300;
   font-size: 0.75rem;
   text-align: center;
   color: #8B6B73;

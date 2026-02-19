@@ -4,7 +4,7 @@
    RTL Hebrew Layout
    ======================================== */
 
-   @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;800;900&family=Rubik:wght@400;500;600;700;800;900&display=swap');
+   @import '../../components/fonts/fonts.css';
 
    .section {
      --bg-light: #FFF5F3;
@@ -18,7 +18,7 @@
      --color-card-bg: rgba(255, 255, 255, 0.85);
      --color-card-border: rgba(196, 114, 126, 0.2);
      --color-result-bg: rgba(255, 245, 243, 0.9);
-     --font-display: 'Rubik', sans-serif;
+     --font-display: 'Discovery', sans-serif;
      --font-body: 'Heebo', sans-serif;
    }
    
@@ -26,7 +26,7 @@
      position: relative;
      background: linear-gradient(135deg, #F5D5D5 0%, #E8B4BC 50%, #D4929E 100%);
      overflow: hidden;
-     padding: 90px 20px 110px;
+     padding: 60px 20px 70px;
    }
    
    /* Orbs */

@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./testimonialsScreen.module.css";
 import { worksImages } from "../../components/works/worksImages";
+import { certificateImages } from "../../components/certificates/certificateImages";
 
 const EDEN_PHONE = "972543414939";
 
@@ -38,15 +39,6 @@ const testimonials = [
   },
 ];
 
-// Student works carousel data
-const studentWorks = [
-  { id: 1, src: "/images/student-work-1.jpg", alt: "עבודת תלמידה 1" },
-  { id: 2, src: "/images/student-work-2.jpg", alt: "עבודת תלמידה 2" },
-  { id: 3, src: "/images/student-work-3.jpg", alt: "עבודת תלמידה 3" },
-  { id: 4, src: "/images/student-work-4.jpg", alt: "עבודת תלמידה 4" },
-  { id: 5, src: "/images/student-work-5.jpg", alt: "עבודת תלמידה 5" },
-  { id: 6, src: "/images/student-work-6.jpg", alt: "עבודת תלמידה 6" },
-];
 
 const TestimonialsScreen = () => {
 
@@ -73,9 +65,11 @@ const TestimonialsScreen = () => {
             <div className={styles.worksScrollContainer}>
               {worksImages.map((image, idx) => (
                 <div key={`eden-1-${idx}`} className={styles.worksImageWrapper}>
-                  <div className={styles.worksImagePlaceholder}>
-                    <span>עבודה של עדן {idx + 1}</span>
-                  </div>
+                  <img
+                    src={image}
+                    alt={`עבודה של עדן ${idx + 1}`}
+                    className={styles.worksImage}
+                  />
                 </div>
               ))}
             </div>
@@ -83,9 +77,11 @@ const TestimonialsScreen = () => {
             <div className={styles.worksScrollContainer}>
               {worksImages.map((image, idx) => (
                 <div key={`eden-2-${idx}`} className={styles.worksImageWrapper}>
-                  <div className={styles.worksImagePlaceholder}>
-                    <span>עבודה של עדן {idx + 1}</span>
-                  </div>
+                  <img
+                    src={image}
+                    alt={`עבודה של עדן ${idx + 1}`}
+                    className={styles.worksImage}
+                  />
                 </div>
               ))}
             </div>
@@ -100,21 +96,25 @@ const TestimonialsScreen = () => {
             <div className={styles.worksScrollTrackReverse}>
               {/* First set */}
               <div className={styles.worksScrollContainer}>
-                {studentWorks.map((work) => (
-                  <div key={`student-1-${work.id}`} className={styles.worksImageWrapper}>
-                    <div className={styles.worksImagePlaceholder}>
-                      <span>{work.alt}</span>
-                    </div>
+                {certificateImages.map((img, index) => (
+                  <div key={`student-1-${index}`} className={styles.worksImageWrapper}>
+                    <img
+                      src={img}
+                      alt={`תעודה ${index + 1}`}
+                      className={styles.worksImage}
+                    />
                   </div>
                 ))}
               </div>
               {/* Duplicate for seamless loop */}
               <div className={styles.worksScrollContainer}>
-                {studentWorks.map((work) => (
-                  <div key={`student-2-${work.id}`} className={styles.worksImageWrapper}>
-                    <div className={styles.worksImagePlaceholder}>
-                      <span>{work.alt}</span>
-                    </div>
+                {certificateImages.map((img, index) => (
+                  <div key={`student-2-${index}`} className={styles.worksImageWrapper}>
+                    <img
+                      src={img}
+                      alt={`תעודה ${index + 1}`}
+                      className={styles.worksImage}
+                    />
                   </div>
                 ))}
               </div>

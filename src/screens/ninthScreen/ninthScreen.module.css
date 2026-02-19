@@ -4,7 +4,7 @@
    RTL Hebrew Layout
    ======================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;800;900&family=Rubik:wght@400;500;600;700;800;900&display=swap');
+@import '../../components/fonts/fonts.css';
 
 .section {
   --bg-dark: #2B0F18;
@@ -14,7 +14,7 @@
   --color-text-secondary: #8B6B73;
   --color-accent: #D4607A;
   --color-accent-glow: rgba(212, 96, 122, 0.35);
-  --font-display: 'Rubik', sans-serif;
+  --font-display: 'Discovery', sans-serif;
   --font-body: 'Heebo', sans-serif;
 }
 
@@ -22,7 +22,7 @@
   position: relative;
   background: var(--bg-dark);
   overflow: hidden;
-  padding: 90px 20px 110px;
+  padding: 60px 20px 70px;
 }
 
 /* Background Orbs */
