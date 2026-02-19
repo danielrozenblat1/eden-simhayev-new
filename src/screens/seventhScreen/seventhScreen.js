@@ -18,88 +18,91 @@ const SeventhScreen = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Header - fade up (gsap.to because initial state is set in CSS)
+
+      // ── Helper: create a toggleActions trigger that resets on scroll-out ──
+      const makeTrigger = (trigger, extra = {}) => ({
+        trigger,
+        start: 'top 85%',
+        end: 'top 20%',
+        toggleActions: 'play reverse play reverse', // enter / leave / re-enter / re-leave
+        ...extra,
+      });
+
+      // ── Header ──
       if (headerRef.current) {
-        gsap.to(headerRef.current, {
-          y: 0,
-          opacity: 1,
-          duration: 0.8,
-          ease: 'power2.out',
-          scrollTrigger: {
-            trigger: headerRef.current,
-            start: 'top 85%',
-            once: true,
+        gsap.fromTo(
+          headerRef.current,
+          { y: 40, opacity: 0 },
+          {
+            y: 0, opacity: 1,
+            duration: 0.8,
+            ease: 'power2.out',
+            scrollTrigger: makeTrigger(headerRef.current),
           }
-        });
+        );
       }
 
-      // Column titles - fade up (gsap.to because initial state is set in CSS)
+      // ── Column titles ──
       [yesTitleRef, noTitleRef].forEach((ref) => {
-        if (ref.current) {
-          gsap.to(ref.current, {
-            y: 0,
-            opacity: 1,
+        if (!ref.current) return;
+        gsap.fromTo(
+          ref.current,
+          { y: 25, opacity: 0 },
+          {
+            y: 0, opacity: 1,
             duration: 0.7,
             ease: 'power2.out',
-            scrollTrigger: {
-              trigger: ref.current,
-              start: 'top 85%',
-              once: true,
-            }
-          });
-        }
+            scrollTrigger: makeTrigger(ref.current),
+          }
+        );
       });
 
-      // Yes items - 3D flip from right (gsap.to because initial state is set in CSS)
+      // ── Yes items — 3D flip from right ──
       yesItemsRefs.current.forEach((row, index) => {
         if (!row) return;
-        gsap.to(row, {
-          rotateY: 0,
-          x: 0,
-          opacity: 1,
-          duration: 0.8,
-          ease: 'power2.out',
-          delay: index * 0.1,
-          scrollTrigger: {
-            trigger: row,
-            start: 'top 85%',
-            once: true,
+        gsap.fromTo(
+          row,
+          { rotateY: -90, x: 40, opacity: 0 },
+          {
+            rotateY: 0, x: 0, opacity: 1,
+            duration: 0.75,
+            ease: 'power2.out',
+            delay: index * 0.08,
+            scrollTrigger: makeTrigger(row),
           }
-        });
+        );
       });
 
-      // No items - 3D flip from left (gsap.to because initial state is set in CSS)
+      // ── No items — 3D flip from left ──
       noItemsRefs.current.forEach((row, index) => {
         if (!row) return;
-        gsap.to(row, {
-          rotateY: 0,
-          x: 0,
-          opacity: 1,
-          duration: 0.8,
-          ease: 'power2.out',
-          delay: index * 0.1,
-          scrollTrigger: {
-            trigger: row,
-            start: 'top 85%',
-            once: true,
+        gsap.fromTo(
+          row,
+          { rotateY: 90, x: -40, opacity: 0 },
+          {
+            rotateY: 0, x: 0, opacity: 1,
+            duration: 0.75,
+            ease: 'power2.out',
+            delay: index * 0.08,
+            scrollTrigger: makeTrigger(row),
           }
-        });
+        );
       });
 
-      // CTA button - fade up (gsap.to because initial state is set in CSS)
+      // ── CTA button ──
       if (ctaRef.current) {
-        gsap.to(ctaRef.current, {
-          y: 0,
-          opacity: 1,
-          duration: 0.8,
-          ease: 'power2.out',
-          scrollTrigger: {
-            trigger: ctaRef.current,
-            start: 'top 85%',
-            once: true,
+        gsap.fromTo(
+          ctaRef.current,
+          { y: 30, opacity: 0 },
+          {
+            y: 0, opacity: 1,
+            duration: 0.8,
+            ease: 'power2.out',
+            scrollTrigger: makeTrigger(ctaRef.current),
           }
-        });
+        );
       }
+
     }, sectionRef);
 
     return () => ctx.revert();
@@ -116,14 +119,14 @@ const SeventhScreen = () => {
     'יש לך תשוקה אמיתית לתחום היופי',
     'את מבינה שמקצוע אמיתי דורש למידה לעומק',
     'את רוצה לבנות קריירה לטווח ארוך',
-    'את מוכנה לצאת מאזור הנוחות ולהתמיד כדי להצליח'
+    'את מוכנה לצאת מאזור הנוחות ולהתמיד כדי להצליח',
   ];
 
   const noItems = [
     'את מחפשת קיצור דרך או תעודה מהירה',
     'את מצפה להצליח בלי לתרגל',
     'את מחפשת כסף קל ומהיר',
-    'את לא מוכנה להשקיע זמן בתרגול'
+    'את לא מוכנה להשקיע זמן בתרגול',
   ];
 
   return (
@@ -134,6 +137,7 @@ const SeventhScreen = () => {
       </div>
 
       <div className={styles.columnsWrap}>
+        {/* Yes column */}
         <div className={`${styles.col} ${styles.colYes}`}>
           <div ref={yesTitleRef} className={styles.colTitle}>
             <span className={styles.iconYes}>✓</span>
@@ -142,13 +146,15 @@ const SeventhScreen = () => {
           {yesItems.map((item, index) => (
             <div
               key={index}
-              ref={el => yesItemsRefs.current[index] = el}
+              ref={el => (yesItemsRefs.current[index] = el)}
               className={`${styles.rowItem} ${styles.rowYes}`}
             >
               {item}
             </div>
           ))}
         </div>
+
+        {/* No column */}
         <div className={`${styles.col} ${styles.colNo}`}>
           <div ref={noTitleRef} className={styles.colTitle}>
             <span className={styles.iconNo}>✗</span>
@@ -157,7 +163,7 @@ const SeventhScreen = () => {
           {noItems.map((item, index) => (
             <div
               key={index}
-              ref={el => noItemsRefs.current[index] = el}
+              ref={el => (noItemsRefs.current[index] = el)}
               className={`${styles.rowItem} ${styles.rowNo}`}
             >
               {item}
