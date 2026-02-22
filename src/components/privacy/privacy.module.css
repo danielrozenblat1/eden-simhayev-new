@@ -1,0 +1,90 @@
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  direction: rtl;
+}
+
+.modalContent {
+  background: #F4E8E5;
+  border: 1px solid rgba(212, 96, 122, 0.3);
+  border-radius: 24px;
+  padding: 40px;
+  max-width: 600px;
+  width: 100%;
+  max-height: 80vh;
+  overflow-y: auto;
+  position: relative;
+  color: #2B0F18;
+}
+
+.closeButton {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: none;
+  border: none;
+  color: #2B0F18;
+  font-size: 32px;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background 0.3s ease;
+}
+
+.closeButton:hover {
+  background: rgba(212, 96, 122, 0.2);
+}
+
+.modalContent h2 {
+  font-family: 'Discovery', sans-serif;
+  font-size: 1.8rem;
+  color: #2B0F18;
+  margin-bottom: 20px;
+}
+
+.content {
+  font-family: 'Heebo', sans-serif;
+  font-weight: 300;
+  line-height: 1.8;
+}
+
+.content p {
+  margin-bottom: 12px;
+}
+
+.closeBtn {
+  margin-top: 24px;
+  padding: 12px 32px;
+  background: #D4607A;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-family: 'Heebo', sans-serif;
+  font-weight: 300;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.closeBtn:hover {
+  background: #b84a60;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  .modalContent {
+    padding: 32px 24px;
+  }
+}

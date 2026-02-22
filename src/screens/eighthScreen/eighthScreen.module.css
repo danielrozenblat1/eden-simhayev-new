@@ -1,0 +1,489 @@
+/* ========================================
+   EighthScreen - Why Now Section
+   Dark background, light text
+   RTL Hebrew Layout
+   ======================================== */
+
+@import '../../components/fonts/fonts.css';
+
+.section {
+  --bg-light: #FFF5F3;
+  --bg-pink-light: #F5D5D5;
+  --bg-pink-mid: #E8B4BC;
+  --color-heading: #2B0F18;
+  --color-text: #3A1F1A;
+  --color-text-secondary: #7B5B52;
+  --color-accent: #C4727E;
+  --color-accent-glow: rgba(196, 114, 126, 0.3);
+  --font-display: 'Discovery', sans-serif;
+  --font-body: 'Heebo', sans-serif;
+}
+
+.section {
+  position: relative;
+  background: var(--bg-light);
+  overflow: hidden;
+  padding: 40px 20px 60px;
+}
+
+/* Background Orbs */
+.bgOrb1 {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(196, 114, 126, 0.08) 0%, transparent 70%);
+  top: 10%;
+  left: -150px;
+  filter: blur(90px);
+  animation: orbDrift1 16s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.bgOrb2 {
+  position: absolute;
+  width: 450px;
+  height: 450px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(232, 180, 188, 0.1) 0%, transparent 70%);
+  bottom: 5%;
+  right: -120px;
+  filter: blur(80px);
+  animation: orbDrift2 20s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes orbDrift1 {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(25px, -20px); }
+}
+
+@keyframes orbDrift2 {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(-20px, 15px); }
+}
+
+/* Container */
+.container {
+  position: relative;
+  z-index: 2;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+/* ============================
+   Header Section
+   ============================ */
+.sectionHeader {
+  text-align: center;
+  margin-bottom: 0;
+}
+
+.sectionTitle {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 800;
+  color: var(--color-heading);
+  margin-bottom: 20px;
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+}
+
+.titleAccent {
+  color: var(--color-accent);
+  position: relative;
+}
+
+.sectionDescription {
+  font-size: 1.125rem;
+  color: var(--color-text);
+  max-width: 720px;
+  margin: 0 auto;
+  line-height: 1.5;
+  font-family: var(--font-body);
+  font-weight: 300;
+}
+
+.sectionDescription p {
+  margin-bottom: 12px;
+}
+
+.sectionDescription p:last-child {
+  margin-bottom: 0;
+}
+
+/* ============================
+   Options Subtitle
+   ============================ */
+.optionsSubtitle {
+  text-align: center;
+  margin: 20px 0;
+  position: relative;
+  padding: 0 24px;
+}
+
+.optionsSubtitle::before,
+.optionsSubtitle::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: calc(50% - 180px);
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-accent), transparent);
+}
+
+.optionsSubtitle::before {
+  right: 0;
+}
+
+.optionsSubtitle::after {
+  left: 0;
+}
+
+.optionsSubtitle h3 {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--color-accent);
+  display: inline-block;
+  background: var(--bg-light);
+  padding: 0 24px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ============================
+   Options Container
+   ============================ */
+.optionsContainer {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+/* ============================
+   Option Card
+   ============================ */
+.optionCard {
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 24px;
+  padding: 32px 28px;
+  border: 1px solid rgba(196, 114, 126, 0.2);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 4px 16px rgba(196, 114, 126, 0.1);
+}
+
+.optionCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--color-accent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.optionCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(196, 114, 126, 0.2);
+  border-color: rgba(196, 114, 126, 0.35);
+  background: rgba(255, 255, 255, 0.85);
+}
+
+.optionCard:hover::before {
+  opacity: 1;
+}
+
+/* Stay Card - Pink/Red accent */
+.optionCard.stay {
+  background: rgba(255, 245, 243, 0.8);
+  border-color: rgba(196, 114, 126, 0.25);
+}
+
+.optionCard.stay::before {
+  background: rgba(196, 114, 126, 0.4);
+  opacity: 1;
+}
+
+.optionCard.stay .cardIcon {
+  background: linear-gradient(135deg, rgba(196, 114, 126, 0.6), rgba(168, 90, 106, 0.7));
+  color: white;
+}
+
+.optionCard.stay .cardTitle {
+  color: var(--color-heading);
+}
+
+.optionCard.stay .cardText strong {
+  color: rgba(196, 114, 126, 0.9);
+}
+
+/* Start Card - Pink accent (using colors from 7th screen) */
+.optionCard.start {
+  background: rgba(250, 232, 232, 0.9);
+  border-color: rgba(196, 114, 126, 0.3);
+  box-shadow: 0 8px 32px rgba(196, 114, 126, 0.15);
+}
+
+.optionCard.start::before {
+  opacity: 1;
+  background: linear-gradient(90deg, var(--color-accent), rgba(168, 90, 106, 0.8));
+}
+
+.optionCard.start .cardIcon {
+  background: linear-gradient(135deg, var(--color-accent), #A85A6A);
+  color: white;
+}
+
+.optionCard.start .cardText strong {
+  color: var(--color-accent);
+}
+
+/* Card Header */
+.cardHeader {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.cardIcon {
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.75rem;
+  flex-shrink: 0;
+  font-weight: bold;
+}
+
+.cardTitle {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-heading);
+  margin: 0;
+}
+
+/* Card Text */
+.cardText {
+  font-size: 1.05rem;
+  color: var(--color-text);
+  line-height: 1.5;
+  margin: 0;
+  font-family: var(--font-body);
+  font-weight: 300;
+}
+
+.cardText strong {
+  font-weight: 600;
+  color: var(--color-heading);
+}
+
+/* ============================
+   Closing Section
+   ============================ */
+.closingSection {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.closingText {
+  font-size: 1.25rem;
+  color: var(--color-text);
+  margin-bottom: 16px;
+  line-height: 1.5;
+  font-family: var(--font-body);
+  font-weight: 300;
+}
+
+.closingText strong {
+  color: var(--color-heading);
+  font-weight: 600;
+}
+
+.closingHighlight {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-accent);
+  margin-bottom: 24px;
+}
+
+/* ============================
+   CTA Button
+   ============================ */
+.ctaButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: linear-gradient(135deg, var(--color-accent) 0%, #A85A6A 100%);
+  color: white;
+  font-family: var(--font-display);
+  font-size: 1.125rem;
+  font-weight: 700;
+  padding: 20px 48px;
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 24px var(--color-accent-glow);
+  text-decoration: none;
+  margin-bottom: -40px;
+}
+
+.ctaButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 36px rgba(196, 114, 126, 0.4);
+}
+
+.ctaButton:active {
+  transform: translateY(0);
+}
+
+.ctaButton svg {
+  width: 20px;
+  height: 20px;
+  transition: transform 0.3s ease;
+}
+
+.ctaButton:hover svg {
+  transform: translateX(-4px);
+}
+
+/* ========================================
+   Responsive
+   ======================================== */
+
+@media (max-width: 900px) {
+  .optionsContainer {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .optionsSubtitle::before,
+  .optionsSubtitle::after {
+    width: calc(50% - 120px);
+  }
+}
+
+@media (max-width: 640px) {
+  .section {
+    padding: 40px 16px 60px;
+  }
+
+  .container {
+    gap: 28px;
+  }
+
+  .sectionTitle {
+    font-size: clamp(1.6rem, 5.5vw, 2.2rem);
+    margin-bottom: 16px;
+  }
+
+  .sectionDescription {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  .sectionDescription p {
+    margin-bottom: 10px;
+  }
+
+  .optionsSubtitle {
+    margin: 16px 0;
+  }
+
+  .optionsSubtitle h3 {
+    font-size: 1.4rem;
+    padding: 0 16px;
+  }
+
+  .optionsSubtitle::before,
+  .optionsSubtitle::after {
+    width: calc(50% - 100px);
+  }
+
+  .optionsContainer {
+    gap: 20px;
+    margin-bottom: 24px;
+  }
+
+  .optionCard {
+    padding: 24px 20px;
+  }
+
+  .cardHeader {
+    margin-bottom: 16px;
+  }
+
+  .cardIcon {
+    width: 48px;
+    height: 48px;
+    font-size: 1.5rem;
+  }
+
+  .cardTitle {
+    font-size: 1.3rem;
+  }
+
+  .cardText {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  .closingText {
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+    line-height: 1.5;
+  }
+
+  .closingHighlight {
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+  }
+
+  .ctaButton {
+    padding: 18px 36px;
+    font-size: 1.05rem;
+    width: 100%;
+    max-width: 380px;
+  }
+}
+
+@media (max-width: 380px) {
+  .sectionTitle {
+    font-size: 1.5rem;
+  }
+
+  .optionsSubtitle h3 {
+    font-size: 1.2rem;
+  }
+
+  .cardTitle {
+    font-size: 1.2rem;
+  }
+
+  .closingHighlight {
+    font-size: 1.4rem;
+  }
+
+  .ctaButton {
+    padding: 16px 28px;
+    font-size: 1rem;
+  }
+}

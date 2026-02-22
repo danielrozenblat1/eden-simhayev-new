@@ -1,0 +1,244 @@
+/* =============================================
+   FOOTER - Eden Shamchiv
+   ============================================= */
+
+@import '../fonts/fonts.css';
+
+.footer {
+  --bg-dark: #2B0F18;
+  --color-heading: #F4E8E5;
+  --color-text: #e0cdd2;
+  --color-text-secondary: #8B6B73;
+  --color-accent: #D4607A;
+  
+  background: var(--bg-dark);
+  padding: 60px 40px 40px;
+  direction: rtl;
+  width: 100%;
+  max-width: 100vw;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  border-top: 1px solid rgba(212, 96, 122, 0.2);
+}
+
+.inner {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+}
+
+/* ---- Logo ---- */
+.logoWrap {
+  margin-bottom: 4px;
+}
+
+.logoText {
+  font-family: 'Discovery', sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--color-heading);
+  margin: 0;
+  letter-spacing: 0.02em;
+}
+
+/* ---- Navigation ---- */
+.nav {
+  display: flex;
+  gap: 36px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.navLink {
+  font-family: 'Heebo', sans-serif;
+  font-weight: 300;
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--color-text);
+  text-decoration: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.3s ease;
+}
+
+.navLink:hover {
+  color: var(--color-heading);
+}
+
+/* ---- Contact ---- */
+.contact {
+  display: flex;
+  gap: 28px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.contactLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: var(--color-text-secondary);
+  font-family: 'Heebo', sans-serif;
+  font-weight: 300;
+  font-size: 15px;
+  font-weight: 300;
+  letter-spacing: 0.02em;
+  transition: color 0.3s ease;
+  direction: ltr;
+}
+
+.contactLink:hover {
+  color: var(--color-heading);
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+/* ---- Divider ---- */
+.divider {
+  width: 60px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(212, 96, 122, 0.3), transparent);
+}
+
+/* ---- Copyright ---- */
+.copyright {
+  font-family: 'Heebo', sans-serif;
+  font-weight: 300;
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--color-text-secondary);
+  margin: 0;
+  letter-spacing: 0.02em;
+}
+
+/* ---- ByMe Wrapper ---- */
+.byMeWrapper {
+  margin-top: 8px;
+}
+
+.byMeWrapper :global(.byMe) {
+  color: var(--color-text-secondary);
+  font-size: 12px;
+}
+
+.byMeWrapper :global(.a) {
+  color: var(--color-text-secondary);
+  font-size: 12px;
+  transition: color 0.3s ease;
+}
+
+.byMeWrapper :global(.a:hover) {
+  color: var(--color-accent);
+}
+
+/* ---- Privacy Modal ---- */
+.privacyModal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.privacyContent {
+  background: var(--bg-dark);
+  border: 1px solid rgba(212, 96, 122, 0.3);
+  border-radius: 24px;
+  padding: 40px;
+  max-width: 600px;
+  width: 100%;
+  max-height: 80vh;
+  overflow-y: auto;
+  position: relative;
+  color: var(--color-text);
+}
+
+.closeButton {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: none;
+  border: none;
+  color: var(--color-heading);
+  font-size: 32px;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background 0.3s ease;
+}
+
+.closeButton:hover {
+  background: rgba(212, 96, 122, 0.2);
+}
+
+.privacyContent h2 {
+  font-family: 'Discovery', sans-serif;
+  font-size: 1.8rem;
+  color: var(--color-heading);
+  margin-bottom: 20px;
+}
+
+.privacyContent p {
+  font-family: 'Heebo', sans-serif;
+  font-weight: 300;
+  line-height: 1.8;
+}
+
+/* =============================================
+   RESPONSIVE
+   ============================================= */
+@media (max-width: 768px) {
+  .footer {
+    padding: 48px 24px 32px;
+  }
+
+  .nav {
+    gap: 24px;
+  }
+
+  .contact {
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .privacyContent {
+    padding: 32px 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer {
+    padding: 40px 20px 28px;
+  }
+
+  .logoText {
+    font-size: 28px;
+  }
+
+  .nav {
+    gap: 20px;
+  }
+
+  .navLink {
+    font-size: 16px;
+  }
+}

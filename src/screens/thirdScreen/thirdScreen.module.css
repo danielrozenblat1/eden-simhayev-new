@@ -1,0 +1,751 @@
+/* ========================================
+   ThirdScreen - Courses + Benefits
+   Beauty Education Landing Page
+   Premium Clean Design - Full Visibility
+   ======================================== */
+
+   @import '../../components/fonts/fonts.css';
+
+   .section {
+     --bg-main: #FFF5F2;
+     --bg-blush: #F5D5D5;
+     --bg-card: #fff;
+     --color-heading: #1F1215;
+     --color-text: #3A1F1A;
+     --color-text-secondary: #8C6B6B;
+     --color-accent: #C4727E;
+     --color-accent-deep: #A85A6A;
+     --color-accent-glow: rgba(196, 114, 126, 0.25);
+     --color-border: rgba(196, 114, 126, 0.12);
+     --color-border-hover: rgba(196, 114, 126, 0.28);
+     --radius-lg: 22px;
+     --radius-md: 16px;
+     --radius-sm: 12px;
+     --font-display: 'Discovery', sans-serif;
+     --font-body: 'Heebo', sans-serif;
+   }
+   
+   /* ---- Section ---- */
+   .section {
+     position: relative;
+     background: var(--bg-main);
+     overflow: hidden;
+     padding: 100px 20px 120px;
+   }
+   
+   .section::before {
+     content: '';
+     position: absolute;
+     top: 0;
+     left: 0;
+     right: 0;
+     height: 180px;
+     background: linear-gradient(180deg, rgba(31, 18, 21, 0.02) 0%, transparent 100%);
+     pointer-events: none;
+   }
+   
+   /* ---- Background Orbs ---- */
+   .bgOrb1 {
+     position: absolute;
+     width: 550px;
+     height: 550px;
+     border-radius: 50%;
+     background: radial-gradient(circle, rgba(196, 114, 126, 0.05) 0%, transparent 70%);
+     top: -120px;
+     right: -180px;
+     filter: blur(100px);
+     animation: orbFloat1 18s ease-in-out infinite;
+     pointer-events: none;
+   }
+   
+   .bgOrb2 {
+     position: absolute;
+     width: 450px;
+     height: 450px;
+     border-radius: 50%;
+     background: radial-gradient(circle, rgba(236, 196, 196, 0.07) 0%, transparent 70%);
+     bottom: -80px;
+     left: -120px;
+     filter: blur(90px);
+     animation: orbFloat2 22s ease-in-out infinite;
+     pointer-events: none;
+   }
+   
+   @keyframes orbFloat1 {
+     0%, 100% { transform: translate(0, 0); }
+     50% { transform: translate(-20px, 15px); }
+   }
+   
+   @keyframes orbFloat2 {
+     0%, 100% { transform: translate(0, 0); }
+     50% { transform: translate(15px, -20px); }
+   }
+   
+   /* ---- Container ---- */
+   .container {
+     position: relative;
+     z-index: 2;
+     max-width: 800px;
+     width: 100%;
+     margin: 0 auto;
+     display: flex;
+     flex-direction: column;
+     gap: 60px;
+   }
+   
+   /* ============================
+      Header
+      ============================ */
+   .headerBlock {
+     text-align: center;
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     gap: 16px;
+   }
+   
+   .sectionTitle {
+     font-family: var(--font-display);
+     font-size: clamp(1.6rem, 4.5vw, 2.4rem);
+     font-weight: 800;
+     color: var(--color-heading);
+     line-height: 1.5;
+     margin: 0;
+   }
+   
+   .decorativeLine {
+     width: 70px;
+     height: 3px;
+     background: linear-gradient(90deg, transparent, var(--color-accent), transparent);
+     border-radius: 2px;
+   }
+   
+   /* ============================
+      Accordion
+      ============================ */
+   .accordionList {
+     display: flex;
+     flex-direction: column;
+     gap: 12px;
+   }
+   
+   .accordionItem {
+     border-radius: var(--radius-lg);
+     border: 1px solid var(--color-border);
+     background: var(--bg-card);
+     transition: all 0.3s ease;
+     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.03);
+   }
+   
+   .accordionItem:hover {
+     border-color: var(--color-border-hover);
+   }
+   
+   .accordionOpen {
+     border-color: var(--color-border-hover);
+     box-shadow: 0 4px 24px rgba(196, 114, 126, 0.08);
+   }
+   
+   /* ---- Header ---- */
+   .accordionHeader {
+     width: 100%;
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+     padding: 22px 24px;
+     background: transparent;
+     border: none;
+     cursor: pointer;
+     direction: rtl;
+     text-align: right;
+     gap: 14px;
+     transition: background 0.2s ease;
+   }
+   
+   .accordionHeader:hover {
+     background: rgba(196, 114, 126, 0.03);
+   }
+   
+   .accordionHeaderContent {
+     display: flex;
+     flex-direction: column;
+     gap: 8px;
+     flex: 1;
+   }
+   
+   .courseName {
+     font-family: var(--font-display);
+     font-size: 1.15rem;
+     font-weight: 700;
+     color: var(--color-heading);
+     margin: 0;
+     line-height: 1.4;
+   }
+   
+   .courseMetaRow {
+     display: flex;
+     align-items: center;
+     gap: 8px;
+     flex-wrap: wrap;
+   }
+   
+   .courseMetaTag {
+     font-family: var(--font-body);
+     font-size: 0.85rem;
+     font-weight: 400;
+     color: var(--color-text-secondary);
+   }
+   
+   .courseMetaDot {
+     color: var(--color-accent);
+     opacity: 0.4;
+     font-size: 0.7rem;
+   }
+   
+   .courseMetaPrice {
+     font-family: var(--font-display);
+     font-size: 0.9rem;
+     font-weight: 600;
+     color: var(--color-accent);
+   }
+   
+   /* ---- +/- Icon ---- */
+   .accordionIcon {
+     width: 38px;
+     height: 38px;
+     min-width: 38px;
+     border-radius: 10px;
+     background: rgba(196, 114, 126, 0.06);
+     border: 1px solid var(--color-border);
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     position: relative;
+     transition: all 0.3s ease;
+   }
+   
+   .accordionIcon span {
+     position: absolute;
+     background: var(--color-accent);
+     border-radius: 1px;
+     transition: all 0.3s ease;
+   }
+   
+   .accordionIcon span:first-child {
+     width: 14px;
+     height: 2px;
+   }
+   
+   .accordionIcon span:last-child {
+     width: 2px;
+     height: 14px;
+   }
+   
+   .accordionIconOpen {
+     background: var(--color-accent);
+     border-color: var(--color-accent);
+   }
+   
+   .accordionIconOpen span {
+     background: #fff;
+   }
+   
+   .accordionIconOpen span:last-child {
+     transform: rotate(90deg);
+     opacity: 0;
+   }
+   
+   /* ---- Body ---- */
+   .accordionBody {
+     max-height: 0;
+     overflow: hidden;
+     transition: max-height 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+   }
+   
+   .accordionInner {
+     padding: 8px 24px 32px;
+     display: flex;
+     flex-direction: column;
+     gap: 20px;
+   }
+   
+   /* ---- Deposit / Alt price ---- */
+   .depositText {
+     font-family: var(--font-body);
+     font-size: 0.88rem;
+     font-weight: 400;
+     color: var(--color-text-secondary);
+     margin: 0;
+     text-align: center;
+     padding: 10px 16px;
+     background: rgba(196, 114, 126, 0.04);
+     border-radius: var(--radius-sm);
+   }
+   
+   .altPriceText {
+     font-family: var(--font-body);
+     font-size: 0.92rem;
+     font-weight: 500;
+     color: var(--color-text);
+     margin: 0;
+     text-align: center;
+   }
+   
+   /* ============================
+      Day Block
+      ============================ */
+   .dayBlock {
+     background: linear-gradient(165deg, #FAE8E8 0%, #F3D0D0 100%);
+     border-radius: var(--radius-lg);
+     padding: 28px 20px;
+     display: flex;
+     flex-direction: column;
+     gap: 16px;
+     border: 1px solid rgba(196, 114, 126, 0.1);
+   }
+   
+   .dayHeader {
+     display: flex;
+     align-items: center;
+     gap: 14px;
+     padding-bottom: 14px;
+     border-bottom: 1px solid rgba(196, 114, 126, 0.1);
+   }
+   
+   .dayNumber {
+     font-family: var(--font-display);
+     font-size: 2.4rem;
+     font-weight: 900;
+     color: var(--color-accent);
+     opacity: 0.18;
+     line-height: 1;
+     min-width: 48px;
+     text-align: center;
+   }
+   
+   .dayTitle {
+     font-family: var(--font-display);
+     font-size: 1.05rem;
+     font-weight: 700;
+     color: var(--color-heading);
+   }
+   
+   .dayItems {
+     display: flex;
+     flex-direction: column;
+     gap: 6px;
+   }
+   
+   .dayItem {
+     display: flex;
+     align-items: center;
+     padding: 12px 16px;
+     background: rgba(255, 255, 255, 0.85);
+     border-radius: var(--radius-sm);
+     direction: rtl;
+     gap: 12px;
+     transition: all 0.2s ease;
+     border: 1px solid transparent;
+   }
+   
+   .dayItem:hover {
+     background: #fff;
+     border-color: rgba(196, 114, 126, 0.12);
+     transform: translateX(-3px);
+   }
+   
+   .dayItemIcon {
+     font-size: 1rem;
+     flex-shrink: 0;
+     width: 28px;
+     text-align: center;
+   }
+   
+   .dayItemText {
+     font-family: var(--font-body);
+     font-size: 0.92rem;
+     font-weight: 400;
+     color: var(--color-text);
+     text-align: right;
+     flex: 1;
+     line-height: 1.55;
+   }
+   
+   /* ---- Kit ---- */
+   .kitBlock {
+     background: var(--bg-card);
+     border-radius: var(--radius-md);
+     padding: 24px 20px;
+     border: 1px solid var(--color-border);
+   }
+   
+   .kitTitle {
+     font-family: var(--font-display);
+     font-size: 1rem;
+     font-weight: 700;
+     color: var(--color-heading);
+     margin: 0 0 16px 0;
+     text-align: center;
+   }
+   
+   .kitList {
+     list-style: none;
+     padding: 0;
+     margin: 0;
+     display: grid;
+     grid-template-columns: 1fr 1fr;
+     gap: 6px 24px;
+   }
+   
+   .kitItem {
+     font-family: var(--font-body);
+     font-size: 0.88rem;
+     font-weight: 400;
+     color: var(--color-text);
+     line-height: 1.7;
+     padding-right: 16px;
+     position: relative;
+   }
+   
+   .kitItem::before {
+     content: '';
+     position: absolute;
+     right: 0;
+     top: 10px;
+     width: 5px;
+     height: 5px;
+     border-radius: 50%;
+     background: var(--color-accent);
+     opacity: 0.4;
+   }
+   
+   /* ---- Info Cards (course type / certificate) ---- */
+   .infoCard {
+     background: rgba(250, 232, 232, 0.5);
+     border-radius: var(--radius-md);
+     padding: 20px;
+     border: 1px solid var(--color-border);
+     text-align: center;
+   }
+   
+   .infoCardHighlight {
+     background: linear-gradient(135deg, rgba(196, 114, 126, 0.06) 0%, rgba(236, 196, 196, 0.12) 100%);
+     border-radius: var(--radius-md);
+     padding: 20px;
+     border: 1px solid rgba(196, 114, 126, 0.15);
+     text-align: center;
+   }
+   
+   .infoCardTitle {
+     font-family: var(--font-display);
+     font-size: 0.95rem;
+     font-weight: 700;
+     color: var(--color-heading);
+     margin: 0 0 8px 0;
+   }
+   
+   .infoCardText {
+     font-family: var(--font-body);
+     font-size: 0.9rem;
+     font-weight: 400;
+     color: var(--color-text);
+     line-height: 1.7;
+     margin: 0;
+   }
+   
+   /* ---- Course CTA ---- */
+   .courseCtaBtn {
+     align-self: center;
+     padding: 16px 44px;
+     font-family: var(--font-display);
+     font-size: 1.05rem;
+     font-weight: 700;
+     color: #fff;
+     background: var(--color-accent);
+     border: none;
+     border-radius: var(--radius-sm);
+     cursor: pointer;
+     transition: all 0.3s ease;
+     box-shadow: 0 4px 16px var(--color-accent-glow);
+     margin-top: 8px;
+     position: relative;
+     overflow: hidden;
+   }
+   
+   .courseCtaBtn::before {
+     content: '';
+     position: absolute;
+     inset: 0;
+     background: linear-gradient(135deg, transparent 0%, rgba(255, 255, 255, 0.1) 50%, transparent 100%);
+     transform: translateX(100%);
+     transition: transform 0.5s ease;
+   }
+   
+   .courseCtaBtn:hover {
+     transform: translateY(-2px);
+     background: var(--color-accent-deep);
+     box-shadow: 0 6px 28px rgba(196, 114, 126, 0.35);
+   }
+   
+   .courseCtaBtn:hover::before {
+     transform: translateX(-100%);
+   }
+   
+   /* ============================
+      Benefits
+      ============================ */
+   .benefitsSection {
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     gap: 32px;
+   }
+   
+   .benefitsTitle {
+     font-family: var(--font-display);
+     font-size: clamp(1.3rem, 3.5vw, 1.65rem);
+     font-weight: 700;
+     color: var(--color-heading);
+     margin: 0;
+     text-align: center;
+   }
+   
+   .benefitsGrid {
+     display: grid;
+     grid-template-columns: repeat(2, 1fr);
+     gap: 14px;
+     width: 100%;
+   }
+   
+   .benefitCard {
+     background: var(--bg-card);
+     border: 1px solid var(--color-border);
+     border-radius: var(--radius-md);
+     padding: 28px 22px;
+     display: flex;
+     flex-direction: column;
+     gap: 12px;
+     transition: all 0.3s ease;
+     position: relative;
+     overflow: hidden;
+   }
+   
+   .benefitCard::after {
+     content: '';
+     position: absolute;
+     bottom: 0;
+     left: 0;
+     right: 0;
+     height: 3px;
+     background: var(--color-accent);
+     transform: scaleX(0);
+     transition: transform 0.3s ease;
+   }
+   
+   .benefitCard:hover {
+     transform: translateY(-3px);
+     border-color: var(--color-border-hover);
+     box-shadow: 0 8px 28px rgba(196, 114, 126, 0.08);
+   }
+   
+   .benefitCard:hover::after {
+     transform: scaleX(1);
+   }
+   
+   .benefitIconWrapper {
+     width: 44px;
+     height: 44px;
+     border-radius: 12px;
+     background: rgba(196, 114, 126, 0.08);
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     color: var(--color-accent);
+   }
+   
+   .benefitCardTitle {
+     font-family: var(--font-display);
+     font-size: 1rem;
+     font-weight: 700;
+     color: var(--color-heading);
+     margin: 0;
+   }
+   
+   .benefitCardDesc {
+     font-family: var(--font-body);
+     font-size: 0.88rem;
+     font-weight: 400;
+     color: var(--color-text);
+     line-height: 1.7;
+     margin: 0;
+   }
+   
+   /* ============================
+      Bottom CTA
+      ============================ */
+   .bottomCta {
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     gap: 22px;
+     text-align: center;
+     padding: 44px 28px;
+     background: linear-gradient(165deg, rgba(255, 245, 243, 0.9) 0%, rgba(250, 232, 232, 0.95) 100%);
+     border-radius: var(--radius-lg);
+     position: relative;
+     overflow: hidden;
+     border: 1px solid rgba(196, 114, 126, 0.2);
+     box-shadow: 0 4px 16px rgba(196, 114, 126, 0.1);
+   }
+   
+   .bottomCta::before {
+     content: '';
+     position: absolute;
+     inset: 0;
+     background: radial-gradient(circle at 50% 50%, rgba(196, 114, 126, 0.06) 0%, transparent 70%);
+     pointer-events: none;
+   }
+   
+   .bottomCtaText {
+     font-family: var(--font-display);
+     font-size: clamp(1.05rem, 3vw, 1.35rem);
+     font-weight: 600;
+     color: var(--color-heading);
+     margin: 0;
+     position: relative;
+     z-index: 1;
+   }
+   
+   .ctaButton {
+     padding: 18px 48px;
+     font-family: var(--font-display);
+     font-size: 1.1rem;
+     font-weight: 700;
+     color: #fff;
+     background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-deep) 100%);
+     border: none;
+     border-radius: var(--radius-sm);
+     cursor: pointer;
+     position: relative;
+     overflow: hidden;
+     z-index: 1;
+     transition: all 0.3s ease;
+     box-shadow: 0 6px 24px var(--color-accent-glow);
+   }
+   
+   .ctaButton::before {
+     content: '';
+     position: absolute;
+     inset: 0;
+     background: linear-gradient(135deg, transparent 0%, rgba(255, 255, 255, 0.15) 50%, transparent 100%);
+     transform: translateX(100%);
+     transition: transform 0.5s ease;
+   }
+   
+   .ctaButton:hover {
+     transform: translateY(-2px);
+     box-shadow: 0 10px 36px rgba(196, 114, 126, 0.4);
+   }
+   
+   .ctaButton:hover::before {
+     transform: translateX(-100%);
+   }
+   
+   /* ========================================
+      Responsive
+      ======================================== */
+   
+   @media (max-width: 640px) {
+     .section {
+       padding: 70px 14px 90px;
+     }
+   
+     .container {
+       gap: 44px;
+     }
+   
+     .accordionHeader {
+       padding: 18px 16px;
+     }
+   
+     .courseName {
+       font-size: 1.05rem;
+     }
+   
+     .accordionInner {
+       padding: 4px 16px 24px;
+     }
+   
+     .dayBlock {
+       padding: 22px 14px;
+     }
+   
+     .dayItem {
+       padding: 10px 12px;
+     }
+   
+     .dayItemText {
+       font-size: 0.86rem;
+     }
+   
+     .dayNumber {
+       font-size: 2rem;
+       min-width: 40px;
+     }
+   
+     .courseCtaBtn {
+       width: 100%;
+       max-width: 300px;
+       padding: 14px 28px;
+       font-size: 1rem;
+     }
+   
+     .kitList {
+       grid-template-columns: 1fr;
+     }
+   
+     .benefitsGrid {
+       grid-template-columns: 1fr;
+       gap: 10px;
+     }
+   
+     .benefitCard {
+       padding: 22px 18px;
+     }
+   
+     .bottomCta {
+       padding: 32px 18px;
+     }
+   
+     .ctaButton {
+       padding: 16px 32px;
+       font-size: 1rem;
+       width: 100%;
+       max-width: 340px;
+     }
+   }
+   
+   @media (max-width: 380px) {
+     .sectionTitle {
+       font-size: 1.25rem;
+     }
+   
+     .courseName {
+       font-size: 0.98rem;
+     }
+   
+     .accordionIcon {
+       width: 34px;
+       height: 34px;
+       min-width: 34px;
+     }
+   
+     .dayItemText {
+       font-size: 0.82rem;
+     }
+   
+     .ctaButton {
+       padding: 14px 24px;
+       font-size: 0.95rem;
+     }
+   }
