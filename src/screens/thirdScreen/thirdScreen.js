@@ -1,5 +1,10 @@
 import React, { useState, useRef, useEffect, useCallback } from "react";
+import { Player } from '@lordicon/react';
 import styles from "./thirdScreen.module.css";
+import pinkClockIcon from "../../icons/pinkclock.json";
+import pinkChatIcon from "../../icons/pinkchat.json";
+import pinkNotebookIcon from "../../icons/pinknotebook.json";
+import pinkHeartIcon from "../../icons/pinkheart.json";
 
 const EDEN_PHONE = "972543414939";
 
@@ -231,50 +236,50 @@ const courses = [
 
 const benefits = [
   {
-    icon: "practice",
+    icon: pinkClockIcon,
     title: "לימוד מעשי אמיתי",
     description: "תרגול על מודליסטיות אמיתיות, את יוצאת מוכנה לעבוד!",
   },
   {
-    icon: "support",
+    icon: pinkChatIcon,
     title: "ליווי גם אחרי הקורס",
     description: "אני לא נעלמת אחרי שהקורס נגמר - אני עונה, מתקנת, וזמינה תמיד",
   },
   {
-    icon: "marketing",
+    icon: pinkNotebookIcon,
     title: "חוברת שיווק",
     description: "אצלי לא תלמדי רק מקצוע - תלמדי גם איך להביא לקוחות ולבנות עסק רווחי",
   },
   {
-    icon: "personal",
+    icon: pinkHeartIcon,
     title: "יחס אישי",
     description: "כל תלמידה מקבלת תשומת לב אישית",
   },
 ];
 
-const benefitIcons = {
-  practice: (
-    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-      <circle cx="12" cy="12" r="10" />
-      <path d="M12 6v6l4 2" />
-    </svg>
-  ),
-  support: (
-    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
-    </svg>
-  ),
-  marketing: (
-    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
-      <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
-    </svg>
-  ),
-  personal: (
-    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
-    </svg>
-  ),
+const BenefitCard = ({ icon, title, description }) => {
+  const playerRef = useRef(null);
+  
+  useEffect(() => {
+    if (playerRef.current) {
+      playerRef.current.playFromBeginning();
+    }
+  }, []);
+  
+  return (
+    <div className={styles.benefitCard}>
+      <div className={styles.benefitIconWrapper}>
+        <Player
+          ref={playerRef}
+          icon={icon}
+          size={44}
+          colorize="#C4727E"
+        />
+      </div>
+      <h4 className={styles.benefitCardTitle}>{title}</h4>
+      <p className={styles.benefitCardDesc}>{description}</p>
+    </div>
+  );
 };
 
 const ThirdScreen = () => {
@@ -458,13 +463,12 @@ const ThirdScreen = () => {
           <h3 className={styles.benefitsTitle}>כל תלמידה אצלי מקבלת:</h3>
           <div className={styles.benefitsGrid}>
             {benefits.map((b, idx) => (
-              <div key={idx} className={styles.benefitCard}>
-                <div className={styles.benefitIconWrapper}>
-                  {benefitIcons[b.icon]}
-                </div>
-                <h4 className={styles.benefitCardTitle}>{b.title}</h4>
-                <p className={styles.benefitCardDesc}>{b.description}</p>
-              </div>
+              <BenefitCard
+                key={idx}
+                icon={b.icon}
+                title={b.title}
+                description={b.description}
+              />
             ))}
           </div>
         </div>
