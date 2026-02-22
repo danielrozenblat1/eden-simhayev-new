@@ -1,751 +1,1090 @@
 /* ========================================
    ThirdScreen - Courses + Benefits
    Beauty Education Landing Page
-   Premium Clean Design - Full Visibility
+   Cards + Full-Screen Modal — Pink Edition
    ======================================== */
 
-   @import '../../components/fonts/fonts.css';
+  @import '../../components/fonts/fonts.css';
 
-   .section {
-     --bg-main: #FFF5F2;
-     --bg-blush: #F5D5D5;
-     --bg-card: #fff;
-     --color-heading: #1F1215;
-     --color-text: #3A1F1A;
-     --color-text-secondary: #8C6B6B;
-     --color-accent: #C4727E;
-     --color-accent-deep: #A85A6A;
-     --color-accent-glow: rgba(196, 114, 126, 0.25);
-     --color-border: rgba(196, 114, 126, 0.12);
-     --color-border-hover: rgba(196, 114, 126, 0.28);
-     --radius-lg: 22px;
-     --radius-md: 16px;
-     --radius-sm: 12px;
-     --font-display: 'Discovery', sans-serif;
-     --font-body: 'Heebo', sans-serif;
-   }
-   
-   /* ---- Section ---- */
-   .section {
-     position: relative;
-     background: var(--bg-main);
-     overflow: hidden;
-     padding: 100px 20px 120px;
-   }
-   
-   .section::before {
-     content: '';
-     position: absolute;
-     top: 0;
-     left: 0;
-     right: 0;
-     height: 180px;
-     background: linear-gradient(180deg, rgba(31, 18, 21, 0.02) 0%, transparent 100%);
-     pointer-events: none;
-   }
-   
-   /* ---- Background Orbs ---- */
-   .bgOrb1 {
-     position: absolute;
-     width: 550px;
-     height: 550px;
-     border-radius: 50%;
-     background: radial-gradient(circle, rgba(196, 114, 126, 0.05) 0%, transparent 70%);
-     top: -120px;
-     right: -180px;
-     filter: blur(100px);
-     animation: orbFloat1 18s ease-in-out infinite;
-     pointer-events: none;
-   }
-   
-   .bgOrb2 {
-     position: absolute;
-     width: 450px;
-     height: 450px;
-     border-radius: 50%;
-     background: radial-gradient(circle, rgba(236, 196, 196, 0.07) 0%, transparent 70%);
-     bottom: -80px;
-     left: -120px;
-     filter: blur(90px);
-     animation: orbFloat2 22s ease-in-out infinite;
-     pointer-events: none;
-   }
-   
-   @keyframes orbFloat1 {
-     0%, 100% { transform: translate(0, 0); }
-     50% { transform: translate(-20px, 15px); }
-   }
-   
-   @keyframes orbFloat2 {
-     0%, 100% { transform: translate(0, 0); }
-     50% { transform: translate(15px, -20px); }
-   }
-   
-   /* ---- Container ---- */
-   .container {
-     position: relative;
-     z-index: 2;
-     max-width: 800px;
-     width: 100%;
-     margin: 0 auto;
-     display: flex;
-     flex-direction: column;
-     gap: 60px;
-   }
-   
-   /* ============================
-      Header
-      ============================ */
-   .headerBlock {
-     text-align: center;
-     display: flex;
-     flex-direction: column;
-     align-items: center;
-     gap: 16px;
-   }
-   
-   .sectionTitle {
-     font-family: var(--font-display);
-     font-size: clamp(1.6rem, 4.5vw, 2.4rem);
-     font-weight: 800;
-     color: var(--color-heading);
-     line-height: 1.5;
-     margin: 0;
-   }
-   
-   .decorativeLine {
-     width: 70px;
-     height: 3px;
-     background: linear-gradient(90deg, transparent, var(--color-accent), transparent);
-     border-radius: 2px;
-   }
-   
-   /* ============================
-      Accordion
-      ============================ */
-   .accordionList {
-     display: flex;
-     flex-direction: column;
-     gap: 12px;
-   }
-   
-   .accordionItem {
-     border-radius: var(--radius-lg);
-     border: 1px solid var(--color-border);
-     background: var(--bg-card);
-     transition: all 0.3s ease;
-     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.03);
-   }
-   
-   .accordionItem:hover {
-     border-color: var(--color-border-hover);
-   }
-   
-   .accordionOpen {
-     border-color: var(--color-border-hover);
-     box-shadow: 0 4px 24px rgba(196, 114, 126, 0.08);
-   }
-   
-   /* ---- Header ---- */
-   .accordionHeader {
-     width: 100%;
-     display: flex;
-     align-items: center;
-     justify-content: space-between;
-     padding: 22px 24px;
-     background: transparent;
-     border: none;
-     cursor: pointer;
-     direction: rtl;
-     text-align: right;
-     gap: 14px;
-     transition: background 0.2s ease;
-   }
-   
-   .accordionHeader:hover {
-     background: rgba(196, 114, 126, 0.03);
-   }
-   
-   .accordionHeaderContent {
-     display: flex;
-     flex-direction: column;
-     gap: 8px;
-     flex: 1;
-   }
-   
-   .courseName {
-     font-family: var(--font-display);
-     font-size: 1.15rem;
-     font-weight: 700;
-     color: var(--color-heading);
-     margin: 0;
-     line-height: 1.4;
-   }
-   
-   .courseMetaRow {
-     display: flex;
-     align-items: center;
-     gap: 8px;
-     flex-wrap: wrap;
-   }
-   
-   .courseMetaTag {
-     font-family: var(--font-body);
-     font-size: 0.85rem;
-     font-weight: 400;
-     color: var(--color-text-secondary);
-   }
-   
-   .courseMetaDot {
-     color: var(--color-accent);
-     opacity: 0.4;
-     font-size: 0.7rem;
-   }
-   
-   .courseMetaPrice {
-     font-family: var(--font-display);
-     font-size: 0.9rem;
-     font-weight: 600;
-     color: var(--color-accent);
-   }
-   
-   /* ---- +/- Icon ---- */
-   .accordionIcon {
-     width: 38px;
-     height: 38px;
-     min-width: 38px;
-     border-radius: 10px;
-     background: rgba(196, 114, 126, 0.06);
-     border: 1px solid var(--color-border);
-     display: flex;
-     align-items: center;
-     justify-content: center;
-     position: relative;
-     transition: all 0.3s ease;
-   }
-   
-   .accordionIcon span {
-     position: absolute;
-     background: var(--color-accent);
-     border-radius: 1px;
-     transition: all 0.3s ease;
-   }
-   
-   .accordionIcon span:first-child {
-     width: 14px;
-     height: 2px;
-   }
-   
-   .accordionIcon span:last-child {
-     width: 2px;
-     height: 14px;
-   }
-   
-   .accordionIconOpen {
-     background: var(--color-accent);
-     border-color: var(--color-accent);
-   }
-   
-   .accordionIconOpen span {
-     background: #fff;
-   }
-   
-   .accordionIconOpen span:last-child {
-     transform: rotate(90deg);
-     opacity: 0;
-   }
-   
-   /* ---- Body ---- */
-   .accordionBody {
-     max-height: 0;
-     overflow: hidden;
-     transition: max-height 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-   }
-   
-   .accordionInner {
-     padding: 8px 24px 32px;
-     display: flex;
-     flex-direction: column;
-     gap: 20px;
-   }
-   
-   /* ---- Deposit / Alt price ---- */
-   .depositText {
-     font-family: var(--font-body);
-     font-size: 0.88rem;
-     font-weight: 400;
-     color: var(--color-text-secondary);
-     margin: 0;
-     text-align: center;
-     padding: 10px 16px;
-     background: rgba(196, 114, 126, 0.04);
-     border-radius: var(--radius-sm);
-   }
-   
-   .altPriceText {
-     font-family: var(--font-body);
-     font-size: 0.92rem;
-     font-weight: 500;
-     color: var(--color-text);
-     margin: 0;
-     text-align: center;
-   }
-   
-   /* ============================
-      Day Block
-      ============================ */
-   .dayBlock {
-     background: linear-gradient(165deg, #FAE8E8 0%, #F3D0D0 100%);
-     border-radius: var(--radius-lg);
-     padding: 28px 20px;
-     display: flex;
-     flex-direction: column;
-     gap: 16px;
-     border: 1px solid rgba(196, 114, 126, 0.1);
-   }
-   
-   .dayHeader {
-     display: flex;
-     align-items: center;
-     gap: 14px;
-     padding-bottom: 14px;
-     border-bottom: 1px solid rgba(196, 114, 126, 0.1);
-   }
-   
-   .dayNumber {
-     font-family: var(--font-display);
-     font-size: 2.4rem;
-     font-weight: 900;
-     color: var(--color-accent);
-     opacity: 0.18;
-     line-height: 1;
-     min-width: 48px;
-     text-align: center;
-   }
-   
-   .dayTitle {
-     font-family: var(--font-display);
-     font-size: 1.05rem;
-     font-weight: 700;
-     color: var(--color-heading);
-   }
-   
-   .dayItems {
-     display: flex;
-     flex-direction: column;
-     gap: 6px;
-   }
-   
-   .dayItem {
-     display: flex;
-     align-items: center;
-     padding: 12px 16px;
-     background: rgba(255, 255, 255, 0.85);
-     border-radius: var(--radius-sm);
-     direction: rtl;
-     gap: 12px;
-     transition: all 0.2s ease;
-     border: 1px solid transparent;
-   }
-   
-   .dayItem:hover {
-     background: #fff;
-     border-color: rgba(196, 114, 126, 0.12);
-     transform: translateX(-3px);
-   }
-   
-   .dayItemIcon {
-     font-size: 1rem;
-     flex-shrink: 0;
-     width: 28px;
-     text-align: center;
-   }
-   
-   .dayItemText {
-     font-family: var(--font-body);
-     font-size: 0.92rem;
-     font-weight: 400;
-     color: var(--color-text);
-     text-align: right;
-     flex: 1;
-     line-height: 1.55;
-   }
-   
-   /* ---- Kit ---- */
-   .kitBlock {
-     background: var(--bg-card);
-     border-radius: var(--radius-md);
-     padding: 24px 20px;
-     border: 1px solid var(--color-border);
-   }
-   
-   .kitTitle {
-     font-family: var(--font-display);
-     font-size: 1rem;
-     font-weight: 700;
-     color: var(--color-heading);
-     margin: 0 0 16px 0;
-     text-align: center;
-   }
-   
-   .kitList {
-     list-style: none;
-     padding: 0;
-     margin: 0;
-     display: grid;
-     grid-template-columns: 1fr 1fr;
-     gap: 6px 24px;
-   }
-   
-   .kitItem {
-     font-family: var(--font-body);
-     font-size: 0.88rem;
-     font-weight: 400;
-     color: var(--color-text);
-     line-height: 1.7;
-     padding-right: 16px;
-     position: relative;
-   }
-   
-   .kitItem::before {
-     content: '';
-     position: absolute;
-     right: 0;
-     top: 10px;
-     width: 5px;
-     height: 5px;
-     border-radius: 50%;
-     background: var(--color-accent);
-     opacity: 0.4;
-   }
-   
-   /* ---- Info Cards (course type / certificate) ---- */
-   .infoCard {
-     background: rgba(250, 232, 232, 0.5);
-     border-radius: var(--radius-md);
-     padding: 20px;
-     border: 1px solid var(--color-border);
-     text-align: center;
-   }
-   
-   .infoCardHighlight {
-     background: linear-gradient(135deg, rgba(196, 114, 126, 0.06) 0%, rgba(236, 196, 196, 0.12) 100%);
-     border-radius: var(--radius-md);
-     padding: 20px;
-     border: 1px solid rgba(196, 114, 126, 0.15);
-     text-align: center;
-   }
-   
-   .infoCardTitle {
-     font-family: var(--font-display);
-     font-size: 0.95rem;
-     font-weight: 700;
-     color: var(--color-heading);
-     margin: 0 0 8px 0;
-   }
-   
-   .infoCardText {
-     font-family: var(--font-body);
-     font-size: 0.9rem;
-     font-weight: 400;
-     color: var(--color-text);
-     line-height: 1.7;
-     margin: 0;
-   }
-   
-   /* ---- Course CTA ---- */
-   .courseCtaBtn {
-     align-self: center;
-     padding: 16px 44px;
-     font-family: var(--font-display);
-     font-size: 1.05rem;
-     font-weight: 700;
-     color: #fff;
-     background: var(--color-accent);
-     border: none;
-     border-radius: var(--radius-sm);
-     cursor: pointer;
-     transition: all 0.3s ease;
-     box-shadow: 0 4px 16px var(--color-accent-glow);
-     margin-top: 8px;
-     position: relative;
-     overflow: hidden;
-   }
-   
-   .courseCtaBtn::before {
-     content: '';
-     position: absolute;
-     inset: 0;
-     background: linear-gradient(135deg, transparent 0%, rgba(255, 255, 255, 0.1) 50%, transparent 100%);
-     transform: translateX(100%);
-     transition: transform 0.5s ease;
-   }
-   
-   .courseCtaBtn:hover {
-     transform: translateY(-2px);
-     background: var(--color-accent-deep);
-     box-shadow: 0 6px 28px rgba(196, 114, 126, 0.35);
-   }
-   
-   .courseCtaBtn:hover::before {
-     transform: translateX(-100%);
-   }
-   
-   /* ============================
-      Benefits
-      ============================ */
-   .benefitsSection {
-     display: flex;
-     flex-direction: column;
-     align-items: center;
-     gap: 32px;
-   }
-   
-   .benefitsTitle {
-     font-family: var(--font-display);
-     font-size: clamp(1.3rem, 3.5vw, 1.65rem);
-     font-weight: 700;
-     color: var(--color-heading);
-     margin: 0;
-     text-align: center;
-   }
-   
-   .benefitsGrid {
-     display: grid;
-     grid-template-columns: repeat(2, 1fr);
-     gap: 14px;
-     width: 100%;
-   }
-   
-   .benefitCard {
-     background: var(--bg-card);
-     border: 1px solid var(--color-border);
-     border-radius: var(--radius-md);
-     padding: 28px 22px;
-     display: flex;
-     flex-direction: column;
-     gap: 12px;
-     transition: all 0.3s ease;
-     position: relative;
-     overflow: hidden;
-   }
-   
-   .benefitCard::after {
-     content: '';
-     position: absolute;
-     bottom: 0;
-     left: 0;
-     right: 0;
-     height: 3px;
-     background: var(--color-accent);
-     transform: scaleX(0);
-     transition: transform 0.3s ease;
-   }
-   
-   .benefitCard:hover {
-     transform: translateY(-3px);
-     border-color: var(--color-border-hover);
-     box-shadow: 0 8px 28px rgba(196, 114, 126, 0.08);
-   }
-   
-   .benefitCard:hover::after {
-     transform: scaleX(1);
-   }
-   
-   .benefitIconWrapper {
-     width: 44px;
-     height: 44px;
-     border-radius: 12px;
-     background: rgba(196, 114, 126, 0.08);
-     display: flex;
-     align-items: center;
-     justify-content: center;
-     color: var(--color-accent);
-   }
-   
-   .benefitCardTitle {
-     font-family: var(--font-display);
-     font-size: 1rem;
-     font-weight: 700;
-     color: var(--color-heading);
-     margin: 0;
-   }
-   
-   .benefitCardDesc {
-     font-family: var(--font-body);
-     font-size: 0.88rem;
-     font-weight: 400;
-     color: var(--color-text);
-     line-height: 1.7;
-     margin: 0;
-   }
-   
-   /* ============================
-      Bottom CTA
-      ============================ */
-   .bottomCta {
-     display: flex;
-     flex-direction: column;
-     align-items: center;
-     gap: 22px;
-     text-align: center;
-     padding: 44px 28px;
-     background: linear-gradient(165deg, rgba(255, 245, 243, 0.9) 0%, rgba(250, 232, 232, 0.95) 100%);
-     border-radius: var(--radius-lg);
-     position: relative;
-     overflow: hidden;
-     border: 1px solid rgba(196, 114, 126, 0.2);
-     box-shadow: 0 4px 16px rgba(196, 114, 126, 0.1);
-   }
-   
-   .bottomCta::before {
-     content: '';
-     position: absolute;
-     inset: 0;
-     background: radial-gradient(circle at 50% 50%, rgba(196, 114, 126, 0.06) 0%, transparent 70%);
-     pointer-events: none;
-   }
-   
-   .bottomCtaText {
-     font-family: var(--font-display);
-     font-size: clamp(1.05rem, 3vw, 1.35rem);
-     font-weight: 600;
-     color: var(--color-heading);
-     margin: 0;
-     position: relative;
-     z-index: 1;
-   }
-   
-   .ctaButton {
-     padding: 18px 48px;
-     font-family: var(--font-display);
-     font-size: 1.1rem;
-     font-weight: 700;
-     color: #fff;
-     background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-deep) 100%);
-     border: none;
-     border-radius: var(--radius-sm);
-     cursor: pointer;
-     position: relative;
-     overflow: hidden;
-     z-index: 1;
-     transition: all 0.3s ease;
-     box-shadow: 0 6px 24px var(--color-accent-glow);
-   }
-   
-   .ctaButton::before {
-     content: '';
-     position: absolute;
-     inset: 0;
-     background: linear-gradient(135deg, transparent 0%, rgba(255, 255, 255, 0.15) 50%, transparent 100%);
-     transform: translateX(100%);
-     transition: transform 0.5s ease;
-   }
-   
-   .ctaButton:hover {
-     transform: translateY(-2px);
-     box-shadow: 0 10px 36px rgba(196, 114, 126, 0.4);
-   }
-   
-   .ctaButton:hover::before {
-     transform: translateX(-100%);
-   }
-   
-   /* ========================================
-      Responsive
-      ======================================== */
-   
-   @media (max-width: 640px) {
-     .section {
-       padding: 70px 14px 90px;
-     }
-   
-     .container {
-       gap: 44px;
-     }
-   
-     .accordionHeader {
-       padding: 18px 16px;
-     }
-   
-     .courseName {
-       font-size: 1.05rem;
-     }
-   
-     .accordionInner {
-       padding: 4px 16px 24px;
-     }
-   
-     .dayBlock {
-       padding: 22px 14px;
-     }
-   
-     .dayItem {
-       padding: 10px 12px;
-     }
-   
-     .dayItemText {
-       font-size: 0.86rem;
-     }
-   
-     .dayNumber {
-       font-size: 2rem;
-       min-width: 40px;
-     }
-   
-     .courseCtaBtn {
-       width: 100%;
-       max-width: 300px;
-       padding: 14px 28px;
-       font-size: 1rem;
-     }
-   
-     .kitList {
-       grid-template-columns: 1fr;
-     }
-   
-     .benefitsGrid {
-       grid-template-columns: 1fr;
-       gap: 10px;
-     }
-   
-     .benefitCard {
-       padding: 22px 18px;
-     }
-   
-     .bottomCta {
-       padding: 32px 18px;
-     }
-   
-     .ctaButton {
-       padding: 16px 32px;
-       font-size: 1rem;
-       width: 100%;
-       max-width: 340px;
-     }
-   }
-   
-   @media (max-width: 380px) {
-     .sectionTitle {
-       font-size: 1.25rem;
-     }
-   
-     .courseName {
-       font-size: 0.98rem;
-     }
-   
-     .accordionIcon {
-       width: 34px;
-       height: 34px;
-       min-width: 34px;
-     }
-   
-     .dayItemText {
-       font-size: 0.82rem;
-     }
-   
-     .ctaButton {
-       padding: 14px 24px;
-       font-size: 0.95rem;
-     }
-   }
+  .section {
+    --bg-main: #FFF5F2;
+    --bg-card: #fff;
+    --color-heading: #1F1215;
+    --color-text: #3A1F1A;
+    --color-text-secondary: #8C6B6B;
+    --color-accent: #C4727E;
+    --color-accent-light: #E8A0AC;
+    --color-accent-deep: #A85A6A;
+    --color-accent-glow: rgba(196, 114, 126, 0.25);
+    --color-border: rgba(196, 114, 126, 0.15);
+    --color-border-hover: rgba(196, 114, 126, 0.35);
+    --radius-lg: 22px;
+    --radius-md: 16px;
+    --radius-sm: 12px;
+    --font-display: 'Discovery', sans-serif;
+    --font-body: 'Heebo', sans-serif;
+  }
+
+  /* ---- Keyframes ---- */
+  @keyframes modalFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes modalSlideIn {
+    from { opacity: 0; transform: translateY(40px) scale(0.96); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+
+  @keyframes fadeSlideUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes shimmer {
+    0% { background-position: 200% center; }
+    100% { background-position: -200% center; }
+  }
+
+  @keyframes pulseGlow {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(196, 114, 126, 0); }
+    50% { box-shadow: 0 0 0 6px rgba(196, 114, 126, 0.08); }
+  }
+
+  @keyframes orbFloat1 {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(-20px, 15px); }
+  }
+
+  @keyframes orbFloat2 {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(15px, -20px); }
+  }
+
+  /* ---- Section ---- */
+  .section {
+    position: relative;
+    background: var(--bg-main);
+    overflow: hidden;
+    padding: 100px 20px 120px;
+  }
+
+  .section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 180px;
+    background: linear-gradient(180deg, rgba(196, 114, 126, 0.03) 0%, transparent 100%);
+    pointer-events: none;
+  }
+
+  /* ---- Background Orbs ---- */
+  .bgOrb1 {
+    position: absolute;
+    width: 550px;
+    height: 550px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(196, 114, 126, 0.06) 0%, transparent 70%);
+    top: -120px;
+    right: -180px;
+    filter: blur(100px);
+    animation: orbFloat1 18s ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  .bgOrb2 {
+    position: absolute;
+    width: 450px;
+    height: 450px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(196, 114, 126, 0.07) 0%, transparent 70%);
+    bottom: -80px;
+    left: -120px;
+    filter: blur(90px);
+    animation: orbFloat2 22s ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  /* ---- Container ---- */
+  .container {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+  }
+
+  /* ============================
+     Header
+     ============================ */
+  .headerBlock {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .sectionTitle {
+    font-family: var(--font-display);
+    font-size: clamp(1.6rem, 4.5vw, 2.4rem);
+    font-weight: 800;
+    color: var(--color-heading);
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  .decorativeLine {
+    width: 70px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--color-accent), transparent);
+    border-radius: 2px;
+  }
+
+  /* ============================
+     Course Cards
+     ============================ */
+  .courseList {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  .courseCard {
+    position: relative;
+    background: #FFFFFF;
+    border: none;
+    border-radius: 3px;
+    padding: 2px;
+    z-index: 1;
+    cursor: pointer;
+    box-shadow:
+      0 4px 12px rgba(196, 114, 126, 0.1),
+      0 1px 4px rgba(0, 0, 0, 0.05);
+    transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    animation: pulseGlow 4s ease-in-out infinite;
+  }
+
+  /* Stacked paper layers */
+  .courseCard::before,
+  .courseCard::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #FFFFFF;
+    border: none;
+    border-radius: 3px;
+    z-index: -1;
+    box-shadow: 0 2px 8px rgba(196, 114, 126, 0.08);
+    transition: all 0.35s ease;
+  }
+
+  .courseCard::before {
+    top: 5px;
+    left: -6px;
+    transform: rotate(1.2deg);
+  }
+
+  .courseCard::after {
+    top: -3px;
+    left: 5px;
+    transform: rotate(-0.8deg);
+  }
+
+  .courseCard:hover {
+    transform: translateY(-5px);
+    animation: none;
+    box-shadow:
+      0 12px 32px rgba(196, 114, 126, 0.2),
+      0 4px 12px rgba(196, 114, 126, 0.1);
+  }
+
+  .courseCard:hover::before {
+    transform: rotate(2deg);
+    box-shadow: 0 3px 12px rgba(196, 114, 126, 0.12);
+  }
+
+  .courseCard:hover::after {
+    transform: rotate(-1.4deg);
+    box-shadow: 0 3px 12px rgba(196, 114, 126, 0.12);
+  }
+
+  /* Pink gradient frame — thin and delicate */
+  .courseCardInner {
+    background: #FFFFFF;
+    border-radius: 2px;
+    border: 2px solid;
+    border-image: linear-gradient(135deg, #E8A0AC 0%, #D4808E 40%, #C4727E 70%, #E8A0AC 100%) 1;
+    padding: 28px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    direction: rtl;
+    text-align: right;
+    transition: border-width 0.2s ease;
+  }
+
+  .courseName {
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--color-heading);
+    margin: 0;
+    line-height: 1.4;
+    letter-spacing: -0.01em;
+    transition: color 0.3s ease;
+  }
+
+  .courseCard:hover .courseName {
+    color: var(--color-accent-deep);
+  }
+
+  .courseMetaRow {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+
+  .courseMetaTag {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: var(--color-text-secondary);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .courseMetaTag svg {
+    color: var(--color-accent-light);
+    flex-shrink: 0;
+  }
+
+  .courseHint {
+    font-family: 'Playfair Display', var(--font-body);
+    font-style: italic;
+    font-size: 0.82rem;
+    font-weight: 400;
+    color: var(--color-accent);
+    opacity: 0.4;
+    transition: opacity 0.3s ease;
+    margin-top: 4px;
+  }
+
+  .courseCard:hover .courseHint {
+    opacity: 1;
+  }
+
+  /* ============================
+     Modal — Full Width
+     ============================ */
+  .modalOverlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(31, 18, 21, 0.55);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    z-index: 1000;
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    direction: rtl;
+    animation: modalFadeIn 0.3s ease-out;
+  }
+
+  .modalContent {
+    background: linear-gradient(180deg, #FFFFFF 0%, #FFF8F5 50%, #FFF2EE 100%);
+    width: 100%;
+    height: 100vh;
+    overflow-y: auto;
+    position: relative;
+    animation: modalSlideIn 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  /* Decorative pink shimmer at top */
+  .modalContent::before {
+    content: '';
+    position: sticky;
+    top: 0;
+    display: block;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--color-accent-light), var(--color-accent), var(--color-accent-deep), var(--color-accent), var(--color-accent-light));
+    background-size: 200% 100%;
+    animation: shimmer 4s ease-in-out infinite;
+    z-index: 11;
+  }
+
+  .modalClose {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.9);
+    border: 2px solid var(--color-accent-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--color-accent);
+    transition: all 0.25s ease;
+    z-index: 1001;
+    box-shadow: 0 4px 16px rgba(196, 114, 126, 0.15);
+  }
+
+  .modalClose:hover {
+    background: var(--color-accent);
+    color: #fff;
+    border-color: var(--color-accent);
+    transform: rotate(90deg) scale(1.05);
+    box-shadow: 0 6px 24px rgba(196, 114, 126, 0.3);
+  }
+
+  .modalHeader {
+    padding: 48px 36px 0;
+    max-width: 780px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+    animation: fadeSlideUp 0.5s ease-out 0.15s both;
+  }
+
+  .modalTitle {
+    font-family: var(--font-display);
+    font-size: clamp(1.4rem, 4vw, 1.9rem);
+    font-weight: 800;
+    color: var(--color-heading);
+    margin: 0;
+    line-height: 1.4;
+  }
+
+  .modalMeta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .modalMetaTag {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    color: var(--color-accent);
+    font-weight: 500;
+  }
+
+  .modalMetaTag svg {
+    color: var(--color-accent-light);
+    flex-shrink: 0;
+  }
+
+  .modalBody {
+    padding: 32px 36px 60px;
+    max-width: 780px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  /* ============================
+     Modal Content Blocks
+     ============================ */
+
+  /* ---- Day Block — Clean, no frame ---- */
+  .dayBlock {
+    background: linear-gradient(165deg, #FFFFFF 0%, #FFF5F2 100%);
+    border-radius: var(--radius-lg);
+    padding: 28px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    border: 1px solid rgba(196, 114, 126, 0.1);
+    box-shadow:
+      0 2px 8px rgba(196, 114, 126, 0.06),
+      0 8px 24px rgba(196, 114, 126, 0.04);
+    animation: fadeSlideUp 0.5s ease-out 0.3s both;
+    transition: box-shadow 0.3s ease;
+  }
+
+  .dayBlock:hover {
+    box-shadow:
+      0 4px 12px rgba(196, 114, 126, 0.1),
+      0 12px 32px rgba(196, 114, 126, 0.06);
+  }
+
+  .dayHeader {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding-bottom: 14px;
+    border-bottom: 1.5px solid rgba(196, 114, 126, 0.12);
+  }
+
+  .dayNumber {
+    font-family: 'Playfair Display', var(--font-display);
+    font-style: italic;
+    font-size: 2.4rem;
+    font-weight: 900;
+    background: linear-gradient(135deg, var(--color-accent-light), var(--color-accent), var(--color-accent-deep));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    opacity: 0.35;
+    line-height: 1;
+    min-width: 48px;
+    text-align: center;
+  }
+
+  .dayTitle {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--color-heading);
+  }
+
+  .dayItems {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .dayItem {
+    display: flex;
+    align-items: center;
+    padding: 12px 16px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: var(--radius-sm);
+    direction: rtl;
+    gap: 10px;
+    transition: all 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    border: 1px solid rgba(196, 114, 126, 0.08);
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Pink accent line on hover */
+  .dayItem::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: linear-gradient(180deg, var(--color-accent-light), var(--color-accent));
+    transform: scaleY(0);
+    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    border-radius: 0 3px 3px 0;
+  }
+
+  .dayItem:hover {
+    background: #fff;
+    border-color: rgba(196, 114, 126, 0.18);
+    transform: translateX(-4px);
+    box-shadow: 0 2px 8px rgba(196, 114, 126, 0.08);
+  }
+
+  .dayItem:hover::after {
+    transform: scaleY(1);
+  }
+
+  .dayItemIcon {
+    flex-shrink: 0;
+    width: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-accent-light);
+    transition: all 0.25s ease;
+  }
+
+  .dayItem:hover .dayItemIcon {
+    color: var(--color-accent);
+    transform: scale(1.15);
+  }
+
+  .dayItemText {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    font-weight: 400;
+    color: var(--color-text);
+    text-align: right;
+    flex: 1;
+    line-height: 1.5;
+  }
+
+  /* ---- Kit — Gift Box with side ribbon ---- */
+  .kitGift {
+    position: relative;
+    background: #FFFFFF;
+    border-radius: 3px;
+    padding: 2px;
+    z-index: 1;
+    animation: fadeSlideUp 0.5s ease-out 0.4s both;
+    box-shadow:
+      0 4px 12px rgba(196, 114, 126, 0.08),
+      0 1px 4px rgba(0, 0, 0, 0.04);
+    transition: box-shadow 0.35s ease, transform 0.35s ease;
+  }
+
+  /* Stacked paper layers for gift */
+  .kitGift::before,
+  .kitGift::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #FFFFFF;
+    border-radius: 3px;
+    z-index: -1;
+    box-shadow: 0 2px 8px rgba(196, 114, 126, 0.06);
+    transition: all 0.35s ease;
+  }
+
+  .kitGift::before {
+    top: 4px;
+    left: -5px;
+    transform: rotate(0.8deg);
+  }
+
+  .kitGift::after {
+    top: -3px;
+    left: 4px;
+    transform: rotate(-0.6deg);
+  }
+
+  .kitGift:hover {
+    transform: translateY(-3px);
+    box-shadow:
+      0 8px 24px rgba(196, 114, 126, 0.15),
+      0 4px 12px rgba(196, 114, 126, 0.08);
+  }
+
+  .kitGift:hover::before {
+    transform: rotate(1.4deg);
+  }
+
+  .kitGift:hover::after {
+    transform: rotate(-1deg);
+  }
+
+  .kitGiftInner {
+    background: linear-gradient(165deg, #FFFFFF 0%, #FFF8F5 50%, #FFF2EE 100%);
+    border: 2px solid;
+    border-image: linear-gradient(135deg, #E8A0AC 0%, #D4808E 40%, #C4727E 70%, #E8A0AC 100%) 1;
+    padding: 32px 24px 28px;
+    position: relative;
+  }
+
+  /* Side ribbon — diagonal badge */
+  .kitRibbon {
+    position: absolute;
+    top: 16px;
+    left: -8px;
+    z-index: 4;
+    background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-deep) 100%);
+    color: #fff;
+    font-family: var(--font-display);
+    font-size: 0.8rem;
+    font-weight: 700;
+    padding: 6px 18px 6px 14px;
+    border-radius: 0 4px 4px 0;
+    box-shadow: 0 3px 10px rgba(196, 114, 126, 0.3);
+    line-height: 1;
+    letter-spacing: 0.02em;
+  }
+
+  /* Ribbon fold behind */
+  .kitRibbon::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 8px;
+    height: 6px;
+    background: var(--color-accent-deep);
+    clip-path: polygon(100% 0, 0 0, 100% 100%);
+  }
+
+  .kitTitle {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--color-heading);
+    margin: 0 0 16px 0;
+    text-align: center;
+  }
+
+  .kitList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px 24px;
+  }
+
+  .kitItem {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    font-weight: 400;
+    color: var(--color-text);
+    line-height: 1.7;
+    padding-right: 16px;
+    position: relative;
+    transition: color 0.2s ease;
+  }
+
+  .kitItem::before {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 10px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--color-accent-light), var(--color-accent));
+    transition: transform 0.2s ease;
+  }
+
+  .kitItem:hover {
+    color: var(--color-accent-deep);
+  }
+
+  .kitItem:hover::before {
+    transform: scale(1.4);
+  }
+
+  /* ---- Framed Info Cards — Thin pink frame + stacked paper ---- */
+  .framedCard {
+    background: #FFFFFF;
+    border-radius: 3px;
+    padding: 2px;
+    position: relative;
+    z-index: 1;
+    animation: fadeSlideUp 0.5s ease-out 0.45s both;
+    transition: box-shadow 0.35s ease, transform 0.35s ease;
+    box-shadow:
+      0 4px 12px rgba(196, 114, 126, 0.08),
+      0 1px 4px rgba(0, 0, 0, 0.04);
+  }
+
+  /* Stacked paper layers */
+  .framedCard::before,
+  .framedCard::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #FFFFFF;
+    border-radius: 3px;
+    z-index: -1;
+    box-shadow: 0 2px 8px rgba(196, 114, 126, 0.06);
+    transition: all 0.35s ease;
+  }
+
+  .framedCard::before {
+    top: 4px;
+    left: -5px;
+    transform: rotate(0.8deg);
+  }
+
+  .framedCard::after {
+    top: -3px;
+    left: 4px;
+    transform: rotate(-0.6deg);
+  }
+
+  .framedCard:hover {
+    transform: translateY(-3px);
+    box-shadow:
+      0 8px 24px rgba(196, 114, 126, 0.15),
+      0 4px 12px rgba(196, 114, 126, 0.08);
+  }
+
+  .framedCard:hover::before {
+    transform: rotate(1.4deg);
+  }
+
+  .framedCard:hover::after {
+    transform: rotate(-1deg);
+  }
+
+  .framedCardInnerHighlight {
+    background: linear-gradient(165deg, #FFF5F2 0%, #FFEDEA 100%);
+    border: 2px solid;
+    border-image: linear-gradient(135deg, #E8A0AC 0%, #D4808E 40%, #C4727E 70%, #E8A0AC 100%) 1;
+    padding: 22px;
+    text-align: center;
+    position: relative;
+  }
+
+  .infoCardTitle {
+    font-family: var(--font-display);
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--color-accent-deep);
+    margin: 0 0 8px 0;
+  }
+
+  .infoCardText {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--color-text);
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  /* ---- Course CTA ---- */
+  .courseCtaBtn {
+    align-self: center;
+    padding: 18px 52px;
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #fff;
+    background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-deep) 100%);
+    border: none;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 24px var(--color-accent-glow);
+    margin-top: 8px;
+    position: relative;
+    overflow: hidden;
+    animation: fadeSlideUp 0.5s ease-out 0.55s both;
+  }
+
+  .courseCtaBtn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
+    transition: left 0.6s ease;
+  }
+
+  .courseCtaBtn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 36px rgba(196, 114, 126, 0.4);
+  }
+
+  .courseCtaBtn:hover::before {
+    left: 120%;
+  }
+
+  /* ============================
+     Benefits
+     ============================ */
+  .benefitsSection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+  }
+
+  .benefitsTitle {
+    font-family: var(--font-display);
+    font-size: clamp(1.3rem, 3.5vw, 1.65rem);
+    font-weight: 700;
+    color: var(--color-heading);
+    margin: 0;
+    text-align: center;
+  }
+
+  .benefitsGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    width: 100%;
+  }
+
+  .benefitCard {
+    background: var(--bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: 28px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .benefitCard::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--color-accent-light), var(--color-accent));
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+  }
+
+  .benefitCard:hover {
+    transform: translateY(-3px);
+    border-color: var(--color-border-hover);
+    box-shadow: 0 8px 28px rgba(196, 114, 126, 0.1);
+  }
+
+  .benefitCard:hover::after {
+    transform: scaleX(1);
+  }
+
+  .benefitIconWrapper {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: rgba(196, 114, 126, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-accent);
+  }
+
+  .benefitCardTitle {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--color-heading);
+    margin: 0;
+  }
+
+  .benefitCardDesc {
+    font-family: var(--font-body);
+    font-size: 0.88rem;
+    font-weight: 400;
+    color: var(--color-text);
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  /* ============================
+     Bottom CTA
+     ============================ */
+  .bottomCta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 22px;
+    text-align: center;
+    padding: 44px 28px;
+    background: linear-gradient(165deg, #FFF5F2 0%, #FFEDEA 100%);
+    border-radius: var(--radius-lg);
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(196, 114, 126, 0.2);
+    box-shadow: 0 4px 16px rgba(196, 114, 126, 0.1);
+  }
+
+  .bottomCta::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% 50%, rgba(196, 114, 126, 0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .bottomCtaText {
+    font-family: var(--font-display);
+    font-size: clamp(1.05rem, 3vw, 1.35rem);
+    font-weight: 600;
+    color: var(--color-heading);
+    margin: 0;
+    position: relative;
+    z-index: 1;
+  }
+
+  .ctaButton {
+    padding: 18px 48px;
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #fff;
+    background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-deep) 100%);
+    border: none;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 24px var(--color-accent-glow);
+  }
+
+  .ctaButton::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, transparent 0%, rgba(255, 255, 255, 0.15) 50%, transparent 100%);
+    transform: translateX(100%);
+    transition: transform 0.5s ease;
+  }
+
+  .ctaButton:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 36px rgba(196, 114, 126, 0.4);
+  }
+
+  .ctaButton:hover::before {
+    transform: translateX(-100%);
+  }
+
+  /* ========================================
+     Responsive
+     ======================================== */
+
+  @media (max-width: 640px) {
+    .section {
+      padding: 70px 14px 90px;
+    }
+
+    .container {
+      gap: 44px;
+    }
+
+    .courseList {
+      gap: 22px;
+    }
+
+    .courseCardInner {
+      padding: 22px 18px;
+    }
+
+    .courseCard::before {
+      top: 4px;
+      left: -5px;
+    }
+
+    .courseCard::after {
+      top: -2px;
+      left: 4px;
+    }
+
+    .courseName {
+      font-size: 1.18rem;
+    }
+
+    /* Modal */
+    .modalClose {
+      top: 12px;
+      left: 12px;
+      width: 40px;
+      height: 40px;
+    }
+
+    .modalHeader {
+      padding: 36px 20px 0;
+    }
+
+    .modalBody {
+      padding: 24px 20px 40px;
+      gap: 22px;
+    }
+
+    .dayItems {
+      grid-template-columns: 1fr;
+    }
+
+    .dayBlock {
+      padding: 22px 14px;
+      border-radius: 16px;
+    }
+
+    .dayItem {
+      padding: 10px 12px;
+    }
+
+    .dayItemText {
+      font-size: 0.9rem;
+    }
+
+    .dayNumber {
+      font-size: 2rem;
+      min-width: 40px;
+    }
+
+    .courseCtaBtn {
+      width: 100%;
+      max-width: 300px;
+      padding: 16px 28px;
+      font-size: 1rem;
+    }
+
+    .kitList {
+      grid-template-columns: 1fr;
+    }
+
+    .benefitsGrid {
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+
+    .benefitCard {
+      padding: 22px 18px;
+    }
+
+    .bottomCta {
+      padding: 32px 18px;
+    }
+
+    .ctaButton {
+      padding: 16px 32px;
+      font-size: 1rem;
+      width: 100%;
+      max-width: 340px;
+    }
+  }
+
+  @media (max-width: 380px) {
+    .sectionTitle {
+      font-size: 1.25rem;
+    }
+
+    .courseName {
+      font-size: 1rem;
+    }
+
+    .courseCard::before {
+      top: 3px;
+      left: -4px;
+    }
+
+    .courseCard::after {
+      top: -2px;
+      left: 3px;
+    }
+
+    .dayNumber {
+      font-size: 1.8rem;
+    }
+
+    .dayItemText {
+      font-size: 0.85rem;
+    }
+
+    .ctaButton {
+      padding: 14px 24px;
+      font-size: 0.95rem;
+    }
+  }

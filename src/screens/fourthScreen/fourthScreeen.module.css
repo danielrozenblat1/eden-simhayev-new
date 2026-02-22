@@ -1,57 +1,33 @@
 /* ========================================
-   FourthScreen - Eden's Story
-   Inspired by Keren's component
-   Pink/Burgundy theme
+   FourthScreen - Eden's Story (מי אני)
+   Original two-column intro + Framed card
    RTL Hebrew Layout
    ======================================== */
 
 @import '../../components/fonts/fonts.css';
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap');
 
 * {
   box-sizing: border-box;
 }
 
+/* ===== Section wrapper ===== */
 .section {
   width: 100%;
   margin: 0;
   padding: 0;
-  background: linear-gradient(45deg, 
-    #2B0F18 0%,
-    #3A1520 10%,
-    #2F1119 20%,
-    #4A1F2D 30%,
-    #35141E 40%,
-    #5D2A3A 50%,
-    #3F1624 60%,
-    #4A1F2D 70%,
-    #3A1520 80%,
-    #562836 90%,
-    #2B0F18 100%
-  );
-  color: #f5f5f5;
+  background: #F9F5F3;
+  color: #3A1F1A;
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  min-height: 100vh;
   overflow: visible;
 }
 
-.section::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: 
-    radial-gradient(circle at 20% 80%, rgba(212, 96, 122, 0.12) 0%, transparent 60%),
-    radial-gradient(circle at 80% 20%, rgba(232, 180, 188, 0.1) 0%, transparent 60%),
-    radial-gradient(circle at 40% 40%, rgba(196, 114, 126, 0.11) 0%, transparent 60%);
-  pointer-events: none;
-  z-index: 0;
-}
-
+/* ========================================
+   Original Two-Column Intro
+   ======================================== */
 .container {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -60,11 +36,11 @@
   width: 100%;
   position: relative;
   z-index: 1;
-  min-height: 100vh;
-  direction: ltr; /* Change to LTR so content is on left, image on right */
+  min-height: auto;
+  direction: ltr;
 }
 
-/* Image section - נקי בלי רקעים, צמוד לתחתית */
+/* Image section */
 .imageWrapper {
   width: 100%;
   height: 100%;
@@ -73,326 +49,357 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  padding: 0;
+  padding: 40px;
   background: transparent;
-  order: 1; /* Image appears first (left side) */
+  order: 1;
 }
 
-.imagePlaceholder {
-  width: 75%;
+.imageCard {
+  position: relative;
+  background: #FFFFFF;
+  border: none;
+  border-radius: 2px;
+  padding: 14px 14px 42px;
+  z-index: 1;
+  display: inline-block;
+  transform: rotate(-3deg);
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.1),
+    0 1px 4px rgba(0, 0, 0, 0.06);
+}
+
+.imageCard::before,
+.imageCard::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #FFFFFF;
+  border: none;
+  border-radius: 2px;
+  z-index: -1;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.imageCard::before {
+  top: 6px;
+  left: -8px;
+  transform: rotate(4deg);
+}
+
+.imageCard::after {
+  top: -4px;
+  left: 6px;
+  transform: rotate(-2.5deg);
+}
+
+.imageFrame {
+  padding: 6px;
+  background: linear-gradient(135deg, #E8A0AC 0%, #D4808E 40%, #C4727E 70%, #E8A0AC 100%);
+  border-radius: 3px;
+}
+
+.edenImage {
+  width: 100%;
+  max-width: 420px;
   height: auto;
-  max-height: 100%;
-  aspect-ratio: 3 / 4;
-  border-radius: 24px;
-  background: linear-gradient(
-    135deg,
-    rgba(196, 114, 126, 0.2) 0%,
-    rgba(212, 96, 122, 0.1) 50%,
-    rgba(184, 150, 157, 0.15) 100%
-  );
-  border: 1px dashed rgba(212, 96, 122, 0.3);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  object-fit: contain;
-  object-position: bottom center;
+  border-radius: 2px;
+  object-fit: cover;
+  display: block;
 }
 
-.imagePlaceholder span {
-  font-family: 'Heebo', sans-serif;
-  font-size: 0.9rem;
-  color: rgba(255, 240, 243, 0.6);
-  opacity: 0.7;
+/* Ribbon */
+.ribbon {
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(90deg, #D4808E 0%, #C4727E 30%, #B8636F 70%, #D4808E 100%);
+  padding: 10px 48px;
+  white-space: nowrap;
+  box-shadow:
+    0 3px 10px rgba(196, 114, 126, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.08);
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
+.ribbon::before,
+.ribbon::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 20px;
+}
+
+.ribbon::before {
+  left: -20px;
+  background: linear-gradient(135deg, transparent 33%, #B8636F 33%, #C4727E 100%);
+  clip-path: polygon(100% 0, 100% 100%, 0 50%);
+}
+
+.ribbon::after {
+  right: -20px;
+  background: linear-gradient(225deg, transparent 33%, #B8636F 33%, #C4727E 100%);
+  clip-path: polygon(0 0, 0 100%, 100% 50%);
+}
+
+.ribbon span {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1rem;
+  font-weight: 400;
+  font-style: italic;
+  color: #FFFFFF;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+/* Content section */
 .content {
-  padding: 60px 80px;
+  padding: 70px 80px;
   overflow: hidden;
-  background: linear-gradient(
-    165deg,
-    #5D2A3A 0%,
-    #4A1F2D 25%,
-    #3F1624 50%,
-    #3A1520 75%,
-    #2B0F18 100%
-  );
-  backdrop-filter: blur(15px);
-  border-left: 1px solid rgba(232, 180, 188, 0.3);
+  background: transparent;
+  border-right: 1px solid rgba(196, 114, 126, 0.12);
   position: relative;
   direction: rtl;
   text-align: right;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  order: 2; /* Content appears second (right side) */
+  order: 2;
 }
 
-.content::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(
-    45deg,
-    transparent 40%,
-    rgba(232, 180, 188, 0.1) 50%,
-    transparent 60%
-  );
-  pointer-events: none;
-}
-
+/* Title */
 .mainTitle {
   font-family: 'Discovery', sans-serif;
   font-size: 2.5rem;
   font-weight: 700;
-  color: transparent;
-  background: linear-gradient(135deg, 
-    #FFF5F3, 
-    #F5D5D5, 
-    #E8B4BC,
-    #E0A5B0,
-    #F4E8E5
-  );
-  -webkit-background-clip: text;
-  background-clip: text;
+  color: #2B0F18;
   margin-bottom: 1rem;
-  line-height: 1.2;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  line-height: 1.3;
 }
 
+/* Quote container */
 .quoteContainer {
-  background: linear-gradient(
-    165deg,
-    #5D2A3A 0%,
-    #4A1F2D 25%,
-    #3F1624 50%,
-    #3A1520 75%,
-    #2B0F18 100%
-  );
-  backdrop-filter: blur(20px);
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border-radius: 18px;
-  border: 1px solid rgba(232, 180, 188, 0.3);
-  padding: 25px 30px;
-  margin: 2rem 0;
+  border: 1px solid rgba(196, 114, 126, 0.15);
+  padding: 28px 32px;
+  margin: 1.5rem 0;
   position: relative;
-  overflow: hidden;
-  box-shadow: 
-    0 4px 16px rgba(0, 0, 0, 0.4),
-    inset 0 1px 0 rgba(244, 232, 229, 0.2),
-    inset 0 -1px 0 rgba(196, 114, 126, 0.1),
-    0 0 20px rgba(232, 180, 188, 0.08);
-}
-
-.quoteContainer::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(244, 232, 229, 0.2),
-    transparent
-  );
-  transition: left 0.6s ease;
-}
-
-.quoteContainer:hover::before {
-  left: 100%;
-}
-
-.quoteContainer::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: radial-gradient(circle at center, rgba(212, 96, 122, 0.1), transparent 70%);
-  pointer-events: none;
+  box-shadow: 0 4px 20px rgba(196, 114, 126, 0.06);
 }
 
 .quote {
   font-family: 'Heebo', sans-serif;
-  font-size: 1.25rem;
+  font-size: 1.2rem;
   font-weight: 400;
-  color: #FFF5F3;
-  line-height: 1.6;
+  color: #3A1F1A;
+  line-height: 1.7;
   text-align: center;
   font-style: italic;
   margin: 0;
-  position: relative;
-  z-index: 1;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
+/* Text */
 .textBlock {
   margin-bottom: 0.5rem;
 }
 
 .paragraph {
   font-family: 'Heebo', sans-serif;
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   font-weight: 300;
-  color: #F4E8E5;
-  line-height: 1.7;
+  color: #3A1F1A;
+  line-height: 1.8;
   margin-bottom: 0.2rem;
 }
 
-.paragraph strong {
-  font-weight: 500;
-  color: #FFF5F3;
-  font-size: 1.2rem;
-}
-
-.paragraphBold {
-  font-family: 'Discovery', sans-serif;
-  font-size: 1.2rem;
-  font-weight: 700;
-  color: #FFF5F3;
-  line-height: 1.8;
-  margin: 0.5rem 0;
-}
-
 .quoteInline {
+  font-family: 'Discovery', sans-serif;
+  font-weight: 700;
+  color: #C4727E;
+  font-style: normal;
+}
+
+/* Dividers */
+.divider {
+  width: 80%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(196, 114, 126, 0.12) 15%,
+    rgba(196, 114, 126, 0.2) 50%,
+    rgba(196, 114, 126, 0.12) 85%,
+    transparent 100%
+  );
+  margin: 1.2rem auto;
+}
+
+/* ========================================
+   Framed Card Section
+   ======================================== */
+.cardWrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 30px 60px 80px;
+}
+
+.card {
+  position: relative;
+  width: 100%;
+  max-width: 820px;
+  background: #FFFFFF;
+  border: none;
+  border-radius: 6px;
+  padding: 50px 60px;
+  z-index: 1;
+  direction: rtl;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Stacked paper layers behind */
+.card::before,
+.card::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #FFFFFF;
+  border: none;
+  border-radius: 6px;
+  z-index: -1;
+}
+
+.card::before {
+  top: 8px;
+  left: -6px;
+  transform: rotate(-1.2deg);
+}
+
+.card::after {
+  top: 14px;
+  left: 4px;
+  transform: rotate(0.8deg);
+}
+
+/* Card title */
+.crashTitle {
+  font-family: 'Discovery', sans-serif;
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: #C4727E;
+  line-height: 1.3;
+  margin: 0 0 0.5rem;
+  text-align: center;
+}
+
+/* Card paragraphs */
+.cardParagraph {
   font-family: 'Heebo', sans-serif;
-  font-weight: 500;
-  color: #FFF5F3;
-  font-style: italic;
+  font-size: 1.15rem;
+  font-weight: 300;
+  color: #3A1F1A;
+  line-height: 1.85;
+  margin-bottom: 0.2rem;
+  text-align: center;
+}
+
+.cardParagraphBold {
+  font-family: 'Discovery', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #C4727E;
+  line-height: 1.85;
+  margin: 0.5rem 0;
+  text-align: center;
 }
 
 .accent {
   font-family: 'Heebo', sans-serif;
   font-weight: 400;
-  color: #E8B4BC;
-  border-bottom: 1.5px solid rgba(232, 180, 188, 0.4);
-  padding-bottom: 1px;
+  color: #C4727E;
+}
+
+.highlight {
+  font-family: 'Discovery', sans-serif;
+  font-weight: 700;
+  color: #C4727E;
 }
 
 .closingLine {
   font-family: 'Discovery', sans-serif;
-  font-size: 1.15rem;
+  font-size: 1.2rem;
   font-weight: 700;
-  color: #FFF5F3;
-  line-height: 1.8;
+  color: #C4727E;
+  line-height: 1.85;
   margin: 1rem 0;
-  text-align: right;
-  padding: 12px 24px;
-  background: rgba(212, 96, 122, 0.1);
-  border-right: 4px solid #D4607A;
-  border-radius: 0 12px 12px 0;
+  text-align: center;
 }
 
-.divider {
-  width: 60px;
-  height: 1px;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(232, 180, 188, 0.6),
-    rgba(244, 232, 229, 0.8),
-    rgba(232, 180, 188, 0.6),
-    transparent
-  );
-  margin: 0.5rem auto;
-}
-
+/* CTA Button */
 .ctaButton {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 12px;
   width: 100%;
   max-width: 400px;
-  margin: 2rem auto 0;
-  padding: 20px 30px;
-  background: linear-gradient(
-    135deg,
-    rgba(43, 15, 24, 0.95),
-    rgba(58, 21, 32, 0.92),
-    rgba(43, 15, 24, 0.95),
-    rgba(63, 22, 36, 0.92),
-    rgba(43, 15, 24, 0.95)
-  );
-  backdrop-filter: blur(25px);
-  border: 2px solid transparent;
-  background-clip: padding-box;
-  border-radius: 25px;
-  font-family: 'Heebo', sans-serif;
-  font-size: 1.1rem;
-  font-weight: 500;
-  color: rgba(255, 245, 243, 0.95);
+  margin: 2.5rem auto 0;
+  padding: 20px 52px;
+  background: linear-gradient(135deg, #C4727E 0%, #A85A6A 100%);
+  color: #fff;
+  font-family: 'Discovery', sans-serif;
+  font-size: 1.125rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 16px;
   cursor: pointer;
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
-  box-shadow: 
-    0 4px 20px rgba(0, 0, 0, 0.6),
-    inset 0 1px 0 rgba(244, 232, 229, 0.25),
-    0 0 0 1px rgba(196, 114, 126, 0.35),
-    0 2px 8px rgba(232, 180, 188, 0.15),
-    0 0 15px rgba(244, 232, 229, 0.08);
-  z-index: 10;
+  box-shadow:
+    0 8px 32px rgba(196, 114, 126, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
 .ctaButton::before {
   content: '';
   position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(244, 232, 229, 0.25),
-    transparent
-  );
-  transition: left 0.5s ease;
-}
-
-.ctaButton:hover::before {
-  left: 100%;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, transparent 50%);
+  border-radius: 16px;
+  pointer-events: none;
 }
 
 .ctaButton:hover {
   transform: translateY(-2px);
-  background: linear-gradient(
-    135deg,
-    rgba(58, 21, 32, 0.98),
-    rgba(63, 22, 36, 0.96),
-    rgba(58, 21, 32, 0.98),
-    rgba(74, 31, 45, 0.96),
-    rgba(58, 21, 32, 0.98)
-  );
-  box-shadow: 
-    0 8px 28px rgba(0, 0, 0, 0.7),
-    inset 0 1px 0 rgba(245, 213, 213, 0.3),
-    0 0 0 2px rgba(232, 180, 188, 0.45),
-    0 4px 12px rgba(244, 232, 229, 0.2),
-    0 0 25px rgba(245, 213, 213, 0.1);
-  color: rgba(255, 250, 245, 1);
+  box-shadow:
+    0 12px 40px rgba(196, 114, 126, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
 .ctaButton:active {
   transform: translateY(0);
-  box-shadow: 
-    0 4px 16px rgba(0, 0, 0, 0.6),
-    inset 0 2px 4px rgba(196, 114, 126, 0.15),
-    0 0 0 1px rgba(196, 114, 126, 0.35);
 }
 
 .buttonIcon {
   font-size: 1.3rem;
 }
 
-/* --- מדיה קווריות רספונסיביות --- */
+/* ========================================
+   Responsive
+   ======================================== */
 
-/* טאבלטים - עד 1024px */
 @media (max-width: 1024px) {
   .container {
     grid-template-columns: 1fr;
@@ -400,40 +407,38 @@
     min-height: auto;
     direction: rtl;
   }
-  
+
   .imageWrapper {
     height: auto;
     order: 1;
+    padding: 30px;
   }
-  
-  .imagePlaceholder {
-    width: 70%;
-    height: auto;
+
+  .edenImage {
+    max-width: 340px;
   }
-  
+
   .content {
     height: auto;
     padding: 40px 60px;
     order: 2;
-    border-left: none;
-    border-top: 1px solid rgba(232, 180, 188, 0.25);
+    border-right: none;
   }
-  
+
   .mainTitle {
     font-size: 2rem;
   }
-  
-  .quote {
-    font-size: 1.15rem;
+
+  .cardWrapper {
+    padding: 40px 40px 60px;
+  }
+
+  .card {
+    padding: 40px 45px;
   }
 }
 
-/* טלפונים - עד 768px */
 @media (max-width: 768px) {
-  .section {
-    border-radius: 50px;
-  }
-  
   .container {
     grid-template-columns: 1fr;
     height: auto;
@@ -443,21 +448,18 @@
 
   .imageWrapper {
     height: auto;
-    padding: 0;
+    padding: 20px;
     order: 1;
   }
 
-  .imagePlaceholder {
-    width: 65%;
-    height: auto;
-    display: block;
+  .edenImage {
+    max-width: 280px;
   }
 
   .content {
-    padding: 30px 20px;
+    padding: 30px 24px;
     text-align: center;
-    border-left: none;
-    border-top: none;
+    border-right: none;
   }
 
   .mainTitle {
@@ -467,7 +469,6 @@
 
   .quote {
     font-size: 1.05rem;
-    text-align: center;
   }
 
   .paragraph {
@@ -476,44 +477,61 @@
   }
 
   .quoteContainer {
-    padding: 20px 25px;
+    padding: 22px 26px;
   }
 
   .divider {
-    width: 40%;
-    margin: 1.5rem auto;
+    width: 60%;
+    margin: 1rem auto;
+  }
+
+  /* Card */
+  .cardWrapper {
+    padding: 30px 20px 50px;
+  }
+
+  .card {
+    padding: 30px 24px;
+  }
+
+  .card::before {
+    top: 6px;
+    left: -4px;
+  }
+
+  .card::after {
+    top: 10px;
+    left: 3px;
+  }
+
+  .crashTitle {
+    font-size: 1.8rem;
+  }
+
+  .cardParagraph {
+    font-size: 1rem;
   }
 
   .closingLine {
-    text-align: center;
-    border-right: none;
-    border-bottom: 3px solid #D4607A;
-    border-radius: 12px;
+    font-size: 1rem;
   }
-  
+
   .ctaButton {
     max-width: 350px;
   }
 }
 
-/* טלפונים קטנים - עד 480px */
 @media (max-width: 480px) {
-  .section {
-    border-radius: 30px;
-  }
-  
   .imageWrapper {
-    height: auto;
-    padding: 0;
+    padding: 16px;
   }
 
-  .imagePlaceholder {
-    width: 60%;
-    height: auto;
+  .edenImage {
+    max-width: 280px;
   }
 
   .content {
-    padding: 20px 18px;
+    padding: 24px 18px;
   }
 
   .mainTitle {
@@ -533,94 +551,80 @@
   }
 
   .divider {
-    width: 35%;
+    width: 50%;
+  }
+
+  /* Card */
+  .cardWrapper {
+    padding: 24px 14px 40px;
+  }
+
+  .card {
+    padding: 24px 18px;
+  }
+
+  .card::before {
+    top: 5px;
+    left: -3px;
+    transform: rotate(-0.8deg);
+  }
+
+  .card::after {
+    top: 9px;
+    left: 2px;
+    transform: rotate(0.5deg);
+  }
+
+  .crashTitle {
+    font-size: 1.5rem;
+  }
+
+  .cardParagraph {
+    font-size: 0.95rem;
   }
 
   .closingLine {
-    font-size: 1rem;
-    padding: 10px 16px;
+    font-size: 0.95rem;
   }
-  
-  .ctaButton {
-    max-width: 90%; 
-    padding: 15px 25px;
-    font-size: 1rem;
-  }
-}
 
-/* 350px - 450px */
-@media (min-width: 350px) and (max-width: 450px) {
-  .section {
-    border-radius: 30px;
-  }
-  
-  .imageWrapper {
-    height: auto;
-    padding: 0;
-  }
-  
-  .imagePlaceholder {
-    width: 60%;
-    height: auto;
-  }
-  
-  .content {
-    padding: 25px 10px;
-  }
-  
-  .mainTitle {
-    font-size: 1.4rem;
-  }
-  
   .ctaButton {
     max-width: 90%;
+    padding: 18px 25px;
+    font-size: 1rem;
   }
 }
 
-/* מתחת ל-350px */
-@media (max-width: 349px) {
-  .section {
-    border-radius: 20px;
-  }
-  
-  .imageWrapper {
-    height: auto;
-    padding: 0;
-  }
-  
-  .imagePlaceholder {
-    width: 55%;
-    height: auto;
-  }
-
+@media (max-width: 380px) {
   .content {
-    padding: 20px 5px; 
+    padding: 20px 14px;
   }
 
   .mainTitle {
-    font-size: 1.3rem;
-  }
-
-  .quoteContainer {
-    padding: 16px 18px;
+    font-size: 1.35rem;
   }
 
   .paragraph {
     font-size: 0.9rem;
   }
 
-  .quote {
-    font-size: 0.95rem;
+  .card {
+    padding: 20px 14px;
+  }
+
+  .crashTitle {
+    font-size: 1.35rem;
+  }
+
+  .cardParagraph {
+    font-size: 0.9rem;
   }
 
   .closingLine {
-    font-size: 0.95rem;
-    padding: 8px 14px;
+    font-size: 0.9rem;
   }
 
   .ctaButton {
-    max-width: 95%; 
-    padding: 12px 15px;
-    font-size: 0.9rem;
+    padding: 16px 20px;
+    font-size: 0.95rem;
   }
 }

@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from "react";
 import styles from "./fourthScreeen.module.css";
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import edenImage from "../../assets/עדן תדמית 1.png";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -27,7 +28,7 @@ const FourthScreen = () => {
             trigger: quoteRef.current,
             start: "top 80%",
             end: "bottom 20%",
-            toggleActions: "play none none reverse"
+            toggleActions: "play none none none"
           }
         }
       );
@@ -49,7 +50,7 @@ const FourthScreen = () => {
               trigger: ref,
               start: "top 85%",
               end: "bottom 15%",
-              toggleActions: "play none none reverse"
+              toggleActions: "play none none none"
             }
           }
         );
@@ -61,7 +62,7 @@ const FourthScreen = () => {
     };
   }, []);
 
-  const handleWhatsApp = () => {    
+  const handleWhatsApp = () => {
     const message = encodeURIComponent(
       "היי עדן הגעתי מהדף שלך, אשמח להתחיל את המסע!"
     );
@@ -70,8 +71,9 @@ const FourthScreen = () => {
 
   return (
     <section ref={containerRef} className={styles.section} dir="rtl" id="מי אנחנו">
+
+      {/* ===== Original two-column intro ===== */}
       <div className={styles.container}>
-        {/* Content section - left side */}
         <div className={styles.content}>
           <h2 className={styles.mainTitle}>נעים מאוד, עדן שמחייב</h2>
 
@@ -104,73 +106,83 @@ const FourthScreen = () => {
               לעומק. הייתי מוכנה לסוע שעות ולעשות כל מה שצריך כדי ללמוד את
               המקצוע. בלי קליניקה, בלי ניסיון, בלי כלום - רק אהבה ורצון.
             </p>
-
-            <div className={styles.divider}></div>
-
-            <p className={styles.paragraphBold} ref={(el) => strongTextRefs.current[0] = el}>
-              ואז הגיעה ההתרסקות.
-            </p>
-
-            <p className={styles.paragraph}>
-              <span className={styles.accent}>(שילמתי אלפי שקלים)</span> על
-              קורסים שלימדו אותי לעבוד עם חומרים לא בריאים ולא אמיתיים. אף
-              אחד לא הסביר לי למה עושים מה שעושים. אף אחד לא היה שם אחרי
-              שהקורס נגמר. יצאתי עם תעודה - ובלי שום ביטחון לגעת בלקוחה
-              אמיתית.
-            </p>
-
-            <div className={styles.divider}></div>
-
-            <p className={styles.paragraph}>
-              כמעט ויתרתי.{" "}
-              <span className={styles.accent}>
-                (אבל משהו בפנים לא נתן לי לעזוב)
-              </span>
-              . המשכתי, עשיתי השתלמויות, עבדתי עם מאות לקוחות, למדתי
-              מטעויות - עד שהגעתי למקום שרציתי.
-            </p>
-
-            <div className={styles.divider}></div>
-
-            <p className={styles.paragraphBold} ref={(el) => strongTextRefs.current[1] = el}>
-              הבטחתי לעצמי שאני אהיה המדריכה שהלוואי והייתה לי בהתחלה -
-              מישהי שמלמדת באמת, מסבירה עד הסוף, ולא נעלמת ברגע שנותנים
-              תעודה.
-            </p>
-
-            <div className={styles.divider}></div>
-
-            <p className={styles.paragraph}>
-              היום אני עוזרת לנשים לעבור את אותו המסע - בלי הטעויות שאני
-              עברתי, בלי לבזבז אלפים על קורסים ריקים, ועם ליווי צמוד שמוודא
-              שהן יוצאות לא רק עם תעודה, אלא עם{" "}
-              <span className={styles.accent}>
-                (קריירה רווחית ומקצועיות שיא)
-              </span>
-              .
-            </p>
-
-            <div className={styles.divider}></div>
-
-            <p className={styles.closingLine} ref={(el) => strongTextRefs.current[2] = el}>
-              כי בעיניי? תעודה בלי ביטחון בידיים - לא שווה את הנייר שהיא
-              מודפסת עליו.
-            </p>
           </div>
+        </div>
+
+        <div className={styles.imageWrapper}>
+          <div className={styles.imageCard}>
+            <div className={styles.imageFrame}>
+              <img src={edenImage} alt="עדן שמחייב" className={styles.edenImage} />
+            </div>
+            <div className={styles.ribbon}>
+              <span>Eden Simhayev</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* ===== Framed card: ההתרסקות + rest of story ===== */}
+      <div className={styles.cardWrapper}>
+        <div className={styles.card}>
+          <p className={styles.crashTitle} ref={(el) => strongTextRefs.current[0] = el}>
+            ואז הגיעה ההתרסקות.
+          </p>
+
+          <div className={styles.divider}></div>
+
+          <p className={styles.cardParagraph}>
+            <span className={styles.highlight}>שילמתי אלפי שקלים</span> על
+            קורסים שלימדו אותי לעבוד עם חומרים לא בריאים ולא אמיתיים. אף
+            אחד לא הסביר לי למה עושים מה שעושים. אף אחד לא היה שם אחרי
+            שהקורס נגמר. יצאתי עם תעודה - ובלי שום ביטחון לגעת בלקוחה
+            אמיתית.
+          </p>
+
+          <div className={styles.divider}></div>
+
+          <p className={styles.cardParagraph}>
+            כמעט ויתרתי.{" "}
+            <span className={styles.highlight}>
+              אבל משהו בפנים לא נתן לי לעזוב
+            </span>
+            . המשכתי, עשיתי השתלמויות, עבדתי עם מאות לקוחות, למדתי
+            מטעויות - עד שהגעתי למקום שרציתי.
+          </p>
+
+          <div className={styles.divider}></div>
+
+          <p className={styles.cardParagraphBold} ref={(el) => strongTextRefs.current[1] = el}>
+            הבטחתי לעצמי שאני אהיה המדריכה שהלוואי והייתה לי בהתחלה -
+            מישהי שמלמדת באמת, מסבירה עד הסוף, ולא נעלמת ברגע שנותנים
+            תעודה.
+          </p>
+
+          <div className={styles.divider}></div>
+
+          <p className={styles.cardParagraph}>
+            היום אני עוזרת לנשים לעבור את אותו המסע - בלי הטעויות שאני
+            עברתי, בלי לבזבז אלפים על קורסים ריקים, ועם ליווי צמוד שמוודא
+            שהן יוצאות לא רק עם תעודה, אלא עם{" "}
+            <span className={styles.highlight}>
+              קריירה רווחית ומקצועיות שיא
+            </span>
+            .
+          </p>
+
+          <div className={styles.divider}></div>
+
+          <p className={styles.closingLine} ref={(el) => strongTextRefs.current[2] = el}>
+            כי בעיניי? תעודה בלי ביטחון בידיים - לא שווה את הנייר שהיא
+            מודפסת עליו.
+          </p>
 
           <button className={styles.ctaButton} onClick={handleWhatsApp}>
             <span className={styles.buttonIcon}>💬</span>
             בואי נדבר, אני כאן בשבילך
           </button>
         </div>
-
-        {/* Image section - right side */}
-        <div className={styles.imageWrapper}>
-          <div className={styles.imagePlaceholder}>
-            <span>תמונה של עדן שמחייב</span>
-          </div>
-        </div>
       </div>
+
     </section>
   );
 };

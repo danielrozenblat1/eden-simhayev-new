@@ -4,9 +4,30 @@ import styles from "./sixthScreen.module.css";
 const PRICE_PER_TREATMENT = 250;
 const EDEN_PHONE = "972543414939";
 
+// Import work images for magazine layout
+const img1 = require("../../assets/shani_works_11.png");
+const img2 = require("../../assets/shani_works_2.png");
+const img3 = require("../../assets/shani_works_3.png");
+const img4 = require("../../assets/shani_works_4.png");
+const img5 = require("../../assets/shani_works_16.png");
+const img6 = require("../../assets/shani_works_6.png");
+
 const CalcScreen = () => {
-  const [treatments, setTreatments] = useState(50);
-  const income = treatments * PRICE_PER_TREATMENT;
+  const [inputValue, setInputValue] = useState("");
+  const [income, setIncome] = useState(null);
+  const [isCalculated, setIsCalculated] = useState(false);
+
+  const handleCalculate = () => {
+    const num = parseInt(inputValue);
+    if (num && num > 0) {
+      setIncome(num * PRICE_PER_TREATMENT);
+      setIsCalculated(true);
+    }
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") handleCalculate();
+  };
 
   const handleWhatsApp = () => {
     const message = encodeURIComponent(
@@ -17,11 +38,6 @@ const CalcScreen = () => {
 
   const formatNumber = (num) => num.toLocaleString("he-IL");
 
-  // Calculate percentage for slider fill
-  const min = 10;
-  const max = 200;
-  const pct = ((treatments - min) / (max - min)) * 100;
-
   return (
     <section className={styles.section} dir="rtl">
       <div className={styles.bgOrb1} />
@@ -29,51 +45,80 @@ const CalcScreen = () => {
 
       <div className={styles.container}>
         <p className={styles.subtitle}>והשאלה שבטוח שאלת את עצמך</p>
-        <h2 className={styles.title}>כמה אפשר להרוויח מהתחום..?</h2>
+        <h2 className={styles.title}>
+          כמה אפשר <span className={styles.titleAccent}>להרוויח</span> מהתחום..?
+        </h2>
 
-        <div className={styles.calcCard}>
-          {/* Slider section */}
-          <div className={styles.sliderSection}>
-            <div className={styles.sliderHeader}>
-              <span className={styles.sliderValue}>{treatments}</span>
-              <span className={styles.sliderLabel}>מספר טיפולים בחודש</span>
-            </div>
-
-            <div className={styles.sliderWrapper}>
-              <input
-                type="range"
-                min={min}
-                max={max}
-                step={5}
-                value={treatments}
-                onChange={(e) => setTreatments(Number(e.target.value))}
-                className={styles.slider}
-                style={{
-                  background: `linear-gradient(to left, #C4727E ${pct}%, rgba(196, 114, 126, 0.2) ${pct}%)`,
-                }}
-              />
-              <div className={styles.sliderTicks}>
-                <span>200</span>
-                <span>150</span>
-                <span>100</span>
-                <span>50</span>
-                <span>10</span>
-              </div>
-            </div>
+        {/* Magazine layout - images behind calculator */}
+        <div className={styles.magazineLayout}>
+          {/* Floating images - positioned behind/around the card */}
+          <div className={`${styles.floatingImg} ${styles.img1}`}>
+            <img src={img1} alt="עבודת ריסים" />
+          </div>
+          <div className={`${styles.floatingImg} ${styles.img2}`}>
+            <img src={img2} alt="עבודת ריסים" />
+          </div>
+          <div className={`${styles.floatingImg} ${styles.img3}`}>
+            <img src={img3} alt="עבודת ריסים" />
+          </div>
+          <div className={`${styles.floatingImg} ${styles.img4}`}>
+            <img src={img4} alt="עבודת ריסים" />
+          </div>
+          <div className={`${styles.floatingImg} ${styles.img5}`}>
+            <img src={img5} alt="עבודת ריסים" />
+          </div>
+          <div className={`${styles.floatingImg} ${styles.img6}`}>
+            <img src={img6} alt="עבודת ריסים" />
           </div>
 
-          {/* Result section */}
-          <div className={styles.resultSection}>
-            <div className={styles.resultCard}>
-              <span className={styles.resultLabel}>הכנסה חודשית</span>
-              <div className={styles.resultAmount}>
-                <span className={styles.currency}>₪</span>
-                <span className={styles.amount}>{formatNumber(income)}</span>
+          {/* Calculator - on top */}
+          <div className={styles.calcCard}>
+            <div className={styles.calcInner}>
+              <label className={styles.inputLabel}>
+                כמה טיפולים את עושה בחודש?
+              </label>
+
+              <div className={styles.inputRow}>
+                <input
+                  type="number"
+                  value={inputValue}
+                  onChange={(e) => {
+                    setInputValue(e.target.value);
+                    setIsCalculated(false);
+                  }}
+                  onKeyDown={handleKeyDown}
+                  placeholder="לדוגמה: 50"
+                  className={styles.numberInput}
+                  min="1"
+                  max="500"
+                />
+                <button
+                  className={styles.calcButton}
+                  onClick={handleCalculate}
+                >
+                  חשבי לי
+                </button>
               </div>
+
+              {/* Result */}
+              <div
+                className={`${styles.resultSection} ${isCalculated ? styles.resultVisible : ""}`}
+              >
+                <div className={styles.resultDivider} />
+                <span className={styles.resultLabel}>ההכנסה החודשית שלך</span>
+                <div className={styles.resultAmount}>
+                  <span className={styles.currency}>₪</span>
+                  <span className={styles.amount}>
+                    {income ? formatNumber(income) : "0"}
+                  </span>
+                </div>
+                <span className={styles.resultSub}>בחודש</span>
+              </div>
+
+              <p className={styles.disclaimer}>
+                * חישוב על בסיס ממוצע של ₪{PRICE_PER_TREATMENT} לטיפול
+              </p>
             </div>
-            <p className={styles.disclaimer}>
-              * חישוב על בסיס ממוצע של ₪{PRICE_PER_TREATMENT} לטיפול
-            </p>
           </div>
         </div>
 

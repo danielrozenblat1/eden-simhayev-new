@@ -84,8 +84,8 @@ const ContactForm = () => {
 
   return (
     <div className={styles.formContainer} id="טופס">
-      <h2 className={styles.title}>לשריון שיחת התאמה לתוכנית</h2>
-      <p className={styles.subtitle}>מלאי את הטופס ואחזור אלייך בהקדם</p>
+      <h2 className={styles.title}>לשריון שיחה לבדיקת התאמה</h2>
+      <p className={styles.subtitle}>*במיוחד עבור מי שרוצה לצאת עם מקצוע ביד, לא רק תעודה במגירה*</p>
       <form className={styles.form} onSubmit={handleSubmit}>
         <input
           type="text"

@@ -6,7 +6,6 @@ const EighthScreen = ({ onCtaClick }) => {
     if (onCtaClick) {
       onCtaClick();
     } else {
-      // Scroll to lead form in firstScreen
       const form = document.querySelector("form");
       if (form) {
         form.scrollIntoView({ behavior: "smooth", block: "center" });
@@ -26,17 +25,19 @@ const EighthScreen = ({ onCtaClick }) => {
             אז למה <span className={styles.titleAccent}>דווקא עכשיו</span>?
           </h2>
           <div className={styles.sectionDescription}>
-            <p>את לא נכנסת לדף הזה במקרה.</p>
+            <p>את לא הגעת לכאן במקרה.</p>
             <p>
-              משהו בפנים כבר יודע שמגיע לך יותר - יותר מהעבודה הנוכחית, יותר
-              מהמשכורת הזו, יותר מהתחושה שאת דורכת במקום.
+              יש משהו בפנים שכבר מרגיש שמגיע לך יותר -
+              יותר מהעבודה שלא ממש ממלאת אותך, יותר מהמשכורת שנגמרת
+              באמצע החודש, יותר מהתחושה הזו של דריכה במקום.
             </p>
             <p>
-              כל יום שעובר - הבנות שהתחילו לפניך כבר עובדות, כבר מרוויחות,
-              כבר בונות לעצמן חיים אחרים.
+              והאמת? בנות שהיו בדיוק איפה שאת עכשיו כבר עובדות,
+              כבר מרוויחות, כבר בונות לעצמן משהו אחר לגמרי.
             </p>
             <p>
-              ו"אחרי החגים" או "כשיהיה זמן"? שנינו יודעות שזה לא באמת יגיע.
+              "אחרי החגים", "כשיהיה זמן", "כשירגע קצת" -
+              שתינו יודעות שהרגע הזה לא באמת מגיע לבד.
             </p>
           </div>
         </header>
@@ -46,48 +47,61 @@ const EighthScreen = ({ onCtaClick }) => {
           <h3>עכשיו יש לך 2 אפשרויות:</h3>
         </div>
 
-        {/* Options Cards */}
-        <div className={styles.optionsContainer}>
-          {/* Stay Option */}
-          <div className={`${styles.optionCard} ${styles.stay}`}>
-            <div className={styles.cardHeader}>
-              <div className={styles.cardIcon}>❌</div>
-              <h4 className={styles.cardTitle}>להישאר במקום</h4>
+        {/* Options - Single glass panel with two paths */}
+        <div className={styles.pathPanel}>
+          {/* Stay Path */}
+          <div className={styles.pathRow}>
+            <div className={styles.pathIndicator}>
+              <div className={`${styles.pathDot} ${styles.dotStay}`}>✕</div>
+              <div className={styles.pathLine} />
             </div>
-            <p className={styles.cardText}>
-              עוד 3 חודשים באותה עבודה שמתישה אותך, עם{" "}
-              <strong>אותו בוס על הראש</strong> ואותה משכורת שלא סוגרת את
-              החודש. עוד 3 חודשים של "אולי בשנה הבאה", של להסתכל על אחרות
-              שמצליחות ולשאול את עצמך <strong>למה לא אני?</strong>. אותה
-              תחושה של תקיעות, אותם חלומות שנדחים, אותו מקום בדיוק.
-            </p>
+            <div className={styles.pathContent}>
+              <h4 className={styles.pathTitle}>להישאר במקום</h4>
+              <p className={styles.pathText}>
+                את נמצאת עדיין באותה עבודה, עם{" "}
+                <strong>אותה תחושה שמשהו חסר</strong>. עם אותה משכורת
+                שנגמרת מהר מדי, אותם ימים שנראים אותו דבר.
+                את אומרת לעצמך "אולי מתישהו", רואה אחרות
+                שעושות את זה ושואלת בשקט <strong>למה לא אני?</strong>{" "}
+                ואותם חלומות שלך? נדחפים הצידה, שוב ושוב.
+              </p>
+            </div>
           </div>
 
-          {/* Start Option */}
-          <div className={`${styles.optionCard} ${styles.start}`}>
-            <div className={styles.cardHeader}>
-              <div className={styles.cardIcon}>✓</div>
-              <h4 className={styles.cardTitle}>לעשות את הצעד</h4>
+          {/* Divider */}
+          <div className={styles.pathDivider}>
+            <span className={styles.dividerText}>או</span>
+          </div>
+
+          {/* Start Path */}
+          <div className={styles.pathRow}>
+            <div className={styles.pathIndicator}>
+              <div className={`${styles.pathDot} ${styles.dotStart}`}>✓</div>
             </div>
-            <p className={styles.cardText}>
-              עוד 3 חודשים עם <strong>מקצוע חדש שאת אוהבת</strong>, עם לקוחות
-              קבועות וביטחון אמיתי בידיים. את הבוסית של עצמך, מחליטה על השעות
-              שלך, על ההכנסה שלך.{" "}
-              <strong>עוד 3 חודשים של "טוב שהתחלתי"</strong>, של לראות את
-              החשבון גדל, של להרגיש שסוף סוף את בונה משהו משלך. חיים אחרים
-              לגמרי.
-            </p>
+            <div className={styles.pathContent}>
+              <h4 className={`${styles.pathTitle} ${styles.titleStart}`}>
+                לעשות את הצעד
+              </h4>
+              <p className={styles.pathText}>
+                את מתעוררת עם <strong>מקצוע שבאמת מדליק אותך</strong>,
+                לקוחות שמחכות לך וביטחון אמיתי בידיים.
+                קובעת לעצמך את השעות, מחליטה כמה את מרוויחה.{" "}
+                <strong>עוד 3 חודשים את אומרת "כמה טוב שהתחלתי"</strong> -
+                רואה את החשבון גדל, מרגישה שסוף סוף
+                את בונה משהו שהוא באמת שלך. חיים שנראים אחרת לגמרי.
+              </p>
+            </div>
           </div>
         </div>
 
         {/* Closing Section */}
         <div className={styles.closingSection}>
           <p className={styles.closingText}>
-            בעוד 3 חודשים את יכולה להסתכל אחורה ולהגיד{" "}
-            <strong>טוב שהתחלתי</strong> - או לשאול את עצמך{" "}
-            <strong>למה חיכיתי?</strong>
+            בעוד 3 חודשים את יכולה להסתכל אחורה ולחייך -{" "}
+            <strong>"כמה טוב שלקחתי את הצעד"</strong>. או לתהות בשקט{" "}
+            <strong>"למה לא התחלתי אז?"</strong>
           </p>
-          <p className={styles.closingHighlight}>את בוחרת.</p>
+          <p className={styles.closingSubtext}>לשיחת ייעוץ ובדיקת התאמה יחד איתי, לחצי בכפתור שנמצא כאן למטה</p>
           <button className={styles.ctaButton} onClick={handleCtaClick}>
             אני בוחרת להתחיל
             <svg

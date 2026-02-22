@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./firstScreen.module.css";
 import ContactForm from "../../components/form/form";
+import edenImage from "../../assets/עדן תדמית 2.png";
 
 const FirstScreen = () => {
   return (
@@ -16,13 +17,6 @@ const FirstScreen = () => {
 
       <div className={styles.container}>
 
-        {/* Intro pill badge */}
-        <div className={styles.introWrapper}>
-          <p className={styles.intro}>
-            עבור מי שרוצה לצאת עם מקצוע ביד, לא רק תעודה במגירה
-          </p>
-        </div>
-
         {/* Main headline */}
         <h1 className={styles.headline}>
           הדרך להפוך את התשוקה שלך
@@ -30,7 +24,9 @@ const FirstScreen = () => {
           לעסק רווחי בתחום הביוטי
           <br />
           <span className={styles.highlightWrapper}>
-            שמכניס 5 ספרות בחודש
+            <span className={styles.highlightInner}>
+              שמכניס 5 ספרות בחודש
+            </span>
           </span>
         </h1>
 
@@ -43,9 +39,7 @@ const FirstScreen = () => {
 
         {/* Video / Image area */}
         <div className={styles.imageSection}>
-          <div className={styles.imagePlaceholder}>
-            <span className={styles.imagePlaceholderText}>תמונה של עדן / קרוסלה</span>
-          </div>
+          <img src={edenImage} alt="עדן שמחייב" className={styles.heroImage} />
         </div>
 
         {/* Form Component */}
@@ -53,11 +47,7 @@ const FirstScreen = () => {
           <ContactForm />
         </div>
 
-        {/* Guarantee line */}
-        <div className={styles.guarantee}>
-          <span className={styles.guaranteeIcon}>🔒</span>
-          <span>ללא התחייבות - מילאי פרטים ונחזור אלייך תוך 24 שעות</span>
-        </div>
+
 
       </div>
     </section>
