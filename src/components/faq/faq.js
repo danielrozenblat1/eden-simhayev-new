@@ -41,61 +41,73 @@ const TreatmentsFAQ = () => {
     }));
   };
 
-  const isOpen = (categoryIdx, questionIdx) => {
-    return openItems[`${categoryIdx}-${questionIdx}`];
-  };
+  const isOpen = (categoryIdx, questionIdx) =>
+    !!openItems[`${categoryIdx}-${questionIdx}`];
 
   return (
-    <section className={styles.faqSection} dir="rtl">
-      <div className={styles.bgDecoration}>
-        <div className={styles.bgGrid} />
-        <div className={styles.noise} />
-      </div>
+    <section className={styles.faqSection} dir="rtl" id="faq">
+      {/* Background glow orbs */}
+      <div className={styles.bgOrb1} />
+      <div className={styles.bgOrb2} />
+      <div className={styles.bgOrb3} />
 
-      {/* Decorative side elements */}
-      <div className={`${styles.sideDeco} ${styles.sideDecoRight}`}>
-        <span /><span /><span />
-      </div>
-      <div className={`${styles.sideDeco} ${styles.sideDecoLeft}`}>
-        <span /><span /><span />
-      </div>
+      {/* Decorative gold frame lines */}
+      <div className={styles.frameTop} />
+      <div className={styles.frameBottom} />
 
       <header className={styles.sectionHeader}>
-        <h2 className={styles.sectionTitle}>שאלות תשובות</h2>
-        <p className={styles.sectionSubtitle}>אני בטוחה שאחת מהשאלות הבאות עלתה לך לא פעם ולא פעמיים ואני כאן לענות על כולן</p>
+        <div className={styles.sectionPill}>
+          <span className={styles.pillDot} />
+          שאלות ותשובות
+        </div>
+        <h2 className={styles.sectionTitle}>הכל כאן בשבילך</h2>
+        <p className={styles.sectionSubtitle}>
+          אני בטוחה שאחת מהשאלות הבאות עלתה לך לא פעם ולא פעמיים
+        </p>
       </header>
 
       <div className={styles.faqContainer}>
-        {faqs.map((category, catIdx) => (
-          <div key={catIdx} className={styles.categoryBlock}>
-            <h3 className={styles.categoryTitle}>{category.category}</h3>
-            <div className={styles.questionsList}>
-              {category.questions.map((item, qIdx) => (
-                <div
-                  key={qIdx}
-                  className={`${styles.faqItem} ${isOpen(catIdx, qIdx) ? styles.open : ''}`}
-                >
-                  <button
-                    className={styles.questionBtn}
-                    onClick={() => toggleItem(catIdx, qIdx)}
-                    aria-expanded={isOpen(catIdx, qIdx)}
+        <div className={styles.glassWrapper}>
+          {/* Inner glass shimmer highlight */}
+          <div className={styles.glassHighlight} />
+
+          {faqs.map((category, catIdx) => (
+            <div key={catIdx} className={styles.categoryBlock}>
+              {/* Category badge */}
+              <div className={styles.categoryBadge}>
+                <span className={styles.badgeLine} />
+                <span className={styles.badgeText}>{category.category}</span>
+                <span className={styles.badgeLine} />
+              </div>
+
+              <div className={styles.questionsList}>
+                {category.questions.map((item, qIdx) => (
+                  <div
+                    key={qIdx}
+                    className={`${styles.faqItem} ${isOpen(catIdx, qIdx) ? styles.open : ''}`}
                   >
-                    <span className={styles.questionText}>{item.q}</span>
-                    <span className={styles.faqToggle}>
-                      <span className={styles.toggleLine} />
-                      <span className={`${styles.toggleLine} ${styles.toggleLineV}`} />
-                    </span>
-                  </button>
-                  <div className={styles.answerWrapper}>
-                    <div className={styles.answer}>
-                      <p>{item.a}</p>
+                    <button
+                      className={styles.questionBtn}
+                      onClick={() => toggleItem(catIdx, qIdx)}
+                      aria-expanded={isOpen(catIdx, qIdx)}
+                    >
+                      <span className={styles.questionText}>{item.q}</span>
+                      <span className={styles.faqToggle}>
+                        <span className={styles.toggleLine} />
+                        <span className={`${styles.toggleLine} ${styles.toggleLineV}`} />
+                      </span>
+                    </button>
+                    <div className={styles.answerWrapper}>
+                      <div className={styles.answer}>
+                        <p>{item.a}</p>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
 
       <div className={styles.ctaBox}>

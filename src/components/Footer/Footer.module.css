@@ -10,7 +10,7 @@
   --color-text: #e0cdd2;
   --color-text-secondary: #8B6B73;
   --color-accent: #D4607A;
-  
+
   background: var(--bg-dark);
   padding: 60px 40px 40px;
   direction: rtl;
@@ -22,12 +22,12 @@
 }
 
 .inner {
-  max-width: 800px;
+  max-width: 860px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 32px;
+  gap: 28px;
 }
 
 /* ---- Logo ---- */
@@ -35,28 +35,30 @@
   margin-bottom: 4px;
 }
 
-.logoText {
-  font-family: 'Discovery', sans-serif;
-  font-size: 32px;
-  font-weight: 700;
-  color: var(--color-heading);
-  margin: 0;
-  letter-spacing: 0.02em;
+.logoImage {
+  height: 72px;
+  width: auto;
+  object-fit: contain;
+  opacity: 0.92;
+  transition: opacity 0.3s ease;
+}
+
+.logoImage:hover {
+  opacity: 1;
 }
 
 /* ---- Navigation ---- */
 .nav {
   display: flex;
-  gap: 36px;
+  gap: 32px;
   flex-wrap: wrap;
   justify-content: center;
 }
 
 .navLink {
   font-family: 'Heebo', sans-serif;
-  font-weight: 300;
-  font-size: 18px;
   font-weight: 400;
+  font-size: 16px;
   color: var(--color-text);
   text-decoration: none;
   background: none;
@@ -64,6 +66,7 @@
   cursor: pointer;
   padding: 0;
   transition: color 0.3s ease;
+  letter-spacing: 0.01em;
 }
 
 .navLink:hover {
@@ -73,7 +76,7 @@
 /* ---- Contact ---- */
 .contact {
   display: flex;
-  gap: 28px;
+  gap: 32px;
   flex-wrap: wrap;
   justify-content: center;
 }
@@ -81,13 +84,12 @@
 .contactLink {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 7px;
   text-decoration: none;
   color: var(--color-text-secondary);
   font-family: 'Heebo', sans-serif;
   font-weight: 300;
-  font-size: 15px;
-  font-weight: 300;
+  font-size: 14px;
   letter-spacing: 0.02em;
   transition: color 0.3s ease;
   direction: ltr;
@@ -98,24 +100,24 @@
 }
 
 .icon {
-  width: 16px;
-  height: 16px;
+  width: 15px;
+  height: 15px;
   flex-shrink: 0;
+  opacity: 0.75;
 }
 
 /* ---- Divider ---- */
 .divider {
-  width: 60px;
+  width: 80px;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(212, 96, 122, 0.3), transparent);
+  background: linear-gradient(90deg, transparent, rgba(212, 96, 122, 0.35), transparent);
 }
 
 /* ---- Copyright ---- */
 .copyright {
   font-family: 'Heebo', sans-serif;
   font-weight: 300;
-  font-size: 13px;
-  font-weight: 300;
+  font-size: 12px;
   color: var(--color-text-secondary);
   margin: 0;
   letter-spacing: 0.02em;
@@ -123,7 +125,7 @@
 
 /* ---- ByMe Wrapper ---- */
 .byMeWrapper {
-  margin-top: 8px;
+  margin-top: 4px;
 }
 
 .byMeWrapper :global(.byMe) {
@@ -211,13 +213,13 @@
   }
 
   .nav {
-    gap: 24px;
+    gap: 20px;
   }
 
   .contact {
     flex-direction: column;
     align-items: center;
-    gap: 16px;
+    gap: 14px;
   }
 
   .privacyContent {
@@ -230,15 +232,15 @@
     padding: 40px 20px 28px;
   }
 
-  .logoText {
-    font-size: 28px;
+  .logoImage {
+    height: 58px;
   }
 
   .nav {
-    gap: 20px;
+    gap: 16px;
   }
 
   .navLink {
-    font-size: 16px;
+    font-size: 15px;
   }
 }

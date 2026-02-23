@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./secondScreen.module.css";
-import IconTextComponent from "../../components/can/can";
+import IconTextComponent from "../../components/edenCan/can";
 import { worksImages } from "../../components/works/worksImages";
 
 // Lordicon icon JSONs - importing from the icons folder
