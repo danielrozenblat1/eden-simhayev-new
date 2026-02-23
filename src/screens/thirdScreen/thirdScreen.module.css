@@ -144,6 +144,17 @@
     height: 3px;
     background: linear-gradient(90deg, transparent, var(--color-accent), transparent);
     border-radius: 2px;
+    display: none;
+  }
+
+  .sectionDescription {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--color-text-secondary);
+    text-align: center;
+    margin: 0;
+    line-height: 1.7;
   }
 
   /* ============================
@@ -337,8 +348,10 @@
     cursor: pointer;
     color: var(--color-accent);
     transition: all 0.25s ease;
-    z-index: 1001;
+    z-index: 10000002;
     box-shadow: 0 4px 16px rgba(196, 114, 126, 0.15);
+    pointer-events: auto;
+    outline: none;
   }
 
   .modalClose:hover {
@@ -347,6 +360,11 @@
     border-color: var(--color-accent);
     transform: rotate(90deg) scale(1.05);
     box-shadow: 0 6px 24px rgba(196, 114, 126, 0.3);
+    cursor: pointer;
+  }
+
+  .modalClose:active {
+    transform: rotate(90deg) scale(0.95);
   }
 
   .modalHeader {
@@ -830,25 +848,13 @@
   }
 
   .benefitCard::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, var(--color-accent-light), var(--color-accent));
-    transform: scaleX(0);
-    transition: transform 0.3s ease;
+    display: none;
   }
 
   .benefitCard:hover {
     transform: translateY(-3px);
     border-color: var(--color-border-hover);
     box-shadow: 0 8px 28px rgba(196, 114, 126, 0.1);
-  }
-
-  .benefitCard:hover::after {
-    transform: scaleX(1);
   }
 
   .benefitIconWrapper {

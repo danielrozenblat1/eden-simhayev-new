@@ -48,6 +48,15 @@
     pointer-events: all;
   }
 
+  /* Hide nav when modal is open */
+  :global(body.modal-open) .topBar,
+  :global(body.modal-open) .topBarVisible {
+    opacity: 0 !important;
+    transform: translateY(-20px) !important;
+    pointer-events: none !important;
+    visibility: hidden;
+  }
+
   .logoTop {
     display: flex;
     align-items: center;
@@ -125,17 +134,17 @@
      ============================ */
   .fullscreenMenu {
     --pink: #C4727E;
-    --pink-light: #F4D0D5;
-    --pink-dark: #9E5A65;
-    --pink-muted: rgba(196, 114, 126, 0.28);
-    --pink-border: rgba(196, 114, 126, 0.28);
-    --pink-border-strong: rgba(196, 114, 126, 0.55);
-    --menu-bg: #2B0F18;
-    --text-primary: #F4E8E5;
-    --text-secondary: rgba(244, 232, 229, 0.6);
-    --text-muted: rgba(244, 232, 229, 0.38);
-    --border: rgba(244, 232, 229, 0.1);
-    --hover-bg: rgba(244, 232, 229, 0.06);
+    --pink-light: #9E5A65;
+    --pink-dark: #7B3A50;
+    --pink-muted: rgba(196, 114, 126, 0.3);
+    --pink-border: rgba(196, 114, 126, 0.25);
+    --pink-border-strong: rgba(196, 114, 126, 0.5);
+    --menu-bg: #FFF5F3;
+    --text-primary: #2B0F18;
+    --text-secondary: rgba(43, 15, 24, 0.65);
+    --text-muted: rgba(43, 15, 24, 0.4);
+    --border: rgba(43, 15, 24, 0.1);
+    --hover-bg: rgba(196, 114, 126, 0.06);
     --ease: cubic-bezier(0.22, 1, 0.36, 1);
 
     position: fixed;

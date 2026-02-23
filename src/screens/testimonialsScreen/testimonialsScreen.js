@@ -121,7 +121,7 @@ const TestimonialsScreen = () => {
       <section className={styles.section} dir="rtl">
         <div className={styles.container}>
           <div className={styles.testimonialsSection}>
-            <h3 className={styles.testimonialsTitle}>וזה מה שהיה להן לומר:</h3>
+            <h3 className={styles.testimonialsTitle}>ככה הן הגיבו כשהן יצאו ממני:</h3>
 
             <div className={styles.masonryGrid}>
               <div className={styles.masonryCol}>

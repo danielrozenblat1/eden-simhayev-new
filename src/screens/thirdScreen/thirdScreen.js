@@ -289,14 +289,19 @@ const BenefitCard = ({ icon, title, description }) => {
 const ThirdScreen = () => {
   const [selectedCourse, setSelectedCourse] = useState(null);
 
-  // Lock body scroll when modal is open
+  // Lock body scroll and hide nav when modal is open
   useEffect(() => {
     if (selectedCourse) {
       document.body.style.overflow = "hidden";
+      document.body.classList.add("modal-open");
     } else {
       document.body.style.overflow = "";
+      document.body.classList.remove("modal-open");
     }
-    return () => { document.body.style.overflow = ""; };
+    return () => {
+      document.body.style.overflow = "";
+      document.body.classList.remove("modal-open");
+    };
   }, [selectedCourse]);
 
   const handleWhatsApp = (courseName) => {
@@ -324,7 +329,7 @@ const ThirdScreen = () => {
           <h2 className={styles.sectionTitle}>
             וכולן, אבל כולן עברו את אחת מהדרכים הבאות
           </h2>
-          <div className={styles.decorativeLine} />
+          <p className={styles.sectionDescription}>ריכזתי עבורך את כל המסלולים שאני מציעה וכל מה שכלול בהם</p>
         </div>
 
         {/* ===== Course Cards ===== */}
@@ -351,7 +356,7 @@ const ThirdScreen = () => {
                     {course.type}
                   </span>
                 </div>
-                <span className={styles.courseHint}>לחצי לגלות את התוכנית המלאה ←</span>
+                <span className={styles.courseHint}>לחצי כדי לראות הסילבוס המלא ←</span>
               </div>
             </div>
           ))}
@@ -360,10 +365,10 @@ const ThirdScreen = () => {
         {/* ===== Course Modal ===== */}
         {selectedCourse && (
           <div className={styles.modalOverlay} onClick={() => setSelectedCourse(null)}>
+            <button className={styles.modalClose} onClick={(e) => { e.stopPropagation(); setSelectedCourse(null); }}>
+              <XIcon size={22} strokeWidth={2} />
+            </button>
             <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
-              <button className={styles.modalClose} onClick={() => setSelectedCourse(null)}>
-                <XIcon size={22} strokeWidth={2} />
-              </button>
 
               {/* Modal Header */}
               <div className={styles.modalHeader}>

@@ -231,9 +231,7 @@ const Navbar = () => {
           </div>
 
           {/* Footer Section */}
-          <div ref={legalRef} className={styles.legalSection}>
-            <span className={styles.studioName}>עדן שמחייב — קורסים מקצועיים</span>
-          </div>
+          <div ref={legalRef} className={styles.legalSection} />
 
           {/* Close Button */}
           <button

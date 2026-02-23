@@ -56,11 +56,7 @@ const TreatmentsFAQ = () => {
       <div className={styles.frameBottom} />
 
       <header className={styles.sectionHeader}>
-        <div className={styles.sectionPill}>
-          <span className={styles.pillDot} />
-          שאלות ותשובות
-        </div>
-        <h2 className={styles.sectionTitle}>הכל כאן בשבילך</h2>
+        <h2 className={styles.sectionTitle}>שאלות תשובות</h2>
         <p className={styles.sectionSubtitle}>
           אני בטוחה שאחת מהשאלות הבאות עלתה לך לא פעם ולא פעמיים
         </p>
@@ -73,10 +69,9 @@ const TreatmentsFAQ = () => {
 
           {faqs.map((category, catIdx) => (
             <div key={catIdx} className={styles.categoryBlock}>
-              {/* Category badge */}
+              {/* Category divider lines */}
               <div className={styles.categoryBadge}>
                 <span className={styles.badgeLine} />
-                <span className={styles.badgeText}>{category.category}</span>
                 <span className={styles.badgeLine} />
               </div>
 

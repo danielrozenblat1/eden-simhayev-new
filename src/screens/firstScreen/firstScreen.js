@@ -37,14 +37,14 @@ const FirstScreen = () => {
 
     
 
-        {/* Video / Image area */}
-        <div className={styles.imageSection}>
-          <img src={edenImage} alt="עדן שמחייב" className={styles.heroImage} />
-        </div>
-
-        {/* Form Component */}
-        <div className={styles.formSection}>
-          <ContactForm />
+        {/* Image + Form connected wrapper */}
+        <div className={styles.imageFormBlock}>
+          <div className={styles.imageSection}>
+            <img src={edenImage} alt="עדן שמחייב" className={styles.heroImage} />
+          </div>
+          <div className={styles.formSection}>
+            <ContactForm />
+          </div>
         </div>
 
 

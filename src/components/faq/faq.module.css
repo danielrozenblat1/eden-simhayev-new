@@ -89,39 +89,11 @@
    GOLD FRAME LINES (top + bottom — matching nav style)
    ============================================= */
 .frameTop {
-  position: absolute;
-  top: 32px;
-  left: 60px;
-  right: 60px;
-  height: 1px;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    var(--color-gold-muted) 20%,
-    var(--color-gold) 50%,
-    var(--color-gold-muted) 80%,
-    transparent 100%
-  );
-  pointer-events: none;
-  z-index: 1;
+  display: none;
 }
 
 .frameBottom {
-  position: absolute;
-  bottom: 32px;
-  left: 60px;
-  right: 60px;
-  height: 1px;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    var(--color-gold-muted) 20%,
-    var(--color-gold) 50%,
-    var(--color-gold-muted) 80%,
-    transparent 100%
-  );
-  pointer-events: none;
-  z-index: 1;
+  display: none;
 }
 
 /* =============================================
@@ -136,30 +108,11 @@
 }
 
 .sectionPill {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 6px 18px;
-  background: rgba(196, 114, 126, 0.1);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(196, 114, 126, 0.22);
-  border-radius: 100px;
-  font-family: 'Heebo', sans-serif;
-  font-size: 13px;
-  font-weight: 500;
-  letter-spacing: 0.06em;
-  color: var(--color-accent);
-  margin-bottom: 20px;
+  display: none;
 }
 
 .pillDot {
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: var(--color-accent);
-  flex-shrink: 0;
-  box-shadow: 0 0 6px var(--color-accent);
+  display: none;
 }
 
 .sectionTitle {
@@ -260,30 +213,23 @@
 .categoryBadge {
   display: flex;
   align-items: center;
-  gap: 14px;
   margin-bottom: 24px;
-}
-
-.badgeLine {
-  flex: 1;
   height: 1px;
   background: linear-gradient(
     90deg,
-    transparent,
-    var(--color-gold-muted) 40%,
-    var(--color-gold-muted)
+    transparent 0%,
+    var(--color-gold-muted) 20%,
+    var(--color-gold-muted) 80%,
+    transparent 100%
   );
 }
 
-.categoryBadge:first-child .badgeLine:first-child {
-  background: linear-gradient(
-    90deg,
-    var(--color-gold-muted) 60%,
-    transparent
-  );
+.badgeLine {
+  display: none;
 }
 
 .badgeText {
+  display: none;
   font-family: 'Heebo', sans-serif;
   font-size: 11px;
   font-weight: 600;
@@ -516,7 +462,7 @@
   font-weight: 700;
   color: #fff;
   letter-spacing: 0.02em;
-  text-decoration: none;
+  text-decoration: none !important;
   border-radius: 14px;
   box-shadow:
     0 6px 24px rgba(196, 114, 126, 0.35),
@@ -551,6 +497,7 @@
   box-shadow:
     0 12px 40px rgba(196, 114, 126, 0.45),
     inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  text-decoration: none !important;
 }
 
 .ctaButton svg {

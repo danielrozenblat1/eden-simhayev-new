@@ -24,7 +24,7 @@ const SeventhScreen = () => {
         trigger,
         start: 'top 85%',
         end: 'top 20%',
-        toggleActions: 'play reverse play reverse', // enter / leave / re-enter / re-leave
+        toggleActions: 'play none none none', // animate only once
         ...extra,
       });
 

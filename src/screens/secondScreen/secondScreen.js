@@ -82,7 +82,7 @@ const SecondScreen = ({ onCtaClick }) => {
               <span className={styles.storySubfont}>(שילמתי אלפי שקלים)</span>{" "}
               ועברתי קורסים שלא נתנו לי כלום, נכוויתי, כמעט ויתרתי -{" "}
               <span className={styles.storySubfont}>
-                (אבל המשכתי עד שהגעתי למקום שרציתי)
+                אבל המשכתי עד שהגעתי למקום שרציתי
               </span>
               .
             </p>

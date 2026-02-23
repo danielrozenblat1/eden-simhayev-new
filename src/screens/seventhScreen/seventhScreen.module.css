@@ -137,18 +137,46 @@
      perspective: 800px;
    }
    
-   /* Yes rows - light pink background, pink border */
+   /* Yes rows - elegant gradient with right accent strip */
    .rowYes {
-     background: rgba(255, 245, 243, 0.8);
-     border-right: 3px solid var(--color-accent);
-     box-shadow: 0 2px 8px rgba(196, 114, 126, 0.1);
+     background: linear-gradient(135deg, rgba(255, 245, 243, 0.95) 0%, rgba(255, 232, 236, 0.7) 100%);
+     border: 1px solid rgba(196, 114, 126, 0.14);
+     box-shadow:
+       0 4px 16px rgba(196, 114, 126, 0.08),
+       inset 0 1px 0 rgba(255, 255, 255, 0.9);
+     position: relative;
+     overflow: hidden;
    }
-   
-   /* No rows - lighter pink, muted border */
+
+   .rowYes::before {
+     content: '';
+     position: absolute;
+     right: 0;
+     top: 0;
+     bottom: 0;
+     width: 3px;
+     background: linear-gradient(180deg, rgba(196, 114, 126, 0.35) 0%, var(--color-accent) 50%, rgba(196, 114, 126, 0.35) 100%);
+     border-radius: 0 12px 12px 0;
+   }
+
+   /* No rows - softer pink with muted accent strip */
    .rowNo {
-     background: rgba(245, 213, 213, 0.4);
-     border-right: 3px solid rgba(196, 114, 126, 0.4);
-     box-shadow: 0 2px 8px rgba(196, 114, 126, 0.08);
+     background: linear-gradient(135deg, rgba(245, 213, 213, 0.5) 0%, rgba(232, 180, 188, 0.25) 100%);
+     border: 1px solid rgba(196, 114, 126, 0.09);
+     box-shadow: 0 2px 10px rgba(196, 114, 126, 0.06);
+     position: relative;
+     overflow: hidden;
+   }
+
+   .rowNo::before {
+     content: '';
+     position: absolute;
+     right: 0;
+     top: 0;
+     bottom: 0;
+     width: 3px;
+     background: linear-gradient(180deg, transparent 0%, rgba(196, 114, 126, 0.35) 50%, transparent 100%);
+     border-radius: 0 12px 12px 0;
    }
    
    .ctaBtn {
