@@ -125,10 +125,10 @@
      justify-content: center;
    }
    
-   /* Override Can component styles to match beauty theme */
+   /* Ensure edenCan card fills the grid cell */
    .canItem > div {
      width: 100% !important;
-     max-width: 340px;
+     max-width: 100% !important;
    }
    
    /* ---- "וחשוב לי שתדעי שזה אפשרי!" ---- */
@@ -192,10 +192,9 @@
    
    /* Parenthesized text in subtitle/underline font style */
    .storySubfont {
-     font-family: var(--font-body);
-     font-weight: 300;
-     line-height: 1.4;
+     font-family: var(--font-display);
      font-weight: 400;
+     line-height: 1.4;
      color: var(--color-accent);
      position: relative;
      display: inline;

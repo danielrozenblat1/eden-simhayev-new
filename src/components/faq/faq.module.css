@@ -1,27 +1,27 @@
 @import '../fonts/fonts.css';
 
 /* =============================================
-   FAQ SCREEN - Treatments FAQ
-   Accordion + pink accents + light palette
+   FAQ SECTION — Liquid Glass / Luxury
    ============================================= */
 
 .faqSection {
-  --bg-light: #FFF5F3;
-  --bg-pink-light: #F5D5D5;
+  --bg-base: #FFF5F3;
   --color-heading: #2B0F18;
   --color-text: #3A1F1A;
-  --color-text-secondary: #7B5B52;
+  --color-text-muted: rgba(58, 31, 26, 0.55);
   --color-accent: #C4727E;
-  --color-accent-glow: rgba(196, 114, 126, 0.3);
-  --text-dark: #2B0F18;
-  --text-body: #3A1F1A;
-  --text-muted: rgba(58, 31, 26, 0.6);
-  --border-color: rgba(196, 114, 126, 0.2);
+  --color-accent-soft: rgba(196, 114, 126, 0.18);
+  --color-accent-glow: rgba(196, 114, 126, 0.22);
+  --color-gold: #C4727E;
+  --color-gold-muted: rgba(196, 114, 126, 0.35);
+  --glass-bg: rgba(255, 248, 246, 0.62);
+  --glass-border: rgba(255, 255, 255, 0.72);
+  --glass-border-accent: rgba(196, 114, 126, 0.22);
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
 
   position: relative;
-  padding: 100px 0 80px;
-  background: var(--bg-light);
+  padding: 110px 0 90px;
+  background: var(--bg-base);
   overflow: hidden;
   direction: rtl;
   width: 100%;
@@ -29,84 +29,137 @@
   box-sizing: border-box;
 }
 
-/* ---- Background ---- */
-.bgDecoration {
+/* =============================================
+   BACKGROUND ORBS — liquid depth
+   ============================================= */
+.bgOrb1 {
   position: absolute;
-  inset: 0;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(196, 114, 126, 0.12) 0%, transparent 65%);
+  top: -10%;
+  right: -15%;
+  filter: blur(60px);
   pointer-events: none;
+  animation: orbFloat1 16s ease-in-out infinite;
 }
 
-.bgGrid {
+.bgOrb2 {
   position: absolute;
-  inset: 0;
-  opacity: 0.03;
-  background-image:
-    linear-gradient(var(--color-accent) 1px, transparent 1px),
-    linear-gradient(90deg, var(--color-accent) 1px, transparent 1px);
-  background-size: 80px 80px;
+  width: 480px;
+  height: 480px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(232, 180, 188, 0.14) 0%, transparent 65%);
+  bottom: -5%;
+  left: -10%;
+  filter: blur(70px);
   pointer-events: none;
+  animation: orbFloat2 20s ease-in-out infinite;
 }
 
-.noise {
+.bgOrb3 {
   position: absolute;
-  inset: 0;
-  z-index: 1;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 220, 200, 0.18) 0%, transparent 65%);
+  top: 45%;
+  left: 50%;
+  transform: translateX(-50%);
+  filter: blur(50px);
   pointer-events: none;
-  opacity: 0.02;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
-  background-size: 256px;
+  animation: orbFloat3 12s ease-in-out infinite;
 }
 
-.bgLine1,
-.bgLine2 {
-  display: none;
+@keyframes orbFloat1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-30px, 20px) scale(1.05); }
 }
-
-.glowOrb1,
-.glowOrb2 {
-  display: none;
+@keyframes orbFloat2 {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(20px, -15px); }
 }
-
-/* ---- Decorative side lines ---- */
-.sideDeco {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  z-index: 1;
-  opacity: 0.15;
-}
-
-.sideDecoRight {
-  right: 40px;
-}
-
-.sideDecoLeft {
-  left: 40px;
-}
-
-.sideDeco span {
-  display: block;
-  width: 1px;
-  height: 80px;
-  background: linear-gradient(180deg, transparent, var(--color-accent), transparent);
-}
-
-.sideDeco span:nth-child(2) {
-  height: 120px;
-  opacity: 0.6;
+@keyframes orbFloat3 {
+  0%, 100% { transform: translateX(-50%) scale(1); }
+  50% { transform: translateX(-50%) scale(1.1); }
 }
 
 /* =============================================
-   HEADER
+   GOLD FRAME LINES (top + bottom — matching nav style)
+   ============================================= */
+.frameTop {
+  position: absolute;
+  top: 32px;
+  left: 60px;
+  right: 60px;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--color-gold-muted) 20%,
+    var(--color-gold) 50%,
+    var(--color-gold-muted) 80%,
+    transparent 100%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+.frameBottom {
+  position: absolute;
+  bottom: 32px;
+  left: 60px;
+  right: 60px;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--color-gold-muted) 20%,
+    var(--color-gold) 50%,
+    var(--color-gold-muted) 80%,
+    transparent 100%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* =============================================
+   SECTION HEADER
    ============================================= */
 .sectionHeader {
   text-align: center;
-  margin-bottom: 60px;
+  margin-bottom: 52px;
   position: relative;
   z-index: 2;
+  padding: 0 24px;
+}
+
+.sectionPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 18px;
+  background: rgba(196, 114, 126, 0.1);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(196, 114, 126, 0.22);
+  border-radius: 100px;
+  font-family: 'Heebo', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: var(--color-accent);
+  margin-bottom: 20px;
+}
+
+.pillDot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  flex-shrink: 0;
+  box-shadow: 0 0 6px var(--color-accent);
 }
 
 .sectionTitle {
@@ -114,69 +167,211 @@
   font-size: clamp(32px, 5vw, 52px);
   font-weight: 800;
   color: var(--color-heading);
-  margin: 0 0 16px 0;
+  margin: 0 0 14px;
   line-height: 1.2;
 }
 
 .sectionSubtitle {
   font-family: 'Heebo', sans-serif;
-  font-size: clamp(16px, 1.8vw, 20px);
+  font-size: clamp(15px, 1.8vw, 18px);
   font-weight: 300;
-  color: var(--text-muted);
-  margin: 0 0 24px 0;
+  color: var(--color-text-muted);
+  margin: 0;
+  line-height: 1.7;
 }
 
 /* =============================================
-   FAQ CONTAINER
+   FAQ CONTAINER + GLASS WRAPPER
    ============================================= */
 .faqContainer {
   position: relative;
   z-index: 2;
-  max-width: 820px;
+  max-width: 860px;
   margin: 0 auto;
-  padding: 0 40px;
+  padding: 0 24px;
 }
 
+/* The main liquid glass card */
+.glassWrapper {
+  position: relative;
+  background: var(--glass-bg);
+  backdrop-filter: blur(28px) saturate(1.4);
+  -webkit-backdrop-filter: blur(28px) saturate(1.4);
+  border-radius: 28px;
+  border: 1px solid var(--glass-border);
+  box-shadow:
+    0 4px 6px rgba(196, 114, 126, 0.04),
+    0 12px 40px rgba(196, 114, 126, 0.08),
+    0 32px 80px rgba(196, 114, 126, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    inset 0 -1px 0 rgba(196, 114, 126, 0.08);
+  padding: 48px 52px;
+  overflow: hidden;
+}
+
+/* Liquid glass highlight — top shimmer streak */
+.glassHighlight {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 5%,
+    rgba(255, 255, 255, 0.9) 40%,
+    rgba(255, 255, 255, 0.6) 60%,
+    transparent 95%
+  );
+  pointer-events: none;
+  border-radius: 28px 28px 0 0;
+}
+
+/* Inner subtle shimmer sweep */
+.glassWrapper::before {
+  content: '';
+  position: absolute;
+  top: -60%;
+  right: -20%;
+  width: 40%;
+  height: 200%;
+  background: linear-gradient(
+    115deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.22) 50%,
+    transparent 70%
+  );
+  pointer-events: none;
+  border-radius: 50%;
+  transform: rotate(-15deg);
+}
+
+/* =============================================
+   CATEGORY BADGE
+   ============================================= */
 .categoryBlock {
-  margin-bottom: 50px;
+  margin-bottom: 44px;
 }
 
 .categoryBlock:last-child {
   margin-bottom: 0;
 }
 
-.categoryTitle {
-  font-family: 'Discovery', sans-serif;
-  font-size: clamp(22px, 3vw, 28px);
-  font-weight: 700;
-  color: var(--color-heading);
+.categoryBadge {
+  display: flex;
+  align-items: center;
+  gap: 14px;
   margin-bottom: 24px;
 }
 
+.badgeLine {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--color-gold-muted) 40%,
+    var(--color-gold-muted)
+  );
+}
+
+.categoryBadge:first-child .badgeLine:first-child {
+  background: linear-gradient(
+    90deg,
+    var(--color-gold-muted) 60%,
+    transparent
+  );
+}
+
+.badgeText {
+  font-family: 'Heebo', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: var(--color-gold);
+  white-space: nowrap;
+  padding: 4px 14px;
+  background: rgba(201, 168, 118, 0.1);
+  border: 1px solid rgba(201, 168, 118, 0.28);
+  border-radius: 100px;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
 /* =============================================
-   FAQ LIST
+   FAQ ITEMS — Individual liquid cards
    ============================================= */
 .questionsList {
   display: flex;
   flex-direction: column;
-  gap: 0;
+  gap: 10px;
 }
 
-/* =============================================
-   FAQ ITEM
-   ============================================= */
 .faqItem {
-  border-bottom: 1px solid var(--border-color);
-  background: transparent;
-  transition: all 0.3s ease;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.78) 0%,
+    rgba(255, 248, 246, 0.62) 100%
+  ) padding-box,
+  linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.6),
+    rgba(196, 114, 126, 0.18),
+    rgba(255, 255, 255, 0.5)
+  ) border-box;
+  border: 1px solid transparent;
+  border-radius: 16px;
+  backdrop-filter: blur(16px) saturate(1.3);
+  -webkit-backdrop-filter: blur(16px) saturate(1.3);
+  box-shadow:
+    0 2px 8px rgba(196, 114, 126, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.85);
+  transition: box-shadow 0.4s var(--ease), transform 0.3s var(--ease);
+  overflow: hidden;
+  position: relative;
 }
 
-.faqItem:first-child {
-  border-top: 1px solid var(--border-color);
+.faqItem::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 5%,
+    rgba(255, 255, 255, 0.85) 50%,
+    transparent 95%
+  );
+  pointer-events: none;
+}
+
+.faqItem:hover {
+  box-shadow:
+    0 6px 24px rgba(196, 114, 126, 0.12),
+    0 2px 8px rgba(196, 114, 126, 0.07),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  transform: translateY(-1px);
 }
 
 .faqItem.open {
-  border-color: var(--color-accent);
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.88) 0%,
+    rgba(255, 240, 243, 0.72) 100%
+  ) padding-box,
+  linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.5),
+    rgba(196, 114, 126, 0.35),
+    rgba(255, 255, 255, 0.4)
+  ) border-box;
+  box-shadow:
+    0 8px 32px rgba(196, 114, 126, 0.14),
+    0 2px 8px rgba(196, 114, 126, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  transform: translateY(-2px);
 }
 
 /* ---- Question button ---- */
@@ -185,67 +380,70 @@
   display: flex;
   align-items: center;
   gap: 20px;
-  padding: 28px 0;
+  padding: 22px 24px;
   background: none;
   border: none;
   cursor: pointer;
   text-align: right;
-  transition: all 0.3s ease;
+  transition: padding 0.3s var(--ease);
 }
 
 .questionBtn:hover {
-  padding-right: 6px;
+  padding-right: 30px;
+}
+
+.faqItem.open .questionBtn {
+  padding-bottom: 14px;
 }
 
 .questionText {
   flex: 1;
   font-family: 'Discovery', sans-serif;
-  font-size: clamp(19px, 2.2vw, 23px);
+  font-size: clamp(17px, 2.1vw, 21px);
   font-weight: 600;
   color: var(--color-heading);
   line-height: 1.4;
-  transition: color 0.3s ease;
+  transition: color 0.3s var(--ease);
+  text-align: right;
 }
 
-.questionBtn:hover .questionText {
-  color: var(--color-accent);
-}
-
+.questionBtn:hover .questionText,
 .faqItem.open .questionText {
   color: var(--color-accent);
 }
 
-/* ---- Toggle icon (+ / x) ---- */
-.toggleIcon {
-  flex-shrink: 0;
-  position: relative;
-  width: 20px;
-  height: 20px;
-}
-
-.toggleIcon svg {
-  width: 16px;
-  height: 16px;
-  stroke: var(--color-accent);
-  transition: all 0.4s var(--ease);
-}
-
+/* ---- Toggle icon ---- */
 .faqToggle {
   flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(196, 114, 126, 0.08);
+  border: 1px solid rgba(196, 114, 126, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: relative;
-  width: 20px;
-  height: 20px;
+  transition: background 0.3s var(--ease), border-color 0.3s var(--ease);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.faqItem.open .faqToggle {
+  background: rgba(196, 114, 126, 0.15);
+  border-color: rgba(196, 114, 126, 0.4);
 }
 
 .toggleLine {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 16px;
+  width: 12px;
   height: 1.5px;
   background: var(--color-accent);
   transform: translate(-50%, -50%);
   transition: all 0.4s var(--ease);
+  border-radius: 2px;
 }
 
 .toggleLineV {
@@ -261,10 +459,6 @@
   opacity: 0;
 }
 
-.faqItem.open .toggleIcon svg {
-  transform: rotate(45deg);
-}
-
 /* ---- Answer ---- */
 .answerWrapper {
   max-height: 0;
@@ -273,20 +467,22 @@
 }
 
 .faqItem.open .answerWrapper {
-  max-height: 400px;
+  max-height: 500px;
 }
 
 .answer {
-  padding: 0 0 28px;
+  padding: 0 24px 24px;
+  border-top: 1px solid rgba(196, 114, 126, 0.1);
+  margin: 0 24px;
 }
 
 .answer p {
   font-family: 'Heebo', sans-serif;
-  font-size: 17px;
+  font-size: 16px;
   font-weight: 400;
   line-height: 1.9;
   color: var(--color-text);
-  margin: 0;
+  margin: 16px 0 0;
 }
 
 /* =============================================
@@ -294,7 +490,7 @@
    ============================================= */
 .ctaBox {
   text-align: center;
-  margin-top: 70px;
+  margin-top: 60px;
   position: relative;
   z-index: 2;
 }
@@ -303,8 +499,8 @@
   font-family: 'Heebo', sans-serif;
   font-size: 16px;
   font-weight: 300;
-  color: var(--text-muted);
-  margin: 0 0 20px 0;
+  color: var(--color-text-muted);
+  margin: 0 0 20px;
 }
 
 .ctaButton {
@@ -318,79 +514,105 @@
   font-family: 'Discovery', sans-serif;
   font-size: 17px;
   font-weight: 700;
-  color: #ffffff;
+  color: #fff;
   letter-spacing: 0.02em;
   text-decoration: none;
+  border-radius: 14px;
+  box-shadow:
+    0 6px 24px rgba(196, 114, 126, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease);
   position: relative;
   overflow: hidden;
-  transition: all 0.4s var(--ease);
-  border-radius: 14px;
-  box-shadow: 0 6px 24px var(--color-accent-glow);
+}
+
+.ctaButton::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    105deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.25) 50%,
+    transparent 70%
+  );
+  transition: left 0.5s var(--ease);
+}
+
+.ctaButton:hover::before {
+  left: 160%;
 }
 
 .ctaButton:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 36px rgba(196, 114, 126, 0.4);
+  transform: translateY(-3px);
+  box-shadow:
+    0 12px 40px rgba(196, 114, 126, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25);
 }
 
-.ctaButton span,
 .ctaButton svg {
+  width: 18px;
+  height: 18px;
+  transition: transform 0.3s ease;
   position: relative;
   z-index: 1;
 }
 
-.ctaButton svg {
-  width: 20px;
-  height: 20px;
-  transition: transform 0.3s ease;
+.ctaButton span {
+  position: relative;
+  z-index: 1;
 }
 
 .ctaButton:hover svg {
-  transform: translateX(-6px);
+  transform: translateX(-5px);
 }
 
 /* =============================================
    RESPONSIVE
    ============================================= */
-@media (max-width: 1024px) {
-  .sideDeco {
-    display: none;
-  }
-}
-
 @media (max-width: 768px) {
   .faqSection {
-    padding: 70px 0 60px;
+    padding: 80px 0 70px;
+  }
+
+  .frameTop,
+  .frameBottom {
+    left: 24px;
+    right: 24px;
   }
 
   .faqContainer {
-    padding: 0 20px;
+    padding: 0 16px;
+  }
+
+  .glassWrapper {
+    padding: 32px 24px;
+    border-radius: 22px;
   }
 
   .categoryBlock {
-    margin-bottom: 40px;
-  }
-
-  .categoryTitle {
-    font-size: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 36px;
   }
 
   .questionBtn {
+    padding: 18px 18px;
     gap: 14px;
-    padding: 22px 0;
+  }
+
+  .questionBtn:hover {
+    padding-right: 22px;
   }
 
   .answer {
-    padding: 0 0 22px;
+    padding: 0 18px 20px;
+    margin: 0 18px;
   }
 
   .answer p {
     font-size: 15px;
-  }
-
-  .ctaBox {
-    margin-top: 50px;
   }
 
   .ctaButton {
@@ -400,13 +622,23 @@
 }
 
 @media (max-width: 480px) {
+  .glassWrapper {
+    padding: 28px 16px;
+    border-radius: 18px;
+  }
+
   .questionBtn {
+    padding: 16px 14px;
     gap: 12px;
-    padding: 20px 0;
+  }
+
+  .questionBtn:hover {
+    padding-right: 18px;
   }
 
   .answer {
-    padding: 0 0 20px 0;
+    padding: 0 14px 18px;
+    margin: 0 14px;
   }
 
   .ctaButton {
@@ -420,11 +652,11 @@
    ============================================= */
 @media (prefers-reduced-motion: reduce) {
   .faqItem,
-  .sectionHeader {
+  .answerWrapper,
+  .bgOrb1,
+  .bgOrb2,
+  .bgOrb3 {
     transition: none !important;
-  }
-
-  .answerWrapper {
-    transition: none !important;
+    animation: none !important;
   }
 }

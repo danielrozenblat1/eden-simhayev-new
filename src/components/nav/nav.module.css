@@ -1,0 +1,608 @@
+/* =============================================
+   NAVBAR - עדן שמחייב
+   Luxury side menu — pink palette
+   ============================================= */
+
+/* ============================
+   CSS Variables
+   ============================ */
+  .topBar {
+    --pink: #C4727E;
+    --pink-light: #F4D0D5;
+    --pink-dark: #9E5A65;
+    --pink-muted: rgba(196, 114, 126, 0.28);
+    --pink-border: rgba(196, 114, 126, 0.28);
+    --pink-border-strong: rgba(196, 114, 126, 0.55);
+    --menu-bg: #2B0F18;
+    --text-primary: #F4E8E5;
+    --text-secondary: rgba(244, 232, 229, 0.6);
+    --text-muted: rgba(244, 232, 229, 0.38);
+    --border: rgba(244, 232, 229, 0.1);
+    --hover-bg: rgba(244, 232, 229, 0.06);
+    --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  /* ============================
+     Top Navigation Bar
+     ============================ */
+  .topBar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 2.5rem;
+    direction: rtl;
+    opacity: 0;
+    transform: translateY(-20px);
+    pointer-events: none;
+    transition: opacity 0.5s var(--ease), transform 0.5s var(--ease);
+  }
+
+  .topBarVisible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: all;
+  }
+
+  .logoTop {
+    display: flex;
+    align-items: center;
+  }
+
+  .logoTopImage {
+    height: 55px;
+    width: auto;
+    object-fit: contain;
+    transition: opacity 0.3s var(--ease);
+  }
+
+  .logoTopImage:hover {
+    opacity: 0.8;
+  }
+
+  /* ============================
+     Menu Button
+     ============================ */
+  .menuButton {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: linear-gradient(135deg, #C4727E 0%, #A85A6A 100%);
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    padding: 0.65rem 1.25rem;
+    transition: all 1s var(--ease);
+    box-shadow: 0 4px 20px rgba(43, 15, 24, 0.25);
+  }
+
+  .menuButton:hover {
+    background: #D4607A;
+    box-shadow: 0 6px 28px rgba(43, 15, 24, 0.35);
+    transform: scale(1.03);
+    transition: all 1s var(--ease);
+
+  }
+
+  .menuIcon {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 22px;
+  }
+
+  .menuLine {
+    display: block;
+    width: 100%;
+    height: 1.5px;
+    background: #F4E8E5;
+    border-radius: 2px;
+    transition: transform 0.3s var(--ease);
+  }
+
+  .menuButton:hover .menuLine:first-child {
+    transform: translateX(-3px);
+  }
+
+  .menuButton:hover .menuLine:last-child {
+    transform: translateX(3px);
+  }
+
+  .menuLabel {
+    font-family: 'Heebo', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 400;
+    letter-spacing: 0.03em;
+    color: #F4E8E5;
+  }
+
+  /* ============================
+     Fullscreen Menu
+     ============================ */
+  .fullscreenMenu {
+    --pink: #C4727E;
+    --pink-light: #F4D0D5;
+    --pink-dark: #9E5A65;
+    --pink-muted: rgba(196, 114, 126, 0.28);
+    --pink-border: rgba(196, 114, 126, 0.28);
+    --pink-border-strong: rgba(196, 114, 126, 0.55);
+    --menu-bg: #2B0F18;
+    --text-primary: #F4E8E5;
+    --text-secondary: rgba(244, 232, 229, 0.6);
+    --text-muted: rgba(244, 232, 229, 0.38);
+    --border: rgba(244, 232, 229, 0.1);
+    --hover-bg: rgba(244, 232, 229, 0.06);
+    --ease: cubic-bezier(0.22, 1, 0.36, 1);
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 9999;
+    background: var(--menu-bg);
+    display: flex;
+    overflow: hidden;
+    direction: rtl;
+  }
+
+  /* ============================
+     Pink Frame Decoration
+     ============================ */
+  .frameTop,
+  .frameBottom,
+  .frameLeft,
+  .frameRight {
+    position: absolute;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .frameTop {
+    top: 28px;
+    left: 40px;
+    right: 40px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, var(--pink-muted) 20%, var(--pink) 50%, var(--pink-muted) 80%, transparent 100%);
+  }
+
+  .frameBottom {
+    bottom: 28px;
+    left: 40px;
+    right: 40px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, var(--pink-muted) 20%, var(--pink) 50%, var(--pink-muted) 80%, transparent 100%);
+  }
+
+  .frameLeft {
+    top: 40px;
+    bottom: 40px;
+    left: 28px;
+    width: 1px;
+    background: linear-gradient(180deg, transparent 0%, var(--pink-muted) 20%, var(--pink) 50%, var(--pink-muted) 80%, transparent 100%);
+  }
+
+  .frameRight {
+    top: 40px;
+    bottom: 40px;
+    right: 28px;
+    width: 1px;
+    background: linear-gradient(180deg, transparent 0%, var(--pink-muted) 20%, var(--pink) 50%, var(--pink-muted) 80%, transparent 100%);
+  }
+
+  /* ---- L-shape Corners ---- */
+  .corner {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .cornerTL {
+    top: 24px;
+    left: 24px;
+    border-top: 1.5px solid var(--pink);
+    border-left: 1.5px solid var(--pink);
+  }
+
+  .cornerTR {
+    top: 24px;
+    right: 24px;
+    border-top: 1.5px solid var(--pink);
+    border-right: 1.5px solid var(--pink);
+  }
+
+  .cornerBL {
+    bottom: 24px;
+    left: 24px;
+    border-bottom: 1.5px solid var(--pink);
+    border-left: 1.5px solid var(--pink);
+  }
+
+  .cornerBR {
+    bottom: 24px;
+    right: 24px;
+    border-bottom: 1.5px solid var(--pink);
+    border-right: 1.5px solid var(--pink);
+  }
+
+  /* ============================
+     Menu Content Grid
+     ============================ */
+  .menuContent {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr auto;
+    padding: 6rem 5rem 3rem;
+    gap: 2rem;
+    overflow: visible;
+  }
+
+  /* ============================
+     Navigation Section
+     ============================ */
+  .navSection {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .navLinks {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .navLink {
+    display: flex;
+    align-items: baseline;
+    justify-content: flex-start;
+    gap: 1rem;
+    padding: 1.1rem 0;
+    text-decoration: none;
+    border-bottom: 1px solid var(--border);
+    transition: all 0.4s var(--ease);
+    overflow: hidden;
+    position: relative;
+    background: none;
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    cursor: pointer;
+    text-align: right;
+    width: 100%;
+  }
+
+  .navLink::before {
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 0;
+    height: 1px;
+    background: var(--pink-light);
+    transition: width 0.4s var(--ease);
+  }
+
+  .navLink:hover::before {
+    width: 100%;
+  }
+
+  .navLink:hover {
+    padding-right: 1rem;
+    background: var(--hover-bg);
+  }
+
+  .navNumber {
+    font-family: 'Heebo', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 400;
+    color: var(--text-muted);
+    min-width: 2rem;
+    transition: color 0.3s var(--ease);
+  }
+
+  .navLink:hover .navNumber {
+    color: var(--pink-light);
+  }
+
+  .navLabel {
+    font-family: 'Discovery', serif;
+    font-size: clamp(1.6rem, 4vw, 2.6rem);
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1.2;
+    transition: transform 0.4s var(--ease), color 0.3s var(--ease);
+  }
+
+  .navLink:hover .navLabel {
+    transform: translateX(-0.5rem);
+    color: var(--pink-light);
+  }
+
+  /* ============================
+     Contact Section
+     ============================ */
+  .contactSection {
+    display: flex;
+    flex-direction: column;
+    gap: 2.2rem;
+    justify-content: center;
+    padding-right: 4rem;
+    border-right: 1px solid var(--border);
+  }
+
+  .contactGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .contactLabel {
+    font-family: 'Heebo', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    color: var(--pink);
+    opacity: 0.8;
+  }
+
+  .contactValue {
+    font-family: 'Heebo', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 300;
+    color: var(--text-primary);
+    text-decoration: none;
+    line-height: 1.6;
+    transition: color 0.3s var(--ease);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    direction: ltr;
+    justify-content: flex-end;
+  }
+
+  .contactValue:hover {
+    color: var(--pink-light);
+  }
+
+  .contactIcon {
+    width: 17px;
+    height: 17px;
+    flex-shrink: 0;
+    opacity: 0.6;
+  }
+
+  .socialLinks {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .socialLink {
+    font-family: 'Heebo', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 300;
+    color: var(--text-primary);
+    text-decoration: none;
+    transition: all 0.3s var(--ease);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .socialIcon {
+    width: 17px;
+    height: 17px;
+    flex-shrink: 0;
+    opacity: 0.6;
+    transition: transform 0.3s var(--ease);
+  }
+
+  .socialLink:hover .socialIcon {
+    transform: scale(1.15);
+  }
+
+  .socialLink:hover {
+    color: var(--pink-light);
+    padding-right: 0.25rem;
+  }
+
+  /* ============================
+     Legal / Footer Section
+     ============================ */
+  .legalSection {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .copyright {
+    font-family: 'Heebo', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 300;
+    color: var(--text-muted);
+  }
+
+  .studioName {
+    font-family: 'Heebo', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 300;
+    letter-spacing: 0.15em;
+    color: var(--text-muted);
+    direction: ltr;
+  }
+
+  /* ============================
+     Footer Logo
+     ============================ */
+  .footerLogo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .footerLogoImage {
+    height: 70px;
+    width: auto;
+    object-fit: contain;
+    filter: brightness(0) invert(1) sepia(0.3) saturate(1.5) hue-rotate(310deg) brightness(0.9);
+    opacity: 0.8;
+    transition: all 0.4s var(--ease);
+  }
+
+  .footerLogoImage:hover {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+
+  /* ============================
+     Close Button
+     ============================ */
+  .closeButton {
+    position: absolute;
+    top: 2rem;
+    left: 2.5rem;
+    font-family: 'Discovery', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: var(--pink);
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--pink-muted);
+    padding: 0.5rem 0.2rem;
+    cursor: pointer;
+    transition: all 0.4s var(--ease);
+  }
+
+  .closeButton:hover {
+    color: var(--pink-light);
+    border-color: var(--pink);
+    padding-bottom: 0.7rem;
+  }
+
+  /* ============================
+     RESPONSIVE
+     ============================ */
+  @media (max-width: 1024px) {
+    .menuContent {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto auto auto;
+      padding: 5rem 2.5rem 2rem;
+      overflow-y: auto;
+    }
+
+    .contactSection {
+      padding-right: 0;
+      border-right: none;
+      border-top: none;
+      padding-top: 2rem;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+
+    .frameLeft { left: 10px; }
+    .frameRight { right: 10px; }
+    .frameTop { top: 10px; left: 16px; right: 16px; }
+    .frameBottom { bottom: 10px; left: 16px; right: 16px; }
+    .cornerTL { top: 12px; left: 12px; }
+    .cornerTR { top: 12px; right: 12px; }
+    .cornerBL { bottom: 12px; left: 12px; }
+    .cornerBR { bottom: 12px; right: 12px; }
+  }
+
+  @media (max-width: 768px) {
+    .topBar {
+      padding: 1.25rem 1.5rem;
+    }
+
+    .logoTopImage {
+      height: 45px;
+    }
+
+    .menuButton {
+      padding: 0.55rem 1rem;
+    }
+
+    .menuLabel {
+      font-size: 0.7rem;
+    }
+
+    .menuContent {
+      padding: 4rem 1.75rem 2rem;
+    }
+
+    .closeButton {
+      top: 1.25rem;
+      left: 1.5rem;
+      padding: 0.5rem 1rem;
+      font-size: 0.75rem;
+    }
+
+    .contactSection {
+      grid-template-columns: 1fr;
+    }
+
+    .legalSection {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+
+    .footerLogoImage {
+      height: 55px;
+    }
+
+    .frameTop, .frameBottom { left: 8px; right: 8px; }
+    .frameLeft, .frameRight { top: 16px; bottom: 16px; }
+    .frameLeft { left: 6px; }
+    .frameRight { right: 6px; }
+    .frameTop { top: 6px; }
+    .frameBottom { bottom: 6px; }
+  }
+
+  @media (max-width: 480px) {
+    .navLabel {
+      font-size: 1.4rem;
+    }
+
+    .navLink {
+      padding: 0.85rem 0;
+    }
+  }
+
+  /* ============================
+     Accessibility
+     ============================ */
+  @media (prefers-reduced-motion: reduce) {
+    .topBar,
+    .navLink,
+    .socialLink,
+    .menuLine,
+    .closeButton {
+      transition: none !important;
+    }
+  }
+
+  .navLink:focus-visible,
+  .menuButton:focus-visible,
+  .closeButton:focus-visible,
+  .socialLink:focus-visible {
+    outline: 2px solid var(--pink-light);
+    outline-offset: 4px;
+  }
