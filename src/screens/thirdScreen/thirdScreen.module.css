@@ -111,7 +111,7 @@
   .container {
     position: relative;
     z-index: 2;
-    max-width: 800px;
+    max-width: 1000px;
     width: 100%;
     margin: 0 auto;
     display: flex;
@@ -161,8 +161,8 @@
      Course Cards
      ============================ */
   .courseList {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     gap: 28px;
   }
 
@@ -284,7 +284,7 @@
     font-size: 0.82rem;
     font-weight: 400;
     color: var(--color-accent);
-    opacity: 0.4;
+    opacity: 0.7;
     transition: opacity 0.3s ease;
     margin-top: 4px;
   }
@@ -604,7 +604,7 @@
     background: linear-gradient(165deg, #FFFFFF 0%, #FFF8F5 50%, #FFF2EE 100%);
     border: 2px solid;
     border-image: linear-gradient(135deg, #E8A0AC 0%, #D4808E 40%, #C4727E 70%, #E8A0AC 100%) 1;
-    padding: 32px 24px 28px;
+    padding: 48px 24px 28px;
     position: relative;
   }
 
@@ -870,7 +870,7 @@
 
   .benefitCardTitle {
     font-family: var(--font-display);
-    font-size: 1rem;
+    font-size: 1.2rem;
     font-weight: 700;
     color: var(--color-heading);
     margin: 0;
@@ -878,11 +878,27 @@
 
   .benefitCardDesc {
     font-family: var(--font-body);
-    font-size: 0.88rem;
+    font-size: 1.05rem;
     font-weight: 400;
     color: var(--color-text);
     line-height: 1.7;
     margin: 0;
+  }
+
+  /* ============================
+     Works Carousel Title
+     ============================ */
+  .worksSection {
+    text-align: center;
+  }
+
+  .worksTitle {
+    font-family: var(--font-display);
+    font-size: clamp(1.3rem, 3.5vw, 1.65rem);
+    font-weight: 700;
+    color: var(--color-heading);
+    margin: 0;
+    line-height: 1.6;
   }
 
   /* ============================
@@ -962,14 +978,15 @@
 
   @media (max-width: 640px) {
     .section {
-      padding: 70px 14px 90px;
+      padding: 20px 16px 10px;
     }
 
     .container {
-      gap: 44px;
+      gap: 32px;
     }
 
     .courseList {
+      grid-template-columns: 1fr;
       gap: 22px;
     }
 
@@ -1050,8 +1067,13 @@
       padding: 22px 18px;
     }
 
+    .benefitCardDesc {
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
     .bottomCta {
-      padding: 32px 18px;
+      padding: 28px 18px;
     }
 
     .ctaButton {

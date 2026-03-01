@@ -6,12 +6,11 @@
 }
 
 .byMe{
- 
     text-align:center;
-
     margin:1% auto;
     color: #fff;
     font-size: 1rem;
     font-family: "Heebo", sans-serif;
     font-weight: 300;
+    white-space: nowrap;
 }

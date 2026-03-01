@@ -25,7 +25,7 @@
      position: relative;
      background: var(--bg-light);
      overflow: hidden;
-     padding: 80px 20px 100px;
+     padding: 30px 20px 40px;
    }
    
    /* ---- Background Orbs ---- */
@@ -74,7 +74,7 @@
      margin: 0 auto;
      display: flex;
      flex-direction: column;
-     gap: 80px;
+     gap: 50px;
    }
    
    /* ============================
@@ -86,6 +86,7 @@
      align-items: center;
      text-align: center;
      gap: 32px;
+     overflow: visible;
    }
    
    /* ---- Section Titles ---- */
@@ -103,32 +104,39 @@
      font-family: var(--font-body);
      font-weight: 300;
      line-height: 1.4;
-     font-size: 1.15rem;
+     font-size: 1.4rem;
      font-weight: 400;
-     color: var(--color-text-secondary);
+     color: #000000;
      margin: 0;
-     letter-spacing: 0.02em;
+     letter-spacing: 0;
    }
    
    /* ---- Can Grid - 3 items in a row ---- */
    .canGrid {
      display: grid;
      grid-template-columns: repeat(3, 1fr);
-     gap: 20px;
+     gap: 28px;
      width: 100%;
      max-width: 1060px;
+     overflow: visible;
      direction: rtl;
    }
    
    .canItem {
      display: flex;
      justify-content: center;
+     align-items: stretch;
+     overflow: visible;
+     padding: 6px;
+     isolation: isolate;
    }
-   
-   /* Ensure edenCan card fills the grid cell */
+
+   /* Ensure edenCan card fills the grid cell with room for paper layers */
    .canItem > div {
-     width: 100% !important;
+     width: calc(100% - 12px) !important;
      max-width: 100% !important;
+     margin: 0 auto !important;
+     height: auto !important;
    }
    
    /* ---- "וחשוב לי שתדעי שזה אפשרי!" ---- */
@@ -144,13 +152,13 @@
    .specialUnderline {
      position: relative;
      display: inline-block;
-     padding-bottom: 2px;
+     padding-bottom: 0px;
    }
    
    .specialUnderline::after {
      content: '';
      position: absolute;
-     bottom: 0;
+     bottom: 5px;
      right: 0;
      width: 100%;
      height: 1.5px;
@@ -172,7 +180,7 @@
    
    /* ---- Story Content ---- */
    .storyContent {
-     max-width: 720px;
+     max-width: 900px;
      display: flex;
      flex-direction: column;
      gap: 20px;
@@ -182,7 +190,7 @@
      font-family: var(--font-body);
      font-weight: 300;
      line-height: 1.4;
-     font-size: 1.1rem;
+     font-size: 1.4rem;
      font-weight: 400;
      color: var(--color-text);
      line-height: 1.85;
@@ -190,6 +198,13 @@
      text-align: center;
    }
    
+   .strikethrough {
+     font-family: var(--font-display);
+     color: var(--color-accent);
+     text-decoration: line-through;
+     text-decoration-color: var(--color-accent);
+   }
+
    /* Parenthesized text in subtitle/underline font style */
    .storySubfont {
      font-family: var(--font-display);
@@ -198,13 +213,11 @@
      color: var(--color-accent);
      position: relative;
      display: inline;
-     padding-bottom: 1px;
-     border-bottom: 1px solid rgba(196, 114, 126, 0.4);
    }
    
    .storyHighlight {
      font-family: var(--font-display);
-     font-size: 1.2rem;
+     font-size: 1.4rem;
      font-weight: 700;
      color: var(--color-heading);
      margin: 8px 0 0;
@@ -212,93 +225,228 @@
    
    .zeroExperience {
      margin: 0;
-     font-size: 1rem;
+     font-size: 1.4rem;
    }
-   
+
    /* ============================
-      Carousel - Infinite Scroll (Works Style)
+      Timeline Section
       ============================ */
-   .carouselSection {
+   .timeline {
+     display: flex;
+     flex-direction: row;
+     align-items: stretch;
+     gap: 28px;
      width: 100%;
-     max-width: 100%;
+     max-width: 1060px;
+     margin: 10px auto 0;
+     position: relative;
+   }
+
+   .timelineItem {
+     flex: 1;
      display: flex;
      flex-direction: column;
      align-items: center;
-     gap: 0;
+     text-align: center;
+     position: relative;
    }
-   
+
+   /* ---- Stacked Paper Card (matches edenCan style) ---- */
+   .timelineCard {
+     position: relative;
+     z-index: 1;
+     background: linear-gradient(135deg, #fff 0%, #FFF0F2 100%);
+     border: 2px solid;
+     border-image: linear-gradient(135deg, #E8A0AC 0%, #D4808E 40%, #C4727E 70%, #E8A0AC 100%) 1;
+     padding: 32px 24px 28px;
+     width: 100%;
+     transition: transform 0.35s ease, box-shadow 0.35s ease;
+     box-shadow:
+       0 4px 12px rgba(0, 0, 0, 0.08),
+       0 1px 4px rgba(0, 0, 0, 0.05);
+   }
+
+   /* Paper layer 1 */
+   .timelineCard::before {
+     content: '';
+     position: absolute;
+     top: 6px;
+     left: -5px;
+     width: 100%;
+     height: 100%;
+     background: #FFFFFF;
+     z-index: -1;
+     transform: rotate(0.8deg);
+     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+   }
+
+   /* Paper layer 2 */
+   .timelineCard::after {
+     content: '';
+     position: absolute;
+     top: 12px;
+     left: 4px;
+     width: 100%;
+     height: 100%;
+     background: #FFFFFF;
+     z-index: -2;
+     transform: rotate(-0.6deg);
+     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+   }
+
+   .timelineCard:hover {
+     transform: translateY(-5px);
+     box-shadow:
+       0 10px 40px rgba(196, 114, 126, 0.16),
+       0 4px 14px rgba(0, 0, 0, 0.08);
+   }
+
+   /* ---- Number Badge ---- */
+   .timelineDot {
+     width: 48px;
+     height: 48px;
+     border-radius: 50%;
+     background: linear-gradient(135deg, #C4727E 0%, #A85A6A 100%);
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     margin-bottom: -24px;
+     position: relative;
+     z-index: 3;
+     box-shadow:
+       0 4px 16px rgba(196, 114, 126, 0.35),
+       inset 0 1px 0 rgba(255, 255, 255, 0.2);
+     line-height: 0;
+   }
+
+   /* ---- Divider between cards ---- */
+   .timelineDivider {
+     display: flex;
+     align-items: center;
+     align-self: center;
+     padding: 0;
+     flex-shrink: 0;
+   }
+
+   .timelineDivider::before {
+     content: '';
+     width: 40px;
+     height: 1px;
+     background: linear-gradient(90deg, transparent 0%, rgba(196, 114, 126, 0.3) 30%, rgba(196, 114, 126, 0.3) 70%, transparent 100%);
+   }
+
+   .timelineDividerDot {
+     width: 6px;
+     height: 6px;
+     border-radius: 50%;
+     background: var(--color-accent);
+     opacity: 0.4;
+     flex-shrink: 0;
+   }
+
+   .timelineDivider::after {
+     content: '';
+     width: 40px;
+     height: 1px;
+     background: linear-gradient(90deg, transparent 0%, rgba(196, 114, 126, 0.3) 30%, rgba(196, 114, 126, 0.3) 70%, transparent 100%);
+   }
+
+   .timelineTitle {
+     font-family: var(--font-display);
+     font-size: 1.15rem;
+     font-weight: 700;
+     color: var(--color-accent);
+     margin: 0 0 12px;
+     padding-top: 26px;
+   }
+
+
+   .timelineText {
+     font-family: var(--font-body);
+     font-size: 0.95rem;
+     font-weight: 400;
+     color: var(--color-text);
+     line-height: 1.75;
+     margin: 0;
+   }
+
+   /* ============================
+      Carousel - Infinite Scroll (Works Style)
+      ============================ */
    .worksContainer {
      width: 100%;
      overflow: hidden;
      position: relative;
-     margin: 0;
+     background: #FFF5F3;
    }
-   
+
+   /* Fog effect on sides */
    .worksContainer::before,
    .worksContainer::after {
      content: '';
      position: absolute;
      top: 0;
      bottom: 0;
-     width: 150px;
-     z-index: 2;
+     width: 120px;
+     z-index: 10;
      pointer-events: none;
    }
-   
+
    .worksContainer::before {
-     left: 0;
-     background: linear-gradient(to right, var(--bg-light) 0%, rgba(255, 245, 243, 0) 100%);
-   }
-   
-   .worksContainer::after {
      right: 0;
-     background: linear-gradient(to left, var(--bg-light) 0%, rgba(255, 245, 243, 0) 100%);
+     background: linear-gradient(to left,
+       #FFF5F3 0%,
+       rgba(255, 245, 243, 0.9) 20%,
+       rgba(255, 245, 243, 0.6) 50%,
+       rgba(255, 245, 243, 0) 100%
+     );
+   }
+
+   .worksContainer::after {
+     left: 0;
+     background: linear-gradient(to right,
+       #FFF5F3 0%,
+       rgba(255, 245, 243, 0.9) 20%,
+       rgba(255, 245, 243, 0.6) 50%,
+       rgba(255, 245, 243, 0) 100%
+     );
    }
    
    .worksScrollTrack {
      display: flex;
-     width: max-content;
+     width: fit-content;
+     animation: worksInfiniteScroll 60s linear infinite;
      gap: 20px;
-     animation: worksInfiniteScroll 100s linear infinite;
-     animation-delay: 0s;
-     will-change: transform;
-     animation-play-state: running;
    }
-   
+
    .worksScrollContainer {
      display: flex;
      gap: 20px;
-     padding: 0;
-     flex-shrink: 0;
+     padding: 20px 0;
    }
-   
+
    .worksImageWrapper {
      flex-shrink: 0;
      width: 300px;
-     height: 400px;
-     border-radius: 12px;
+     height: 450px;
+     border-radius: 16px;
      overflow: hidden;
-     box-shadow: 0 4px 15px rgba(71, 49, 44, 0.1);
-     display: flex;
-     align-items: center;
-     justify-content: center;
-     background: #f5f5f5;
    }
-   
+
    .worksImage {
      width: 100%;
      height: 100%;
      object-fit: cover;
-     border-radius: 12px;
+     border-radius: 16px;
      display: block;
    }
-   
+
    @keyframes worksInfiniteScroll {
-     from {
+     0% {
        transform: translateX(0);
      }
-     to {
-       transform: translateX(50%);
+     100% {
+       transform: translateX(-50%);
      }
    }
    
@@ -310,74 +458,132 @@
    @media (max-width: 900px) {
      .canGrid {
        grid-template-columns: 1fr;
-       gap: 16px;
-       max-width: 420px;
+       gap: 18px;
+       max-width: 360px;
        margin: 0 auto;
      }
-   
+
+     .canItem {
+       padding: 4px;
+     }
+
      .canItem > div {
        max-width: 100% !important;
+     }
+
+     .timeline {
+       flex-direction: column;
+       align-items: center;
+       gap: 0;
+       max-width: 380px;
+       margin: 10px auto 0;
+     }
+
+     .timelineItem {
+       padding: 0 6px;
+     }
+
+     .timelineDot {
+       width: 42px;
+       height: 42px;
+       margin-bottom: -21px;
+     }
+
+     .timelineCard {
+       padding: 28px 18px 22px;
+     }
+
+     .timelineCard::before {
+       top: 5px;
+       left: -4px;
+       transform: rotate(0.6deg);
+     }
+
+     .timelineCard::after {
+       top: 10px;
+       left: 3px;
+       transform: rotate(-0.5deg);
+     }
+
+     .timelineTitle {
+       font-size: 1.05rem;
+       padding-top: 22px;
+     }
+
+     .timelineText {
+       font-size: 0.9rem;
+     }
+
+     .timelineDivider {
+       transform: rotate(90deg);
+       margin: 18px 0;
+     }
+
+     .timelineDivider::before,
+     .timelineDivider::after {
+       width: 24px;
      }
    }
    
    @media (max-width: 640px) {
      .section {
-       padding: 60px 16px 80px;
+       padding: 20px 16px 30px;
      }
-   
+
      .container {
-       gap: 60px;
+       gap: 30px;
      }
    
      .dreamSection,
      .storySection {
-       gap: 24px;
+       gap: 14px;
      }
    
      .sectionTitle {
-       font-size: clamp(1.4rem, 5.5vw, 1.8rem);
+       font-size: clamp(1.6rem, 6vw, 2rem);
      }
-   
+
      .signText {
-       font-size: 1.05rem;
+       font-size: 1.2rem;
      }
-   
+
      .possibleText {
-       font-size: clamp(1.1rem, 4vw, 1.4rem);
+       font-size: clamp(1.2rem, 5vw, 1.5rem);
      }
-   
+
      .storyText {
-       font-size: 1rem;
+       font-size: 1.1rem;
        line-height: 1.8;
      }
-   
+
      .storyHighlight {
-       font-size: 1.1rem;
+       font-size: 1.2rem;
      }
    
    }
    
-   @media only screen and (min-width: 451px) and (max-width: 1050px) {
-     .worksImageWrapper {
-       width: 280px;
-       height: 380px;
-     }
-   
-     .worksContainer::before,
-     .worksContainer::after {
-       width: 100px;
-     }
-   }
-   
-   @media only screen and (max-width: 450px) {
-     .worksImageWrapper {
-       width: 250px;
-       height: 350px;
-     }
-   
+   @media (max-width: 1050px) {
      .worksContainer::before,
      .worksContainer::after {
        width: 80px;
+     }
+
+     .worksImageWrapper {
+       width: 280px;
+       height: 420px;
+     }
+   }
+
+   @media (max-width: 640px) {
+     .worksContainer::before,
+     .worksContainer::after {
+       width: 50px;
+     }
+
+     .worksImageWrapper {
+       width: 180px;
+       height: 260px;
+       border-radius: 10px;
      }
    }
    

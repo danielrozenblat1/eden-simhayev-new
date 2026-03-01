@@ -373,6 +373,17 @@ textarea:focus {
   }
 }
 
+.limitedSpots {
+  font-family: 'Heebo', sans-serif;
+  font-weight: 300;
+  font-size: 13px;
+  text-align: center;
+  color: #000000;
+  margin-top: 16px;
+  margin-bottom: 0;
+  letter-spacing: 0.3px;
+}
+
 .termsText {
   direction: rtl;
   font-family: 'Heebo', sans-serif;

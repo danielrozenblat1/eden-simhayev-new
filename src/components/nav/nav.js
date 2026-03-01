@@ -6,17 +6,10 @@ import styles from './nav.module.css';
 gsap.registerPlugin(ScrollToPlugin);
 
 const NAV_ITEMS = [
-  { number: '1', label: 'בית', targetId: 'hero' },
-  { number: '2', label: 'אודותי', targetId: 'about-me' },
-  { number: '3', label: 'שירותים', targetId: 'services' },
-  { number: '4', label: 'קורסים', targetId: 'projects' },
-  { number: '5', label: 'שאלות נפוצות', targetId: 'faq' },
-  {
-    number: '6',
-    label: 'צרי קשר',
-    external: true,
-    href: `https://wa.me/972543414939?text=${encodeURIComponent('היי עדן, הגעתי מהאתר שלך ואשמח לשמוע עוד..')}`,
-  },
+  { number: '1', label: 'מי אני', targetId: 'מי אנחנו' },
+  { number: '2', label: 'לכל הסילבוסים', targetId: 'courses' },
+  { number: '3', label: 'שאלות נפוצות', targetId: 'faq' },
+  { number: '4', label: 'צרי קשר', targetId: 'טופס' },
 ];
 
 const Navbar = () => {

@@ -1,0 +1,132 @@
+@import '../fonts/fonts.css';
+
+.floatingButton {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%) translateY(150%);
+  direction: rtl;
+  padding: 16px 0;
+  width: 100%;
+
+  background: linear-gradient(135deg, #C4727E 0%, #A85A6A 50%, #C4727E 100%);
+  background-size: 200% 100%;
+  border: none;
+  border-radius: 0;
+
+  box-shadow: 0 -4px 20px rgba(196, 114, 126, 0.3);
+
+  cursor: pointer;
+  z-index: 1000;
+
+  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  opacity: 0;
+  pointer-events: none;
+
+  user-select: none;
+  -webkit-user-select: none;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  text-align: center;
+
+  overflow: hidden;
+}
+
+.shine {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.12) 50%,
+    transparent 100%
+  );
+  animation: shimmer 3s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes shimmer {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+.floatingButton.visible {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.floatingButton.static {
+  position: absolute;
+  bottom: 0;
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}
+
+.floatingButton:hover {
+  box-shadow: 0 -6px 30px rgba(196, 114, 126, 0.45);
+  transform: translateX(-50%) translateY(-2px);
+  background-position: 100% 0;
+}
+
+.floatingButton.static:hover {
+  transform: translateX(-50%) translateY(-4px);
+  box-shadow: 0 -6px 30px rgba(196, 114, 126, 0.45);
+}
+
+.floatingButton:active {
+  transform: translateX(-50%) translateY(0);
+  box-shadow: 0 -2px 12px rgba(196, 114, 126, 0.3);
+}
+
+.floatingButton.static:active {
+  transform: translateX(-50%) translateY(-1px);
+}
+
+.icon {
+  width: 22px;
+  height: 22px;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.buttonText {
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 700;
+  font-family: 'Discovery', sans-serif;
+  white-space: nowrap;
+  letter-spacing: 0.02em;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .floatingButton {
+    padding: 14px 0;
+  }
+
+  .buttonText {
+    font-size: 1rem;
+  }
+
+  .icon {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .floatingButton {
+    padding: 13px 0;
+  }
+
+  .buttonText {
+    font-size: 0.95rem;
+  }
+}

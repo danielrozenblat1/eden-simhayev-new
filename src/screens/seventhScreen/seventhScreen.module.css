@@ -72,18 +72,63 @@
      justify-content: center;
      flex-wrap: wrap;
      margin: 1.5rem 0;
+     align-items: flex-start;
    }
    
    .col {
      flex: 1;
      min-width: 300px;
      max-width: 460px;
+     position: relative;
+     background: #FFFFFF;
+     border-radius: 3px;
+     padding: 2px;
+     z-index: 1;
+     box-shadow:
+       0 4px 12px rgba(196, 114, 126, 0.1),
+       0 1px 4px rgba(0, 0, 0, 0.05);
    }
-   
+
+   /* Stacked paper layers */
+   .col::before,
+   .col::after {
+     content: '';
+     position: absolute;
+     width: 100%;
+     height: 100%;
+     background: #FFFFFF;
+     border-radius: 3px;
+     z-index: -1;
+     box-shadow: 0 2px 8px rgba(196, 114, 126, 0.08);
+   }
+
+   .col::before {
+     top: 5px;
+     left: -5px;
+     transform: rotate(0.8deg);
+   }
+
+   .col::after {
+     top: -3px;
+     left: 4px;
+     transform: rotate(-0.5deg);
+   }
+
+   .colInner {
+     background: #FFFFFF;
+     border: 2px solid;
+     border-image: linear-gradient(135deg, #E8A0AC 0%, #D4808E 40%, #C4727E 70%, #E8A0AC 100%) 1;
+   }
+
+   .colNo .colInner {
+     border-image: linear-gradient(135deg, rgba(196, 114, 126, 0.25) 0%, rgba(196, 114, 126, 0.15) 50%, rgba(196, 114, 126, 0.25) 100%) 1;
+   }
+
    .colTitle {
      font-size: clamp(18px, 2.5vw, 22px);
      font-weight: 700;
-     margin-bottom: 1.5rem;
+     padding: 28px 28px 0;
+     margin-bottom: 8px;
      display: flex;
      align-items: center;
      gap: 12px;
@@ -91,13 +136,13 @@
      color: var(--color-heading);
      flex-direction: row;
    }
-   
+
    /* Yes icon - pink accent */
    .iconYes {
      width: 36px;
      height: 36px;
      border-radius: 50%;
-     background: var(--color-accent);
+     background: linear-gradient(135deg, var(--color-accent), #A85A6A);
      display: flex;
      align-items: center;
      justify-content: center;
@@ -105,14 +150,15 @@
      flex-shrink: 0;
      color: #fff;
      font-weight: bold;
+     box-shadow: 0 4px 12px rgba(196, 114, 126, 0.25);
    }
-   
+
    /* No icon - muted pink */
    .iconNo {
      width: 36px;
      height: 36px;
      border-radius: 50%;
-     background: rgba(196, 114, 126, 0.4);
+     background: rgba(196, 114, 126, 0.35);
      display: flex;
      align-items: center;
      justify-content: center;
@@ -121,62 +167,88 @@
      color: #fff;
      font-weight: bold;
    }
-   
+
+   .colItems {
+     padding: 16px 28px 28px;
+     display: flex;
+     flex-direction: column;
+     gap: 0;
+   }
+
    .rowItem {
-     padding: 18px 20px;
-     margin-bottom: 1rem;
-     border-radius: 12px;
+     padding: 16px 0;
      font-size: clamp(14px, 1.8vw, 16px);
      line-height: 1.8;
      font-weight: 400;
      font-family: var(--font-body);
      color: var(--color-text);
      text-align: right;
-     /* perspective needed for the 3D rotateY flip */
      transform-style: preserve-3d;
      perspective: 800px;
+     position: relative;
+     display: flex;
+     align-items: center;
+     gap: 10px;
    }
-   
-   /* Yes rows - elegant gradient with right accent strip */
+
+   .rowIcon {
+     flex-shrink: 0;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     color: var(--color-accent);
+     opacity: 0.7;
+   }
+
+   /* Divider between items */
+   .rowItem + .rowItem::before {
+     content: '';
+     position: absolute;
+     top: 0;
+     right: 0;
+     left: 0;
+     height: 1px;
+     background: linear-gradient(90deg, transparent 0%, rgba(196, 114, 126, 0.15) 20%, rgba(196, 114, 126, 0.15) 80%, transparent 100%);
+   }
+
+   /* Yes column - pink gradient frame */
+   .colYes {
+     overflow: hidden;
+   }
+
+   .colYes::before {
+     transform: rotate(1deg);
+   }
+
+   /* No column - subtle frame */
+   .colNo {
+     overflow: hidden;
+   }
+
+   .colNo::before {
+     transform: rotate(-0.8deg);
+   }
+
+   /* Yes rows */
    .rowYes {
-     background: linear-gradient(135deg, rgba(255, 245, 243, 0.95) 0%, rgba(255, 232, 236, 0.7) 100%);
-     border: 1px solid rgba(196, 114, 126, 0.14);
-     box-shadow:
-       0 4px 16px rgba(196, 114, 126, 0.08),
-       inset 0 1px 0 rgba(255, 255, 255, 0.9);
-     position: relative;
-     overflow: hidden;
+     padding-right: 14px;
+     border-right: 2px solid transparent;
+     transition: all 0.3s ease;
    }
 
-   .rowYes::before {
-     content: '';
-     position: absolute;
-     right: 0;
-     top: 0;
-     bottom: 0;
-     width: 3px;
-     background: linear-gradient(180deg, rgba(196, 114, 126, 0.35) 0%, var(--color-accent) 50%, rgba(196, 114, 126, 0.35) 100%);
-     border-radius: 0 12px 12px 0;
+   .rowYes:hover {
+     border-right-color: var(--color-accent);
+     padding-right: 18px;
    }
 
-   /* No rows - softer pink with muted accent strip */
+   /* No rows */
    .rowNo {
-     background: linear-gradient(135deg, rgba(245, 213, 213, 0.5) 0%, rgba(232, 180, 188, 0.25) 100%);
-     border: 1px solid rgba(196, 114, 126, 0.09);
-     box-shadow: 0 2px 10px rgba(196, 114, 126, 0.06);
-     position: relative;
-     overflow: hidden;
+     transition: all 0.3s ease;
+     opacity: 0.75;
    }
 
-   .rowNo::before {
-     content: '';
-     position: absolute;
-     right: 0;
-     top: 0;
-     bottom: 0;
-     width: 3px;
-     background: linear-gradient(180deg, transparent 0%, rgba(196, 114, 126, 0.35) 50%, transparent 100%);
-     border-radius: 0 12px 12px 0;
+   .rowNo:hover {
+     opacity: 1;
    }
    
    .ctaBtn {
@@ -231,7 +303,15 @@
    
      .rowItem {
        font-size: 15px;
-       padding: 16px 18px;
+       padding: 14px 0;
+     }
+
+     .colTitle {
+       padding: 22px 22px 0;
+     }
+
+     .colItems {
+       padding: 12px 22px 22px;
      }
    
      .ctaBtn {
@@ -268,7 +348,15 @@
    
      .rowItem {
        font-size: 14px;
-       padding: 14px 16px;
+       padding: 12px 0;
+     }
+
+     .colTitle {
+       padding: 20px 18px 0;
+     }
+
+     .colItems {
+       padding: 10px 18px 20px;
      }
    
      .ctaBtn {

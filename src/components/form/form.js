@@ -16,7 +16,7 @@ const ContactForm = () => {
 
   // Server settings
   const serverUrl = "https://dynamic-server-dfc88e1f1c54.herokuapp.com/leads/newLead";
-  const reciver = "eden@example.com"; // Update with Eden's email
+  const reciver = "edensimhayeveden@gmail.com";
 
   const handleTermsClick = (e) => {
     e.preventDefault();
@@ -84,8 +84,8 @@ const ContactForm = () => {
 
   return (
     <div className={styles.formContainer} id="טופס">
-      <h2 className={styles.title}>לשריון שיחה לבדיקת התאמה</h2>
-      <p className={styles.subtitle}>*במיוחד עבור מי שרוצה לצאת עם מקצוע ביד, לא רק תעודה במגירה*</p>
+      <h2 className={styles.title}>לשיחת ייעוץ חינמית - השאירי פרטים</h2>
+
       <form className={styles.form} onSubmit={handleSubmit}>
         <input
           type="text"
@@ -107,7 +107,7 @@ const ContactForm = () => {
         {isPrivacyModalOpen && (
           <PrivacyPolicy
             ownerName="עדן שמחייב"
-            email="eden@example.com" // Update with Eden's email
+            email="edensimhayeveden@gmail.com"
             phone="054-341-4939"
             domain=""
             isOpen={isPrivacyModalOpen}
@@ -121,12 +121,14 @@ const ContactForm = () => {
         </button>
 
         {/* תיבת האישור למדיניות הפרטיות */}
-      
+
       </form>
+
+      <p className={styles.limitedSpots}>*מספר המקומות בחודש מוגבל*</p>
 
       {/* תמונה מטושטשת מתחת לכפתור */}
       <div className={styles.imageWrapper}>
-      
+
       </div>
     </div>
   );

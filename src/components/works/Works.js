@@ -22,6 +22,7 @@ const Works = () => {
                   src={img}
                   alt={`עבודה ${index + 1}`}
                   className={styles.worksImage}
+                  loading="lazy"
                 />
               </div>
             ))}
@@ -35,6 +36,7 @@ const Works = () => {
                   src={img}
                   alt={`עבודה ${index + 1}`}
                   className={styles.worksImage}
+                  loading="lazy"
                 />
               </div>
             ))}

@@ -522,13 +522,17 @@
    ============================================= */
 @media (max-width: 768px) {
   .faqSection {
-    padding: 80px 0 70px;
+    padding: 30px 0 40px;
   }
 
   .frameTop,
   .frameBottom {
     left: 24px;
     right: 24px;
+  }
+
+  .sectionHeader {
+    margin-bottom: 28px;
   }
 
   .faqContainer {

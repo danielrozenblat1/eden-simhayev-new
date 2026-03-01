@@ -3,7 +3,7 @@ import { Player } from '@lordicon/react';
 import ScrollReveal from "scrollreveal";
 import styles from './can.module.css';
 
-const IconTextComponent = ({ text, icon }) => {
+const IconTextComponent = ({ text, icon, colors }) => {
   const handleComplete = () => {
     setTimeout(() => {
       playerRef1?.current?.playFromBeginning();
@@ -32,15 +32,18 @@ const IconTextComponent = ({ text, icon }) => {
 
   return (
     <div className={styles.container}>
-      <div className={styles.icon}>
-        <Player 
-          icon={icon} 
-          ref={playerRef1} 
-          size="100%" 
-          onComplete={handleComplete}
-        />
+      <div className={styles.inner}>
+        <div className={styles.icon}>
+          <Player
+            icon={icon}
+            ref={playerRef1}
+            size="100%"
+            colorValues={colors || "primary:#C4727E,secondary:#C4727E"}
+            onComplete={handleComplete}
+          />
+        </div>
+        <p className={styles.text}>{text}</p>
       </div>
-      <p className={styles.text}>{text}</p>
     </div>
   );
 };

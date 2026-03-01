@@ -212,10 +212,10 @@
 
 .paragraph {
   font-family: 'Heebo', sans-serif;
-  font-size: 1.05rem;
+  font-size: 1.2rem;
   font-weight: 300;
   color: #3A1F1A;
-  line-height: 1.8;
+  line-height: 1.85;
   margin-bottom: 0.2rem;
 }
 
@@ -539,11 +539,11 @@
   }
 
   .paragraph {
-    font-size: 0.95rem;
+    font-size: 1.05rem;
   }
 
   .quote {
-    font-size: 1rem;
+    font-size: 1.05rem;
   }
 
   .quoteContainer {
@@ -580,11 +580,11 @@
   }
 
   .cardParagraph {
-    font-size: 0.95rem;
+    font-size: 1.05rem;
   }
 
   .closingLine {
-    font-size: 0.95rem;
+    font-size: 1rem;
   }
 
   .ctaButton {
@@ -604,7 +604,7 @@
   }
 
   .paragraph {
-    font-size: 0.9rem;
+    font-size: 1rem;
   }
 
   .card {
@@ -616,11 +616,11 @@
   }
 
   .cardParagraph {
-    font-size: 0.9rem;
+    font-size: 1rem;
   }
 
   .closingLine {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
   }
 
   .ctaButton {

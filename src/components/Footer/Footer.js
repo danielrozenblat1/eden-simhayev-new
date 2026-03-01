@@ -1,18 +1,16 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { Link } from 'react-router-dom';
 import styles from './Footer.module.css';
 import ByMe from '../ByMe/ByMe';
-import logo from '../../assets/logo.png';
+import logo from '../../assets/logo.webp';
 
 const NAV_LINKS = [
-  { label: 'בית', targetId: 'hero' },
-  { label: 'אודות', targetId: 'about-me' },
-  { label: 'שירותים', targetId: 'services' },
+  { label: 'מי אני', targetId: 'מי אנחנו' },
+  { label: 'סילבוסים', targetId: 'courses' },
   { label: 'שאלות נפוצות', targetId: 'faq' },
 ];
 
 const Footer = () => {
-  const [showPrivacy, setShowPrivacy] = useState(false);
-
   const scrollToSection = (id) => {
     const element = document.getElementById(id);
     if (element) {
@@ -26,7 +24,7 @@ const Footer = () => {
 
         {/* Logo */}
         <div className={styles.logoWrap}>
-          <img src={logo} alt="לוגו" className={styles.logoImage} />
+          <img src={logo} alt="לוגו" className={styles.logoImage} loading="lazy" />
         </div>
 
         {/* Navigation */}
@@ -40,9 +38,15 @@ const Footer = () => {
               {item.label}
             </button>
           ))}
-          <button onClick={() => setShowPrivacy(true)} className={styles.navLink}>
-            מדיניות פרטיות
+          <button
+            onClick={() => scrollToSection('טופס')}
+            className={styles.navLink}
+          >
+            צרי קשר
           </button>
+          <Link to="/privacy" className={styles.navLink}>
+            מדיניות פרטיות
+          </Link>
         </nav>
 
         {/* Contact */}
@@ -60,12 +64,12 @@ const Footer = () => {
             </svg>
             <span>אינסטגרם</span>
           </a>
-          <a href="mailto:eden@gmail.com" className={styles.contactLink}>
+          <a href="mailto:edensimhayeveden@gmail.com" className={styles.contactLink}>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className={styles.icon}>
               <rect x="2" y="4" width="20" height="16" rx="2" />
               <path d="M22 4l-10 8L2 4" />
             </svg>
-            <span>eden@gmail.com</span>
+            <span>edensimhayeveden@gmail.com</span>
           </a>
           <a href="tel:+972543414939" className={styles.contactLink}>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className={styles.icon}>
@@ -89,18 +93,6 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* Privacy Policy Modal */}
-      {showPrivacy && (
-        <div className={styles.privacyModal} onClick={() => setShowPrivacy(false)}>
-          <div className={styles.privacyContent} onClick={(e) => e.stopPropagation()}>
-            <button className={styles.closeButton} onClick={() => setShowPrivacy(false)}>
-              ×
-            </button>
-            <h2>מדיניות פרטיות</h2>
-            <p>פרטי מדיניות הפרטיות של עדן שמחייב יועלו כאן.</p>
-          </div>
-        </div>
-      )}
     </footer>
   );
 };

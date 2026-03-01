@@ -1,0 +1,142 @@
+@import '../../components/fonts/fonts.css';
+
+.page {
+  min-height: 100vh;
+  background: #FFFFFF;
+  padding: 60px 20px 80px;
+  --font-display: 'Discovery', sans-serif;
+  --font-body: 'Heebo', sans-serif;
+  --color-accent: #C4727E;
+  --color-heading: #2B0F18;
+  --color-text: #3A1F1A;
+}
+
+.container {
+  max-width: 780px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 4.5vw, 2.6rem);
+  font-weight: 800;
+  color: var(--color-heading);
+  text-align: center;
+  margin: 0;
+}
+
+.updated {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 300;
+  color: #7B5B52;
+  text-align: center;
+  margin: 0;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.section {
+  padding: 24px 0;
+  border-bottom: 1px solid rgba(196, 114, 126, 0.12);
+}
+
+.section:last-child {
+  border-bottom: none;
+}
+
+.section h2 {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-heading);
+  margin: 0 0 12px;
+}
+
+.section p {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 300;
+  color: var(--color-text);
+  line-height: 1.85;
+  margin: 0 0 8px;
+}
+
+.section ul {
+  list-style: none;
+  padding: 0;
+  margin: 8px 0 0;
+}
+
+.section li {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 300;
+  color: var(--color-text);
+  line-height: 1.85;
+  padding-right: 18px;
+  position: relative;
+}
+
+.section li::before {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 12px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-accent);
+}
+
+.backButton {
+  align-self: center;
+  padding: 16px 48px;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #fff;
+  background: linear-gradient(135deg, var(--color-accent) 0%, #A85A6A 100%);
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 24px rgba(196, 114, 126, 0.25);
+}
+
+.backButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 36px rgba(196, 114, 126, 0.4);
+}
+
+@media (max-width: 640px) {
+  .page {
+    padding: 40px 16px 60px;
+  }
+
+  .section {
+    padding: 20px 0;
+  }
+
+  .section h2 {
+    font-size: 1.1rem;
+  }
+
+  .section p,
+  .section li {
+    font-size: 0.95rem;
+  }
+
+  .backButton {
+    width: 100%;
+    max-width: 300px;
+    padding: 14px 32px;
+  }
+}

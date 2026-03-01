@@ -1,15 +1,15 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect } from "react";
+import ScrollReveal from "scrollreveal";
 import styles from "./testimonialsScreen.module.css";
 import { worksImages } from "../../components/works/worksImages";
 import { certificateImages } from "../../components/certificates/certificateImages";
 
-const EDEN_PHONE = "972543414939";
-
-// Import recommendation images (only -1 variants, skip 3 which is duplicate of 2)
+// Import recommendation images (skip duplicates and very short/wide screenshots)
+const skipIndices = new Set([3, 6, 7, 8, 9, 12, 16, 18, 19, 22]);
 const recsImages = [];
 for (let i = 1; i <= 28; i++) {
-  if (i === 3) continue;
-  recsImages.push(require(`../../assets/eden_recs_${i}-1.png`));
+  if (skipIndices.has(i)) continue;
+  recsImages.push(require(`../../assets/eden_recs_${i}-1.webp`));
 }
 
 // Masonry column distribution (with global index tracking for lightbox)
@@ -27,6 +27,35 @@ const col3 = rawCol3;
 const TestimonialsScreen = () => {
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);
+  const [touchStart, setTouchStart] = useState(null);
+
+  useEffect(() => {
+    const sr = ScrollReveal({ reset: false });
+
+    sr.reveal(`.${styles.studentsTitle}`, {
+      origin: "bottom",
+      distance: "25px",
+      duration: 700,
+      opacity: 0,
+      easing: "ease-out",
+    });
+
+    sr.reveal(`.${styles.testimonialsTitle}`, {
+      origin: "bottom",
+      distance: "25px",
+      duration: 700,
+      opacity: 0,
+      easing: "ease-out",
+    });
+
+    sr.reveal(`.${styles.masonryGrid}`, {
+      origin: "bottom",
+      distance: "40px",
+      duration: 800,
+      opacity: 0,
+      easing: "ease-out",
+    });
+  }, []);
 
   const openLightbox = useCallback((globalIndex) => {
     setLightboxIndex(globalIndex);
@@ -56,72 +85,81 @@ const TestimonialsScreen = () => {
     [closeLightbox, goNext, goPrev]
   );
 
-  const handleWhatsApp = () => {
-    const message = encodeURIComponent("היי עדן הגעתי מהדף שלך, בואי נדבר!");
-    window.open(`https://wa.me/${EDEN_PHONE}?text=${message}`, "_blank");
-  };
+  const handleTouchStart = useCallback((e) => {
+    setTouchStart(e.touches[0].clientX);
+  }, []);
+
+  const handleTouchEnd = useCallback((e) => {
+    if (touchStart === null) return;
+    const diff = touchStart - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 50) {
+      if (diff > 0) goNext();
+      else goPrev();
+    }
+    setTouchStart(null);
+  }, [touchStart, goNext, goPrev]);
 
   return (
     <>
-      {/* Section background wrapper for title */}
+      {/* Title - Students */}
       <div className={styles.sectionBg} dir="rtl">
         <div className={styles.bgOrb1} />
         <div className={styles.bgOrb2} />
-        <h2 className={styles.mainTitle}>
-          בשנים האחרונות עברו תחתי אלפי נשים
-        </h2>
+        <h3 className={styles.studentsTitle}>
+          בשנים האחרונות הובלתי עשרות נשים לקריירה בתחום
+        </h3>
       </div>
 
-      {/* Eden's Works Carousel - directly in app, no wrapper */}
-      <div className={styles.worksContainer}>
-        <div className={styles.worksScrollTrack}>
-          <div className={styles.worksScrollContainer}>
-            {worksImages.map((image, idx) => (
-              <div key={`eden-1-${idx}`} className={styles.worksImageWrapper}>
-                <img src={image} alt={`עבודה של עדן ${idx + 1}`} className={styles.worksImage} />
-              </div>
-            ))}
-          </div>
-          <div className={styles.worksScrollContainer}>
-            {worksImages.map((image, idx) => (
-              <div key={`eden-2-${idx}`} className={styles.worksImageWrapper}>
-                <img src={image} alt={`עבודה של עדן ${idx + 1}`} className={styles.worksImage} />
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* Students Title */}
-      <div className={styles.sectionBg} dir="rtl">
-        <h3 className={styles.studentsTitle}>ועשרות תלמידות</h3>
-      </div>
-
-      {/* Certificates Carousel - directly in app, no wrapper */}
+      {/* Certificates Carousel - students first */}
       <div className={styles.worksContainer}>
         <div className={styles.worksScrollTrackReverse}>
           <div className={styles.worksScrollContainer}>
             {certificateImages.map((img, index) => (
               <div key={`student-1-${index}`} className={styles.worksImageWrapper}>
-                <img src={img} alt={`תעודה ${index + 1}`} className={styles.worksImage} />
+                <img src={img} alt={`תעודה ${index + 1}`} className={styles.worksImage} loading="lazy" />
               </div>
             ))}
           </div>
           <div className={styles.worksScrollContainer}>
             {certificateImages.map((img, index) => (
               <div key={`student-2-${index}`} className={styles.worksImageWrapper}>
-                <img src={img} alt={`תעודה ${index + 1}`} className={styles.worksImage} />
+                <img src={img} alt={`תעודה ${index + 1}`} className={styles.worksImage} loading="lazy" />
               </div>
             ))}
           </div>
         </div>
       </div>
 
-      {/* Masonry + CTA section */}
+      {/* Title - Eden's works */}
+      <div className={styles.sectionBg} dir="rtl">
+        <h3 className={styles.studentsTitle}>עברו תחתי אלפי נשים</h3>
+      </div>
+
+      {/* Eden's Works Carousel */}
+      <div className={styles.worksContainer}>
+        <div className={styles.worksScrollTrack}>
+          <div className={styles.worksScrollContainer}>
+            {worksImages.map((image, idx) => (
+              <div key={`eden-1-${idx}`} className={styles.worksImageWrapper}>
+                <img src={image} alt={`עבודה של עדן ${idx + 1}`} className={styles.worksImage} loading="lazy" />
+              </div>
+            ))}
+          </div>
+          <div className={styles.worksScrollContainer}>
+            {worksImages.map((image, idx) => (
+              <div key={`eden-2-${idx}`} className={styles.worksImageWrapper}>
+                <img src={image} alt={`עבודה של עדן ${idx + 1}`} className={styles.worksImage} loading="lazy" />
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Masonry Recommendations */}
       <section className={styles.section} dir="rtl">
         <div className={styles.container}>
           <div className={styles.testimonialsSection}>
-            <h3 className={styles.testimonialsTitle}>ככה הן הגיבו כשהן יצאו ממני:</h3>
+            <h3 className={styles.testimonialsTitle}>וככה הן הגיבו:</h3>
 
             <div className={styles.masonryGrid}>
               <div className={styles.masonryCol}>
@@ -131,7 +169,7 @@ const TestimonialsScreen = () => {
                     className={styles.masonryItem}
                     onClick={() => openLightbox(item.idx)}
                   >
-                    <img src={item.img} alt={`המלצה`} className={styles.masonryImage} />
+                    <img src={item.img} alt={`המלצה`} className={styles.masonryImage} loading="lazy" />
                   </div>
                 ))}
               </div>
@@ -142,7 +180,7 @@ const TestimonialsScreen = () => {
                     className={styles.masonryItem}
                     onClick={() => openLightbox(item.idx)}
                   >
-                    <img src={item.img} alt={`המלצה`} className={styles.masonryImage} />
+                    <img src={item.img} alt={`המלצה`} className={styles.masonryImage} loading="lazy" />
                   </div>
                 ))}
               </div>
@@ -153,16 +191,12 @@ const TestimonialsScreen = () => {
                     className={styles.masonryItem}
                     onClick={() => openLightbox(item.idx)}
                   >
-                    <img src={item.img} alt={`המלצה`} className={styles.masonryImage} />
+                    <img src={item.img} alt={`המלצה`} className={styles.masonryImage} loading="lazy" />
                   </div>
                 ))}
               </div>
             </div>
           </div>
-
-          <button className={styles.ctaButton} onClick={handleWhatsApp}>
-            עדן בואי נדבר!
-          </button>
         </div>
       </section>
 
@@ -175,7 +209,12 @@ const TestimonialsScreen = () => {
           tabIndex={0}
           ref={(el) => el && el.focus()}
         >
-          <div className={styles.lightboxContent} onClick={(e) => e.stopPropagation()}>
+          <div
+            className={styles.lightboxContent}
+            onClick={(e) => e.stopPropagation()}
+            onTouchStart={handleTouchStart}
+            onTouchEnd={handleTouchEnd}
+          >
             <button className={styles.lightboxClose} onClick={closeLightbox}>
               ✕
             </button>

@@ -2,11 +2,9 @@ import React, { useEffect, useRef } from "react";
 import styles from "./fourthScreeen.module.css";
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import edenImage from "../../assets/עדן תדמית 1.png";
+import edenImage from "../../assets/עדן תדמית 1.webp";
 
 gsap.registerPlugin(ScrollTrigger);
-
-const EDEN_PHONE = "972543414939";
 
 const FourthScreen = () => {
   const containerRef = useRef(null);
@@ -62,11 +60,11 @@ const FourthScreen = () => {
     };
   }, []);
 
-  const handleWhatsApp = () => {
-    const message = encodeURIComponent(
-      "היי עדן הגעתי מהדף שלך, אשמח להתחיל את המסע!"
-    );
-    window.open(`https://wa.me/${EDEN_PHONE}?text=${message}`, "_blank");
+  const scrollToForm = () => {
+    const form = document.getElementById('טופס');
+    if (form) {
+      form.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
   };
 
   return (
@@ -79,7 +77,7 @@ const FourthScreen = () => {
 
           <div className={styles.quoteContainer} ref={quoteRef}>
             <p className={styles.quote}>
-              "אני כאן כדי להפוך את מה שכולם אומרים לך 'את כל כך טובה בזה' – למקצוע שמכניס לך 5 ספרות בחודש"
+              "עברתי את כל הטעויות, נכשלתי, נכוויתי ושילמתי את המחיר - כדי שאת לא תצטרכי"
             </p>
           </div>
 
@@ -112,7 +110,7 @@ const FourthScreen = () => {
         <div className={styles.imageWrapper}>
           <div className={styles.imageCard}>
             <div className={styles.imageFrame}>
-              <img src={edenImage} alt="עדן שמחייב" className={styles.edenImage} />
+              <img src={edenImage} alt="עדן שמחייב" className={styles.edenImage} loading="lazy" />
             </div>
             <div className={styles.ribbon}>
               <span>Eden Simhayev</span>
@@ -176,8 +174,7 @@ const FourthScreen = () => {
             מודפסת עליו.
           </p>
 
-          <button className={styles.ctaButton} onClick={handleWhatsApp}>
-            <span className={styles.buttonIcon}>💬</span>
+          <button className={styles.ctaButton} onClick={scrollToForm}>
             בואי נדבר, אני כאן בשבילך
           </button>
         </div>

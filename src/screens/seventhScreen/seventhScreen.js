@@ -1,11 +1,13 @@
 import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import {
+  Sparkles, Heart, BookOpen, Target, Flame,
+  Ban, Zap, CircleDollarSign, Clock
+} from 'lucide-react';
 import styles from './seventhScreen.module.css';
 
 gsap.registerPlugin(ScrollTrigger);
-
-const EDEN_PHONE = "972543414939";
 
 const SeventhScreen = () => {
   const sectionRef = useRef(null);
@@ -108,71 +110,88 @@ const SeventhScreen = () => {
     return () => ctx.revert();
   }, []);
 
-  const handleWhatsAppClick = () => {
-    const message = encodeURIComponent('היי עדן, אני מתאימה, בואי נדבר!');
-    const whatsappUrl = `https://wa.me/${EDEN_PHONE}?text=${message}`;
-    window.open(whatsappUrl, '_blank');
+  const scrollToForm = () => {
+    const form = document.getElementById('טופס');
+    if (form) {
+      form.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
   };
 
   const yesItems = [
-    'את מוכנה להשקיע בעצמך ולהתאמץ',
-    'יש לך תשוקה אמיתית לתחום היופי',
-    'את מבינה שמקצוע אמיתי דורש למידה לעומק',
-    'את רוצה לבנות קריירה לטווח ארוך',
-    'את מוכנה לצאת מאזור הנוחות ולהתמיד כדי להצליח',
+    { text: 'את מוכנה להשקיע בעצמך ולהתאמץ', icon: Sparkles },
+    { text: 'יש לך תשוקה אמיתית לתחום היופי', icon: Heart },
+    { text: 'את מבינה שמקצוע אמיתי דורש למידה לעומק', icon: BookOpen },
+    { text: 'את רוצה לבנות קריירה לטווח ארוך', icon: Target },
+    { text: 'את מוכנה לצאת מאזור הנוחות ולהתמיד כדי להצליח', icon: Flame },
   ];
 
   const noItems = [
-    'את מחפשת קיצור דרך או תעודה מהירה',
-    'את מצפה להצליח בלי לתרגל',
-    'את מחפשת כסף קל ומהיר',
-    'את לא מוכנה להשקיע זמן בתרגול',
+    { text: 'את מחפשת קיצור דרך או תעודה מהירה', icon: Zap },
+    { text: 'את מצפה להצליח בלי לתרגל', icon: Ban },
+    { text: 'את מחפשת כסף קל ומהיר', icon: CircleDollarSign },
+    { text: 'את לא מוכנה להשקיע זמן בתרגול', icon: Clock },
   ];
 
   return (
     <section className={styles.screen} ref={sectionRef} dir="rtl">
       <div ref={headerRef} className={styles.sectionHeader}>
-        <h2>שנייה לפני שנדבר..</h2>
+        <h2>רגע לפני שאנחנו מדברות..</h2>
         <p>כאן תוכלי להבין האם מתאים לך להיכנס לתחום או שהוא פחות עבורך</p>
       </div>
 
       <div className={styles.columnsWrap}>
         {/* Yes column */}
         <div className={`${styles.col} ${styles.colYes}`}>
-          <div ref={yesTitleRef} className={styles.colTitle}>
-            <span className={styles.iconYes}>✓</span>
-            התחום בול בשבילך אם..
-          </div>
-          {yesItems.map((item, index) => (
-            <div
-              key={index}
-              ref={el => (yesItemsRefs.current[index] = el)}
-              className={`${styles.rowItem} ${styles.rowYes}`}
-            >
-              {item}
+          <div className={styles.colInner}>
+            <div ref={yesTitleRef} className={styles.colTitle}>
+              <span className={styles.iconYes}>✓</span>
+              התחום בול בשבילך אם..
             </div>
-          ))}
+            <div className={styles.colItems}>
+              {yesItems.map((item, index) => {
+                const Icon = item.icon;
+                return (
+                  <div
+                    key={index}
+                    ref={el => (yesItemsRefs.current[index] = el)}
+                    className={`${styles.rowItem} ${styles.rowYes}`}
+                  >
+                    <span className={styles.rowIcon}><Icon size={18} strokeWidth={1.5} /></span>
+                    {item.text}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
         </div>
 
         {/* No column */}
         <div className={`${styles.col} ${styles.colNo}`}>
-          <div ref={noTitleRef} className={styles.colTitle}>
-            <span className={styles.iconNo}>✗</span>
-            פחות מתאים לך אם..
-          </div>
-          {noItems.map((item, index) => (
-            <div
-              key={index}
-              ref={el => (noItemsRefs.current[index] = el)}
-              className={`${styles.rowItem} ${styles.rowNo}`}
-            >
-              {item}
+          <div className={styles.colInner}>
+            <div ref={noTitleRef} className={styles.colTitle}>
+              <span className={styles.iconNo}>✗</span>
+              פחות מתאים לך אם..
             </div>
-          ))}
+            <div className={styles.colItems}>
+              {noItems.map((item, index) => {
+                const Icon = item.icon;
+                return (
+                  <div
+                    key={index}
+                    ref={el => (noItemsRefs.current[index] = el)}
+                    className={`${styles.rowItem} ${styles.rowNo}`}
+                  >
+                    <span className={styles.rowIcon}><Icon size={18} strokeWidth={1.5} /></span>
+                    {item.text}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
         </div>
       </div>
 
-      <button ref={ctaRef} className={styles.ctaBtn} onClick={handleWhatsAppClick}>
+      <button ref={ctaRef} className={styles.ctaBtn} onClick={scrollToForm}>
         אני מתאימה, בואי נדבר!
       </button>
     </section>

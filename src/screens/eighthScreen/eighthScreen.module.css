@@ -115,6 +115,17 @@
   position: relative;
 }
 
+.titleAccentQuestion {
+  color: var(--color-accent);
+  -webkit-text-fill-color: var(--color-accent);
+}
+
+.boldDiscovery {
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--color-accent);
+}
+
 .sectionDescription {
   font-size: 1.125rem;
   color: var(--color-text);
@@ -139,41 +150,57 @@
 .optionsSubtitle {
   text-align: center;
   margin: 12px 0;
-  position: relative;
-  padding: 0 24px;
+  display: flex;
+  justify-content: center;
 }
 
-.optionsSubtitle::before,
-.optionsSubtitle::after {
+.optionsFrame {
+  display: inline-block;
+  background: #FFFFFF;
+  padding: 3px;
+  position: relative;
+  z-index: 1;
+  box-shadow:
+    0 6px 30px rgba(0, 0, 0, 0.15),
+    0 1px 4px rgba(0, 0, 0, 0.06);
+}
+
+.optionsFrame::before,
+.optionsFrame::after {
   content: '';
   position: absolute;
-  top: 50%;
-  width: calc(50% - 180px);
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(196, 114, 126, 0.3), transparent);
+  width: 100%;
+  height: 100%;
+  background: #FFFFFF;
+  z-index: -1;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 
-.optionsSubtitle::before {
-  right: 0;
+.optionsFrame::before {
+  top: 4px;
+  left: -5px;
+  transform: rotate(0.8deg);
 }
 
-.optionsSubtitle::after {
-  left: 0;
+.optionsFrame::after {
+  top: -3px;
+  left: 4px;
+  transform: rotate(-0.6deg);
+}
+
+.optionsFrameInner {
+  background: linear-gradient(135deg, #fff 0%, #FFF0F2 100%);
+  border: 2px solid;
+  border-image: linear-gradient(135deg, #E8A0AC 0%, #D4808E 40%, #C4727E 70%, #E8A0AC 100%) 1;
+  padding: 10px 40px 12px;
 }
 
 .optionsSubtitle h3 {
   font-family: var(--font-display);
   font-size: 1.75rem;
   font-weight: 700;
-  background: linear-gradient(135deg, var(--color-accent), var(--color-gold));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  display: inline-block;
-  background-color: var(--bg-light);
-  padding: 0 24px;
-  position: relative;
-  z-index: 1;
+  color: var(--color-accent);
+  margin: 0;
 }
 
 /* ============================
@@ -351,10 +378,20 @@
   font-size: 1.3rem;
   font-weight: 500;
   color: var(--color-heading);
-  margin-bottom: 24px;
+  margin-bottom: 8px;
   position: relative;
   z-index: 1;
   line-height: 1.6;
+}
+
+.closingMini {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 300;
+  color: var(--color-text-secondary);
+  margin-bottom: 24px;
+  position: relative;
+  z-index: 1;
 }
 
 /* ============================
@@ -416,9 +453,8 @@
    ======================================== */
 
 @media (max-width: 900px) {
-  .optionsSubtitle::before,
-  .optionsSubtitle::after {
-    width: calc(50% - 120px);
+  .optionsFrameInner {
+    padding: 8px 30px 10px;
   }
 
   .closingSection {
@@ -432,11 +468,11 @@
 
 @media (max-width: 640px) {
   .section {
-    padding: 60px 16px 80px;
+    padding: 40px 16px 30px;
   }
 
   .container {
-    gap: 32px;
+    gap: 24px;
   }
 
   .sectionTitle {
@@ -459,12 +495,10 @@
 
   .optionsSubtitle h3 {
     font-size: 1.4rem;
-    padding: 0 16px;
   }
 
-  .optionsSubtitle::before,
-  .optionsSubtitle::after {
-    width: calc(50% - 100px);
+  .optionsFrameInner {
+    padding: 8px 24px 10px;
   }
 
   .pathPanel {
@@ -496,19 +530,19 @@
   }
 
   .closingSection {
-    padding: 28px 20px;
+    padding: 24px 18px;
     border-radius: 22px;
   }
 
   .closingText {
-    font-size: 1.1rem;
-    margin-bottom: 12px;
+    font-size: 1.05rem;
+    margin-bottom: 10px;
     line-height: 1.6;
   }
 
   .closingSubtext {
     font-size: 1rem;
-    margin-bottom: 18px;
+    margin-bottom: 14px;
   }
 
   .ctaButton {
@@ -526,6 +560,10 @@
 
   .optionsSubtitle h3 {
     font-size: 1.2rem;
+  }
+
+  .optionsFrameInner {
+    padding: 6px 18px 8px;
   }
 
   .pathTitle {

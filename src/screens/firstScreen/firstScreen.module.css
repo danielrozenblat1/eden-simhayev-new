@@ -143,25 +143,7 @@
      50% { transform: translate(-20px, -25px) scale(0.95); }
    }
    
-   /* ---- Floating dots decoration ---- */
-   .hero::after {
-     content: '';
-     position: absolute;
-     top: 8%;
-     left: 6%;
-     width: 120px;
-     height: 120px;
-     background-image: radial-gradient(circle, rgba(255, 200, 210, 0.25) 1px, transparent 1px);
-     background-size: 14px 14px;
-     z-index: 1;
-     pointer-events: none;
-     animation: dotsDrift 20s ease-in-out infinite;
-   }
-   
-   @keyframes dotsDrift {
-     0%, 100% { transform: translate(0, 0); opacity: 0.6; }
-     50% { transform: translate(10px, 15px); opacity: 1; }
-   }
+   /* ---- Floating dots decoration (removed) ---- */
    
    /* ---- Container ---- */
    .container {
@@ -263,11 +245,11 @@
    /* ---- Subtitle ---- */
    .subtitle {
      font-family: var(--font-body);
-     font-size: 1rem;
+     font-size: 1.25rem;
      font-weight: 400;
      color: rgba(255, 235, 240, 0.75);
      line-height: 1.7;
-     margin: 5px 0 5px;
+     margin: 5px 0 20px;
      animation: fadeInUp 0.8s ease-out 0.35s both;
    }
    
@@ -339,7 +321,6 @@
      position: relative;
      margin-bottom: 0;
      flex-shrink: 0;
-     min-height: 240px;
    }
 
    @keyframes scaleIn {
@@ -349,8 +330,8 @@
 
    .heroImage {
      width: 100%;
-     max-width: 320px;
-     height: 240px;
+     max-width: 360px;
+     height: auto;
      margin: 0 auto;
      display: block;
      border-radius: 24px 24px 0 0;
@@ -361,23 +342,22 @@
    /* ---- Form Section ---- */
    .formSection {
      width: 100%;
-     max-width: 520px;
+     max-width: 600px;
      position: relative;
      z-index: 5;
-     margin-top: -10px;
+     margin-top: -160px;
      flex-shrink: 0;
    }
    
    /* ---- Form card wrapper ---- */
    .formSection > * {
      background: #fff;
-     border-radius: 0 0 20px 20px;
+     border-radius: 20px;
      padding: 28px;
      box-shadow:
        0 20px 60px rgba(116, 66, 77, 0.12),
        0 4px 16px rgba(0,0,0,0.06);
      border: 1px solid rgba(196, 114, 126, 0.1);
-     border-top: none;
    }
    
    /* ---- Form label above ---- */
@@ -424,7 +404,7 @@
      }
 
      .headline {
-       font-size: clamp(1.5rem, 5.5vw, 2rem);
+       font-size: clamp(1.4rem, 5vw, 2rem);
        line-height: 1.45;
        margin-bottom: 6px;
      }
@@ -435,8 +415,9 @@
      }
 
      .subtitle {
-       font-size: 0.88rem;
+       font-size: 1.15rem;
        margin-bottom: 8px;
+       margin-top: 20px;
      }
    
      .statsRow {
@@ -462,18 +443,18 @@
 
      .heroImage {
        max-width: 280px;
-       height: 200px;
+       height: auto;
        border-radius: 18px 18px 0 0;
      }
 
      .formSection {
        max-width: 100%;
-       margin-top: 0;
+       margin-top: -40px;
      }
 
      .formSection > * {
        padding: 22px 18px;
-       border-radius: 0 0 16px 16px;
+       border-radius: 16px;
      }
    
      .bgOrb1 {
@@ -516,20 +497,24 @@
        font-size: 0.65rem;
      }
    
+     .imageFormBlock {
+       margin-top: 0;
+     }
+
      .heroImage {
-       max-width: 240px;
-       height: 175px;
+       max-width: 300px;
+       height: auto;
        border-radius: 14px 14px 0 0;
      }
 
      .formSection {
-       margin-top: -68px;
+       margin-top: -170px;
      }
    }
    
    @media (max-width: 380px) {
      .headline {
-       font-size: 1.55rem;
+       font-size: 1.3rem;
      }
-   
+
    }

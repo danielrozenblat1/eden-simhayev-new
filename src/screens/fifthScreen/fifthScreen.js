@@ -54,6 +54,7 @@ const FifthScreen = () => {
                       src={img}
                       alt={`תעודה ${index + 1}`}
                       className={styles.certificateImage}
+                      loading="lazy"
                     />
                   </div>
                 ))}
@@ -66,6 +67,7 @@ const FifthScreen = () => {
                       src={img}
                       alt={`תעודה ${index + 1}`}
                       className={styles.certificateImage}
+                      loading="lazy"
                     />
                   </div>
                 ))}

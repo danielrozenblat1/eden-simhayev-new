@@ -8,7 +8,9 @@ import {
   GraduationCap, Shapes, Briefcase, Clock, Target, MapPin,
   CircleCheck, Timer, Ban, Scale, Ruler, XCircle, FlaskConical, Users
 } from 'lucide-react';
+import ScrollReveal from "scrollreveal";
 import styles from "./thirdScreen.module.css";
+import { WorksCarousel } from "../secondScreen/secondScreen";
 import pinkClockIcon from "../../icons/pinkclock.json";
 import pinkChatIcon from "../../icons/pinkchat.json";
 import pinkNotebookIcon from "../../icons/pinknotebook.json";
@@ -242,22 +244,22 @@ const benefits = [
   {
     icon: pinkClockIcon,
     title: "לימוד מעשי אמיתי",
-    description: "תרגול על מודליסטיות אמיתיות, את יוצאת מוכנה לעבוד!",
+    description: "כל תלמידה שלי מתרגלת כבר מולי על מודליסטיות אמיתיות, מקבלת תיקונים בזמן אמת עד שהכל מושלם - כדי שבסוף הקורס תצאי מוכנה!",
   },
   {
     icon: pinkChatIcon,
     title: "ליווי גם אחרי הקורס",
-    description: "אני לא נעלמת אחרי שהקורס נגמר - אני עונה, מתקנת, וזמינה תמיד",
+    description: "הקורס אולי נגמר, אבל אני לא נעלמת - את תמיד תוכלי לפנות אלי להתייעץ, לשאול שאלות ולקבל מענה מקצועי. אני כאן בשבילך גם אחרי",
   },
   {
     icon: pinkNotebookIcon,
-    title: "חוברת שיווק",
+    title: "תמיכה גם בפן השיווקי",
     description: "אצלי לא תלמדי רק מקצוע - תלמדי גם איך להביא לקוחות ולבנות עסק רווחי",
   },
   {
     icon: pinkHeartIcon,
     title: "יחס אישי",
-    description: "כל תלמידה מקבלת תשומת לב אישית",
+    description: "אני יודעת כמה חשוב שכל תלמידה תבין את החומר באמת ותקבל את תשומת הלב שהיא צריכה - ולכן כל תלמידה אצלי מקבלת יחס אישי ומלא",
   },
 ];
 
@@ -289,6 +291,62 @@ const BenefitCard = ({ icon, title, description }) => {
 const ThirdScreen = () => {
   const [selectedCourse, setSelectedCourse] = useState(null);
 
+  // Scroll reveal animations
+  useEffect(() => {
+    const sr = ScrollReveal({ reset: false });
+
+    sr.reveal(`.${styles.headerBlock}`, {
+      origin: "bottom",
+      distance: "30px",
+      duration: 700,
+      opacity: 0,
+      easing: "ease-out",
+    });
+
+    sr.reveal(`.${styles.courseCard}`, {
+      origin: "bottom",
+      distance: "40px",
+      duration: 700,
+      opacity: 0,
+      scale: 0.96,
+      interval: 100,
+      easing: "ease-out",
+    });
+
+    sr.reveal(`.${styles.benefitsTitle}`, {
+      origin: "bottom",
+      distance: "25px",
+      duration: 700,
+      opacity: 0,
+      easing: "ease-out",
+    });
+
+    sr.reveal(`.${styles.benefitCard}`, {
+      origin: "bottom",
+      distance: "35px",
+      duration: 700,
+      opacity: 0,
+      interval: 100,
+      easing: "ease-out",
+    });
+
+    sr.reveal(`.${styles.worksSection}`, {
+      origin: "bottom",
+      distance: "20px",
+      duration: 600,
+      opacity: 0,
+      easing: "ease-out",
+    });
+
+    sr.reveal(`.${styles.bottomCta}`, {
+      origin: "bottom",
+      distance: "25px",
+      duration: 700,
+      opacity: 0,
+      easing: "ease-out",
+    });
+  }, []);
+
   // Lock body scroll and hide nav when modal is open
   useEffect(() => {
     if (selectedCourse) {
@@ -311,15 +369,16 @@ const ThirdScreen = () => {
     window.open(`https://wa.me/${EDEN_PHONE}?text=${message}`, "_blank");
   };
 
-  const handleGeneralWhatsApp = () => {
-    const message = encodeURIComponent(
-      `היי עדן הגעתי מהדף שלך, אשמח לשמוע עוד פרטים`
-    );
-    window.open(`https://wa.me/${EDEN_PHONE}?text=${message}`, "_blank");
+  const scrollToForm = () => {
+    const form = document.getElementById('טופס');
+    if (form) {
+      form.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
   };
 
   return (
-    <section className={styles.section} dir="rtl">
+    <>
+    <section className={styles.section} dir="rtl" id="courses">
       <div className={styles.bgOrb1} />
       <div className={styles.bgOrb2} />
 
@@ -461,7 +520,7 @@ const ThirdScreen = () => {
 
         {/* ===== Benefits ===== */}
         <div className={styles.benefitsSection}>
-          <h3 className={styles.benefitsTitle}>כל תלמידה אצלי מקבלת:</h3>
+          <h3 className={styles.benefitsTitle}>בכל הקורסים כל תלמידה מקבלת:</h3>
           <div className={styles.benefitsGrid}>
             {benefits.map((b, idx) => (
               <BenefitCard
@@ -474,17 +533,29 @@ const ThirdScreen = () => {
           </div>
         </div>
 
+        {/* ===== Works Title ===== */}
+        <div className={styles.worksSection}>
+          <h3 className={styles.worksTitle}>ואם תהית איך העבודות של התלמידות שלי נראות עוד בזמן הקורס - זה נראה ככה:</h3>
+        </div>
+      </div>
+    </section>
+
+    <WorksCarousel />
+
+    <section className={styles.section} dir="rtl">
+      <div className={styles.container}>
         {/* ===== Bottom CTA ===== */}
         <div className={styles.bottomCta}>
           <p className={styles.bottomCtaText}>
             לא בטוחה מה מתאים לך? אני כאן בשבילך
           </p>
-          <button className={styles.ctaButton} onClick={handleGeneralWhatsApp}>
+          <button className={styles.ctaButton} onClick={scrollToForm}>
             לשיחת ייעוץ חינם לחצי כאן
           </button>
         </div>
       </div>
     </section>
+    </>
   );
 };
 
