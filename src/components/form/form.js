@@ -11,7 +11,6 @@ const ContactForm = () => {
 
   // Refs for form fields
   const nameRef = useRef(null);
-  const emailRef = useRef(null);
   const phoneRef = useRef(null);
 
   // Server settings
@@ -35,7 +34,6 @@ const ContactForm = () => {
     e.preventDefault();
     
     const name = nameRef.current.value;
-    const email = emailRef.current.value;
     const phone = phoneRef.current.value;
     
     setIsSubmitting(true);
@@ -44,7 +42,6 @@ const ContactForm = () => {
     const serverData = {
       name: name,
       phone: phone,
-      email: email,
       reciver: reciver
     };
 
@@ -68,7 +65,6 @@ const ContactForm = () => {
         // Reset form after successful submission
         setTimeout(() => {
           nameRef.current.value = "";
-          emailRef.current.value = "";
           phoneRef.current.value = "";
           setSubmitted(false);
         }, 3000);
