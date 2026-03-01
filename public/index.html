@@ -1,17 +1,180 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="he" dir="rtl">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- Theme & App -->
+    <meta name="theme-color" content="#C4727E" />
+    <meta name="msapplication-TileColor" content="#C4727E" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="עדן שמחייב" />
+
+    <!-- Favicon & Icons -->
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="%PUBLIC_URL%/favicon-32.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="%PUBLIC_URL%/apple-touch-icon.png" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+
+    <!-- Primary SEO -->
+    <title>עדן שמחייב | קורסי ריסים וגבות | לימודי ביוטי מקצועיים</title>
     <meta
       name="description"
-      content="Eden - Single Page Landing Page"
+      content="עדן שמחייב - אקדמיה מקצועית לריסים וגבות. קורסי הכשרה מקיפים בתחום הביוטי: קורס ריסים קלאסי, ריסים רוסי, הרמת ריסים, עיצוב גבות ועוד. ליווי אישי, חומרים איכותיים ותעודת הסמכה. הצטרפי עכשיו!"
     />
-    <title>Eden - Landing Page</title>
+    <meta
+      name="keywords"
+      content="עדן שמחייב, קורס ריסים, קורס גבות, לימודי ריסים, לימודי גבות, הדבקת ריסים, ריסים קלאסי, ריסים רוסי, הרמת ריסים, לאש ליפט, עיצוב גבות, ביוטי, קורסי ביוטי, הכשרה מקצועית ריסים, לימודי ביוטי, קורס ריסים מקצועי, אקדמיה לריסים, Eden Simhayev, lashes course, eyebrows course"
+    />
+    <meta name="author" content="עדן שמחייב - Eden Simhayev" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <link rel="canonical" href="https://edensimhayev-academy.co.il/" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://edensimhayev-academy.co.il/" />
+    <meta property="og:title" content="עדן שמחייב | קורסי ריסים וגבות | לימודי ביוטי מקצועיים" />
+    <meta
+      property="og:description"
+      content="אקדמיה מקצועית לריסים וגבות מבית עדן שמחייב. קורסי הכשרה מקיפים עם ליווי אישי, חומרים איכותיים ותעודת הסמכה. בואי ללמוד מקצוע שאת אוהבת!"
+    />
+    <meta property="og:image" content="https://edensimhayev-academy.co.il/logo.png" />
+    <meta property="og:image:width" content="500" />
+    <meta property="og:image:height" content="500" />
+    <meta property="og:image:alt" content="עדן שמחייב - לוגו האקדמיה" />
+    <meta property="og:locale" content="he_IL" />
+    <meta property="og:site_name" content="עדן שמחייב - אקדמיה לריסים וגבות" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://edensimhayev-academy.co.il/" />
+    <meta name="twitter:title" content="עדן שמחייב | קורסי ריסים וגבות | לימודי ביוטי מקצועיים" />
+    <meta
+      name="twitter:description"
+      content="אקדמיה מקצועית לריסים וגבות מבית עדן שמחייב. קורסי הכשרה מקיפים עם ליווי אישי, חומרים איכותיים ותעודת הסמכה."
+    />
+    <meta name="twitter:image" content="https://edensimhayev-academy.co.il/logo.png" />
+
+    <!-- Geo / Local SEO -->
+    <meta name="geo.region" content="IL" />
+    <meta name="geo.placename" content="Israel" />
+    <meta name="language" content="Hebrew" />
+
+    <!-- Structured Data: LocalBusiness -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "EducationalOrganization",
+        "name": "עדן שמחייב - אקדמיה לריסים וגבות",
+        "alternateName": "Eden Simhayev Academy",
+        "url": "https://edensimhayev-academy.co.il",
+        "logo": "https://edensimhayev-academy.co.il/logo.png",
+        "image": "https://edensimhayev-academy.co.il/logo.png",
+        "description": "אקדמיה מקצועית ללימודי ריסים וגבות. קורסי הכשרה מקיפים בתחום הביוטי עם ליווי אישי, חומרים איכותיים ותעודת הסמכה.",
+        "telephone": "+972-54-341-4939",
+        "email": "edensimhayeveden@gmail.com",
+        "address": {
+          "@type": "PostalAddress",
+          "addressCountry": "IL"
+        },
+        "sameAs": [
+          "https://www.instagram.com/"
+        ],
+        "founder": {
+          "@type": "Person",
+          "name": "עדן שמחייב",
+          "alternateName": "Eden Simhayev",
+          "jobTitle": "מדריכת ריסים וגבות"
+        },
+        "areaServed": {
+          "@type": "Country",
+          "name": "Israel"
+        }
+      }
+    </script>
+
+    <!-- Structured Data: Course offerings -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "name": "קורסי ריסים וגבות - עדן שמחייב",
+        "description": "מגוון קורסי הכשרה מקצועיים בתחום הריסים והגבות",
+        "itemListElement": [
+          {
+            "@type": "Course",
+            "position": 1,
+            "name": "קורס ריסים קלאסי",
+            "description": "קורס הכשרה מקיף להדבקת ריסים בשיטה קלאסית, כולל ליווי אישי וחומרים איכותיים",
+            "provider": {
+              "@type": "EducationalOrganization",
+              "name": "עדן שמחייב - אקדמיה לריסים וגבות",
+              "url": "https://edensimhayev-academy.co.il"
+            }
+          },
+          {
+            "@type": "Course",
+            "position": 2,
+            "name": "קורס ריסים רוסי",
+            "description": "קורס מתקדם לריסים בנפח בשיטה הרוסית, טכניקות מקצועיות וליווי עד להצלחה",
+            "provider": {
+              "@type": "EducationalOrganization",
+              "name": "עדן שמחייב - אקדמיה לריסים וגבות",
+              "url": "https://edensimhayev-academy.co.il"
+            }
+          },
+          {
+            "@type": "Course",
+            "position": 3,
+            "name": "קורס הרמת ריסים - לאש ליפט",
+            "description": "קורס מקצועי להרמת ריסים וצביעה, טכניקת לאש ליפט מתקדמת",
+            "provider": {
+              "@type": "EducationalOrganization",
+              "name": "עדן שמחייב - אקדמיה לריסים וגבות",
+              "url": "https://edensimhayev-academy.co.il"
+            }
+          },
+          {
+            "@type": "Course",
+            "position": 4,
+            "name": "קורס עיצוב גבות",
+            "description": "קורס מקצועי לעיצוב גבות, כולל טכניקות מתקדמות וליווי אישי",
+            "provider": {
+              "@type": "EducationalOrganization",
+              "name": "עדן שמחייב - אקדמיה לריסים וגבות",
+              "url": "https://edensimhayev-academy.co.il"
+            }
+          }
+        ]
+      }
+    </script>
+
+    <!-- Structured Data: WebSite (for sitelinks search box) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "עדן שמחייב - אקדמיה לריסים וגבות",
+        "alternateName": "Eden Simhayev Academy",
+        "url": "https://edensimhayev-academy.co.il"
+      }
+    </script>
+
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   </head>
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <noscript>
+      <div style="text-align:center; padding:40px; font-family:Arial, sans-serif; direction:rtl;">
+        <h1>עדן שמחייב - אקדמיה לריסים וגבות</h1>
+        <p>קורסי הכשרה מקצועיים בתחום הריסים והגבות עם ליווי אישי ותעודת הסמכה.</p>
+        <p>לצפייה באתר יש להפעיל JavaScript בדפדפן.</p>
+        <p>ליצירת קשר: <a href="tel:+972543414939">054-341-4939</a> | <a href="mailto:edensimhayeveden@gmail.com">edensimhayeveden@gmail.com</a></p>
+      </div>
+    </noscript>
     <div id="root"></div>
   </body>
 </html>

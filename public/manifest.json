@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "עדן שמחייב",
+  "name": "עדן שמחייב - אקדמיה לריסים וגבות",
   "icons": [
     {
       "src": "favicon.ico",
@@ -20,6 +20,9 @@
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#C4727E",
+  "background_color": "#1a1a2e",
+  "description": "אקדמיה מקצועית לריסים וגבות מבית עדן שמחייב. קורסי הכשרה מקיפים עם ליווי אישי ותעודת הסמכה.",
+  "lang": "he",
+  "dir": "rtl"
 }
