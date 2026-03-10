@@ -115,7 +115,7 @@ const TestimonialsScreen = () => {
       <InfiniteCarousel
         images={certificateImages}
         direction="right"
-        speed={60}
+        speed={90}
         imageWidth="300px"
         imageHeight="420px"
       />
@@ -129,7 +129,7 @@ const TestimonialsScreen = () => {
       <InfiniteCarousel
         images={worksImages}
         direction="left"
-        speed={60}
+        speed={90}
       />
 
       {/* Masonry Recommendations */}

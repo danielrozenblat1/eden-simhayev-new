@@ -48,7 +48,7 @@ const FifthScreen = () => {
           <InfiniteCarousel
             images={certificateImages}
             direction="left"
-            speed={50}
+            speed={90}
             imageWidth="300px"
             imageHeight="400px"
             bgColor="var(--bg-warm, #F6EBE7)"

@@ -226,7 +226,7 @@ const SecondScreen = ({ onCtaClick }) => {
 };
 
 export const WorksCarousel = () => (
-  <InfiniteCarousel images={worksImages} direction="left" speed={50} />
+  <InfiniteCarousel images={worksImages} direction="left" speed={90} />
 );
 
 export default SecondScreen;
