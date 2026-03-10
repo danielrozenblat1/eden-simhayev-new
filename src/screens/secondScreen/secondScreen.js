@@ -224,25 +224,51 @@ const SecondScreen = ({ onCtaClick }) => {
   );
 };
 
-export const WorksCarousel = () => (
-  <div className={styles.worksContainer}>
-    <div className={styles.worksScrollTrack}>
-      <div className={styles.worksScrollContainer}>
-        {worksImages.map((img, index) => (
-          <div key={`set1-${index}`} className={styles.worksImageWrapper}>
-            <img src={img} alt={`עבודה ${index + 1}`} className={styles.worksImage} loading="lazy" />
-          </div>
-        ))}
-      </div>
-      <div className={styles.worksScrollContainer}>
-        {worksImages.map((img, index) => (
-          <div key={`set2-${index}`} className={styles.worksImageWrapper}>
-            <img src={img} alt={`עבודה ${index + 1}`} className={styles.worksImage} loading="lazy" />
-          </div>
-        ))}
+export const WorksCarousel = () => {
+  const trackRef = useRef(null);
+  const set1Ref = useRef(null);
+  const posRef = useRef(0);
+  const rafRef = useRef(null);
+
+  useEffect(() => {
+    const SPEED = 0.5;
+
+    const loop = () => {
+      if (trackRef.current && set1Ref.current) {
+        const loopWidth = set1Ref.current.offsetWidth;
+        posRef.current -= SPEED;
+        if (posRef.current <= -loopWidth) {
+          posRef.current += loopWidth;
+        }
+        trackRef.current.style.transform = `translateX(${posRef.current}px)`;
+      }
+      rafRef.current = requestAnimationFrame(loop);
+    };
+
+    rafRef.current = requestAnimationFrame(loop);
+    return () => cancelAnimationFrame(rafRef.current);
+  }, []);
+
+  return (
+    <div className={styles.worksContainer}>
+      <div ref={trackRef} className={styles.worksScrollTrack}>
+        <div ref={set1Ref} className={styles.worksScrollContainer}>
+          {worksImages.map((img, index) => (
+            <div key={`a-${index}`} className={styles.worksImageWrapper}>
+              <img src={img} alt={`עבודה ${index + 1}`} className={styles.worksImage} loading="lazy" />
+            </div>
+          ))}
+        </div>
+        <div className={styles.worksScrollContainer}>
+          {worksImages.map((img, index) => (
+            <div key={`b-${index}`} className={styles.worksImageWrapper}>
+              <img src={img} alt={`עבודה ${index + 1}`} className={styles.worksImage} loading="lazy" />
+            </div>
+          ))}
+        </div>
       </div>
     </div>
-  </div>
-);
+  );
+};
 
 export default SecondScreen;

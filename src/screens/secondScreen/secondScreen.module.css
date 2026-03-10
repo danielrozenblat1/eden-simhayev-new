@@ -415,14 +415,14 @@
    .worksScrollTrack {
      display: flex;
      width: fit-content;
-     animation: worksInfiniteScroll 60s linear infinite;
-     gap: 20px;
+     will-change: transform;
    }
 
    .worksScrollContainer {
      display: flex;
      gap: 20px;
      padding: 20px 0;
+     padding-left: 20px;
    }
 
    .worksImageWrapper {
