@@ -3,6 +3,7 @@ import ScrollReveal from "scrollreveal";
 import styles from "./testimonialsScreen.module.css";
 import { worksImages } from "../../components/works/worksImages";
 import { certificateImages } from "../../components/certificates/certificateImages";
+import InfiniteCarousel from "../../components/InfiniteCarousel/InfiniteCarousel";
 
 // Import recommendation images (skip duplicates and very short/wide screenshots)
 const skipIndices = new Set([3, 6, 7, 8, 9, 12, 16, 18, 19, 22]);
@@ -111,24 +112,13 @@ const TestimonialsScreen = () => {
       </div>
 
       {/* Certificates Carousel - students first */}
-      <div className={styles.worksContainer}>
-        <div className={styles.worksScrollTrackReverse}>
-          <div className={styles.worksScrollContainer}>
-            {certificateImages.map((img, index) => (
-              <div key={`student-1-${index}`} className={styles.worksImageWrapper}>
-                <img src={img} alt={`תעודה ${index + 1}`} className={styles.worksImage} loading="lazy" />
-              </div>
-            ))}
-          </div>
-          <div className={styles.worksScrollContainer}>
-            {certificateImages.map((img, index) => (
-              <div key={`student-2-${index}`} className={styles.worksImageWrapper}>
-                <img src={img} alt={`תעודה ${index + 1}`} className={styles.worksImage} loading="lazy" />
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
+      <InfiniteCarousel
+        images={certificateImages}
+        direction="right"
+        speed={60}
+        imageWidth="300px"
+        imageHeight="420px"
+      />
 
       {/* Title - Eden's works */}
       <div className={styles.sectionBg} dir="rtl">
@@ -136,24 +126,11 @@ const TestimonialsScreen = () => {
       </div>
 
       {/* Eden's Works Carousel */}
-      <div className={styles.worksContainer}>
-        <div className={styles.worksScrollTrack}>
-          <div className={styles.worksScrollContainer}>
-            {worksImages.map((image, idx) => (
-              <div key={`eden-1-${idx}`} className={styles.worksImageWrapper}>
-                <img src={image} alt={`עבודה של עדן ${idx + 1}`} className={styles.worksImage} loading="lazy" />
-              </div>
-            ))}
-          </div>
-          <div className={styles.worksScrollContainer}>
-            {worksImages.map((image, idx) => (
-              <div key={`eden-2-${idx}`} className={styles.worksImageWrapper}>
-                <img src={image} alt={`עבודה של עדן ${idx + 1}`} className={styles.worksImage} loading="lazy" />
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
+      <InfiniteCarousel
+        images={worksImages}
+        direction="left"
+        speed={60}
+      />
 
       {/* Masonry Recommendations */}
       <section className={styles.section} dir="rtl">

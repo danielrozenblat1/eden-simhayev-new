@@ -4,6 +4,7 @@ import ScrollReveal from "scrollreveal";
 import styles from "./secondScreen.module.css";
 import IconTextComponent from "../../components/edenCan/can";
 import { worksImages } from "../../components/works/worksImages";
+import InfiniteCarousel from "../../components/InfiniteCarousel/InfiniteCarousel";
 import heartIcon from "../../icons/heart.json";
 import sunriseIcon from "../../icons/sunrise.json";
 import suitcaseIcon from "../../icons/wired-outline-187-suitcase-hover-pinch (1).json";
@@ -224,51 +225,8 @@ const SecondScreen = ({ onCtaClick }) => {
   );
 };
 
-export const WorksCarousel = () => {
-  const trackRef = useRef(null);
-  const set1Ref = useRef(null);
-  const posRef = useRef(0);
-  const rafRef = useRef(null);
-
-  useEffect(() => {
-    const SPEED = 0.5;
-
-    const loop = () => {
-      if (trackRef.current && set1Ref.current) {
-        const loopWidth = set1Ref.current.offsetWidth;
-        posRef.current -= SPEED;
-        if (posRef.current <= -loopWidth) {
-          posRef.current += loopWidth;
-        }
-        trackRef.current.style.transform = `translateX(${posRef.current}px)`;
-      }
-      rafRef.current = requestAnimationFrame(loop);
-    };
-
-    rafRef.current = requestAnimationFrame(loop);
-    return () => cancelAnimationFrame(rafRef.current);
-  }, []);
-
-  return (
-    <div className={styles.worksContainer}>
-      <div ref={trackRef} className={styles.worksScrollTrack}>
-        <div ref={set1Ref} className={styles.worksScrollContainer}>
-          {worksImages.map((img, index) => (
-            <div key={`a-${index}`} className={styles.worksImageWrapper}>
-              <img src={img} alt={`עבודה ${index + 1}`} className={styles.worksImage} loading="lazy" />
-            </div>
-          ))}
-        </div>
-        <div className={styles.worksScrollContainer}>
-          {worksImages.map((img, index) => (
-            <div key={`b-${index}`} className={styles.worksImageWrapper}>
-              <img src={img} alt={`עבודה ${index + 1}`} className={styles.worksImage} loading="lazy" />
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-};
+export const WorksCarousel = () => (
+  <InfiniteCarousel images={worksImages} direction="left" speed={50} />
+);
 
 export default SecondScreen;

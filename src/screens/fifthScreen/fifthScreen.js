@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./fifthScreen.module.css";
 import { certificateImages } from "../../components/certificates/certificateImages";
+import InfiniteCarousel from "../../components/InfiniteCarousel/InfiniteCarousel";
 
 const students = [
   { id: 1, name: "[שם התלמידה]", before: "/images/student1-before.jpg", after: "/images/student1-after.jpg" },
@@ -44,36 +45,14 @@ const FifthScreen = () => {
         {/* Certificate Gallery - Second Carousel */}
         <div className={styles.certificateSection}>
           <h3 className={styles.certificateTitle}>תעודות והסמכות</h3>
-          <div className={styles.certificateContainer}>
-            <div className={styles.certificateScrollTrack}>
-              {/* Set 1 */}
-              <div className={styles.certificateScrollContainer}>
-                {certificateImages.map((img, index) => (
-                  <div key={`cert-set1-${index}`} className={styles.certificateImageWrapper}>
-                    <img
-                      src={img}
-                      alt={`תעודה ${index + 1}`}
-                      className={styles.certificateImage}
-                      loading="lazy"
-                    />
-                  </div>
-                ))}
-              </div>
-              {/* Set 2 - duplicate for seamless loop */}
-              <div className={styles.certificateScrollContainer}>
-                {certificateImages.map((img, index) => (
-                  <div key={`cert-set2-${index}`} className={styles.certificateImageWrapper}>
-                    <img
-                      src={img}
-                      alt={`תעודה ${index + 1}`}
-                      className={styles.certificateImage}
-                      loading="lazy"
-                    />
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
+          <InfiniteCarousel
+            images={certificateImages}
+            direction="left"
+            speed={50}
+            imageWidth="300px"
+            imageHeight="400px"
+            bgColor="var(--bg-warm, #F6EBE7)"
+          />
         </div>
       </div>
     </section>

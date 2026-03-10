@@ -1,0 +1,121 @@
+/* ================================================
+   InfiniteCarousel — reusable seamless image strip
+   ================================================ */
+
+/* Container — clips overflow, adds side fog via mask */
+.container {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  background: var(--ci-bg, #FFF5F3);
+
+  /* Side fog: fade images into the background color on both edges.
+     We use ::before / ::after overlays so the fog color always matches
+     whatever bgColor the parent passes in. */
+}
+
+.container::before,
+.container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 140px;
+  z-index: 10;
+  pointer-events: none;
+}
+
+/* Left fog */
+.container::before {
+  left: 0;
+  background: linear-gradient(
+    to right,
+    var(--ci-bg, #FFF5F3) 0%,
+    var(--ci-bg, #FFF5F3) 20%,
+    transparent 100%
+  );
+}
+
+/* Right fog */
+.container::after {
+  right: 0;
+  background: linear-gradient(
+    to left,
+    var(--ci-bg, #FFF5F3) 0%,
+    var(--ci-bg, #FFF5F3) 20%,
+    transparent 100%
+  );
+}
+
+/* ---- Track ---- */
+/*
+  Two identical sets sit side by side.
+  Each set has padding-right equal to the gap,
+  so the visual space between the last image of set A
+  and the first image of set B is identical to the
+  space between any two images inside a set.
+
+  Total track width = setA.width + setB.width = 2 × setWidth
+  Animation travels exactly -50% → seamless reset.
+*/
+.track {
+  display: flex;
+  width: fit-content;
+  animation: scrollLeft var(--ci-speed, 50s) linear infinite;
+}
+
+.trackRight {
+  animation-name: scrollRight;
+}
+
+/* ---- Set ---- */
+.set {
+  display: flex;
+  flex-shrink: 0;
+  gap: var(--ci-gap, 20px);
+  padding: 20px 0;
+  /* Trailing gap: makes the seam between sets match the inner gap */
+  padding-right: var(--ci-gap, 20px);
+}
+
+/* ---- Image wrapper ---- */
+.imgWrapper {
+  flex-shrink: 0;
+  width: var(--ci-img-w, 300px);
+  height: var(--ci-img-h, 450px);
+  border-radius: var(--ci-radius, 16px);
+  overflow: hidden;
+}
+
+.img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ---- Keyframes ---- */
+@keyframes scrollLeft {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@keyframes scrollRight {
+  from { transform: translateX(-50%); }
+  to   { transform: translateX(0); }
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 1050px) {
+  .container::before,
+  .container::after {
+    width: 90px;
+  }
+}
+
+@media (max-width: 640px) {
+  .container::before,
+  .container::after {
+    width: 50px;
+  }
+}
